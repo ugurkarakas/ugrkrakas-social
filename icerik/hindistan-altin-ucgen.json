@@ -9,7 +9,7 @@
   "caption": "Tac Mahal'e cuma günü gidersen kapıda kalırsın. Hindistan'da hayatında bir kez yaşanacak 3 an:\n\n1. Tac Mahal, Agra: Gün doğumundan 30 dakika önce açılıyor. Işık mermere vurmadan içeride ol. Cuma günleri ziyarete kapalı.\n2. Ganga Aarti, Varanasi: Her akşam gün batımından sonra Dashashwamedh Ghat'ta yaklaşık 45 dakikalık ateş ritüeli. Kışın 18:00 civarı başlıyor; nehirden, bir teknenin üstünden izle.\n3. Jaipur: Pembe şehrin simgesi Hawa Mahal. Akşam ışıklar yandığında ayrı bir güzellik.\n\nEn iyi dönem ekim–mart arası. Hindistan Türk vatandaşlarından vize istiyor; başvuru yolunu resmi vize portalından kontrol et.\nBilgiler Kasım 2026 itibarıyla.",
   "soru": "Hindistan listende mi?",
   "ilk_yorum": "#hindistan #india #tacmahal #varanasi #jaipur #agra #seyahat",
-  "fotograf_kredisi": "Fotoğraflar: Unsplash (Shan Elahi, Pratyush Mishra, Martijn Vonk, Hanan Edwards, Julian Yu, Arto Suraj, Vizag Explore, Annie Spratt, Roberto Reposo)",
+  "fotograf_kredisi": "Fotoğraflar: Unsplash (Shan Elahi, Pratyush Mishra, Martijn Vonk, Hanan Edwards, Julian Yu, Arto Suraj, Vizag Explore, Annie Spratt, Roberto Reposo), Video: Pexels (Puneet Singh Rawat, Siddharth Pandit, Iqbal farooz, shantanu biswas)",
   "anket": {
     "soru": "Hindistan'da hangisi?",
     "secenek_1": "Tac Mahal",
@@ -26,10 +26,20 @@
     "sahneler": [
       {
         "fotolar": [
-          "hindistan-tac-2.jpg",
-          "hindistan-aarti-1.jpg",
+          {
+            "video": "video/hin-v-tac-sis.mp4",
+            "baslangic": 20,
+            "vurus": 4,
+            "odak_x": 0.5
+          },
+          {
+            "video": "video/hin-v-aarti-2.mp4",
+            "baslangic": 0.5,
+            "vurus": 3,
+            "odak_x": 0.3
+          },
           "hindistan-jaipur-gece.jpg",
-          "hindistan-tac-3.jpg"
+          "hindistan-tac-2.jpg"
         ],
         "etiket": "Hindistan",
         "metin": "Tac Mahal'e cuma günü gitme",
@@ -37,8 +47,18 @@
       },
       {
         "fotolar": [
-          "hindistan-tac-2.jpg",
-          "hindistan-tac-1.jpg",
+          {
+            "video": "video/hin-v-tac-sis.mp4",
+            "baslangic": 26,
+            "vurus": 4,
+            "odak_x": 0.5
+          },
+          {
+            "video": "video/hin-v-tac.mp4",
+            "baslangic": 1,
+            "vurus": 3,
+            "odak_x": 0.42
+          },
           "hindistan-tac-3.jpg"
         ],
         "etiket": "1 · Agra",
@@ -47,8 +67,18 @@
       },
       {
         "fotolar": [
-          "hindistan-aarti-1.jpg",
-          "hindistan-aarti-2.jpg",
+          {
+            "video": "video/hin-v-aarti-2.mp4",
+            "baslangic": 6,
+            "vurus": 4,
+            "odak_x": 0.25
+          },
+          {
+            "video": "video/hin-v-aarti.mp4",
+            "baslangic": 4.5,
+            "vurus": 4,
+            "odak_x": 0.5
+          },
           "hindistan-varanasi.jpg"
         ],
         "etiket": "2 · Varanasi",
