@@ -2,8 +2,8 @@
   "slug": "avrupanin-esrarengiz-yerleri",
   "tur": "carousel",
   "seri": "Rota",
-  "baslik": "Avrupa'nın en esrarengiz 4 yeri",
-  "alt_baslik": "Bir kuyu, kayalara kurulmuş manastırlar ve denizin yuttuğu bir ada.",
+  "baslik": "Bu kuyu hiç su için kazılmadı",
+  "alt_baslik": "Avrupa'nın en esrarengiz 4 yeri.",
   "konum": "Avrupa",
   "foto": "sintra-kuyu-2.jpg",
   "slaytlar": [
@@ -43,7 +43,7 @@
   ],
   "cta": "Kaydet, Avrupa planına ekle.",
   "cta_alt": "Daha fazla rota için takip et.",
-  "caption": "Avrupa'da bildiğin şehirlerin dışında, hikayesiyle insanı içine çeken 4 yer.\n\n1. Quinta da Regaleira, Sintra (Portekiz): Lizbon'a yaklaşık 30 km. İnisiyasyon Kuyusu'nun 9 katlı sarmal merdiveni, tünellerle bahçeye bağlanıyor.\n2. Meteora (Yunanistan): Kaya sütunlarının tepesindeki manastırlar. Gün batımı için Kalambaka tarafındaki seyir noktalarına çık.\n3. Matera (İtalya): Kayaya oyulmuş Sassi mahalleleri. Bir gece mağara otelde kal.\n4. Mont-Saint-Michel (Fransa): Gelgit saatlerine göre plan yap; deniz çevrelediğinde manzara bambaşka.\n\nDört ülke de Schengen bölgesinde: Türk pasaportuyla Schengen vizesi gerekir.\nBilgiler Kasım 2026 itibarıyla.",
+  "caption": "Sintra'daki bu kuyu hiçbir zaman su için kullanılmadı. Avrupa'da hikayesiyle insanı içine çeken 4 yer:\n\n1. Quinta da Regaleira, Sintra (Portekiz): Lizbon'a yaklaşık 30 km. İnisiyasyon Kuyusu'nun 9 katlı sarmal merdiveni, tünellerle bahçeye bağlanıyor.\n2. Meteora (Yunanistan): Kaya sütunlarının tepesindeki manastırlar. Gün batımı için Kalambaka tarafındaki seyir noktalarına çık.\n3. Matera (İtalya): Kayaya oyulmuş Sassi mahalleleri. Bir gece mağara otelde kal.\n4. Mont-Saint-Michel (Fransa): Gelgit saatlerine göre plan yap; deniz çevrelediğinde manzara bambaşka.\n\nDört ülke de Schengen bölgesinde: Türk pasaportuyla Schengen vizesi gerekir.\nBilgiler Kasım 2026 itibarıyla.",
   "soru": "Bunlardan hangisini ilk görmek isterdin?",
   "ilk_yorum": "#sintra #meteora #matera #montsaintmichel #avrupa #avrupaseyahati #gizemliyerler #seyahat",
   "fotograf_kredisi": "Fotoğraflar: Unsplash (Andrey Masiero, Regös Környei, Angel Luciano, Christos Papadopoulos, Stefanos Keramaris, Daniel J. Schwarz, Sterling Lanier, Yiming Ma, Andrej A)",
@@ -55,7 +55,7 @@
   },
   "ogle": {
     "ust": "Biliyor muydun?",
-    "metin": "Sintra'daki 9 katlı kuyu hiçbir zaman su için kullanılmadı.",
+    "metin": "Mont-Saint-Michel'i gelgitle birlikte deniz çevreliyor.",
     "foto": "sintra-kuyu-1.jpg"
   }
 }

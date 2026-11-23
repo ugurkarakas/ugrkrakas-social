@@ -2,11 +2,11 @@
   "slug": "tiflis-hafta-sonu",
   "tur": "reels",
   "seri": "Rota",
-  "baslik": "Kimlikle gidilen hafta sonu: Tiflis",
-  "alt_baslik": "Kükürt hamamları, teleferik ve haçapuri.",
+  "baslik": "Pasaport yok, vize yok: Tiflis",
+  "alt_baslik": "Sadece kimlik kartınla bir hafta sonu.",
   "konum": "Tiflis, Gürcistan",
   "foto": "tiflis-gunbatimi.jpg",
-  "caption": "Pasaport çıkarmadan yurt dışında bir hafta sonu: Tiflis.\n\n• Giriş: Türk vatandaşları yeni tip çipli kimlik kartıyla gidebiliyor, vize ya da pasaport gerekmiyor.\n• Abanotubani: Kubbeli kükürt hamamlarıyla şehrin en eski bölgesi. Hafta sonları özel odaları önceden ayırt.\n• Teleferik: Rike Parkı'ndan kalkıyor, birkaç dakikada şehrin üstündesin. Narikala Kalesi restorasyon nedeniyle kapalı olabilir, gitmeden kontrol et.\n• Haçapuri: Peynir ve yumurtayla pişen Gürcü klasiği.\n\nBilgiler Kasım 2026 itibarıyla.",
+  "caption": "Pasaport çıkarmadan yurt dışında bir hafta sonu: Tiflis. Sadece kimlik kartın yeter.\n\n• Giriş: Türk vatandaşları yeni tip çipli kimlik kartıyla gidebiliyor, vize ya da pasaport gerekmiyor.\n• Abanotubani: Kubbeli kükürt hamamlarıyla şehrin en eski bölgesi. Hafta sonları özel odaları önceden ayırt.\n• Teleferik: Rike Parkı'ndan kalkıyor, birkaç dakikada şehrin üstündesin. Narikala Kalesi restorasyon nedeniyle kapalı olabilir, gitmeden kontrol et.\n• Haçapuri: Peynir ve yumurtayla pişen Gürcü klasiği.\n\nBilgiler Kasım 2026 itibarıyla.",
   "soru": "Tiflis'te ilk ne yapardın?",
   "ilk_yorum": "#tiflis #gürcistan #tbilisi #kimlikle #vizesiz #haftasonu #seyahat",
   "fotograf_kredisi": "Fotoğraflar: Unsplash (Aleksandr Popov, Christine Isakzhanova, K T)",
@@ -32,8 +32,8 @@
           "tiflis-rike.jpg"
         ],
         "etiket": "Tiflis, Gürcistan",
-        "metin": "Kimlikle gidilen hafta sonu",
-        "alt": "Pasaport bile gerekmiyor."
+        "metin": "Pasaport yok, vize yok: Tiflis",
+        "alt": "Sadece kimlik kartınla bir hafta sonu."
       },
       {
         "fotolar": [
@@ -87,7 +87,7 @@
   },
   "ogle": {
     "ust": "Biliyor muydun?",
-    "metin": "Tiflis'e pasaport olmadan, çipli kimlik kartınla gidebiliyorsun.",
+    "metin": "Tiflis'in kükürt hamamlarındaki su 38–40 derece.",
     "foto": "tiflis-havadan.jpg"
   }
 }

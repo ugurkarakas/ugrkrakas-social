@@ -2,8 +2,8 @@
   "slug": "vizesiz-kis-rotalari",
   "tur": "carousel",
   "seri": "Pratik bilgi",
-  "baslik": "Vize derdi olmadan gidebileceğin 5 kış rotası",
-  "alt_baslik": "Bordo pasaportla, randevu beklemeden.",
+  "baslik": "Randevu beklemeden gidebileceğin 5 ülke",
+  "alt_baslik": "Karadağ artık bu listede değil.",
   "konum": "Vizesiz rotalar",
   "foto": "seul-saray.jpg",
   "slaytlar": [
@@ -45,7 +45,7 @@
   ],
   "cta": "Kaydet, sonraki tatilini planla.",
   "cta_alt": "Güncel vize ve rota bilgileri için takip et.",
-  "caption": "Schengen randevusu beklemeden gidebileceğin 5 kış rotası.\n\n• Japonya ve Güney Kore: 90 güne kadar vizesiz.\n• Gürcistan: Yeni tip çipli kimlik kartıyla giriş, pasaport gerekmiyor.\n• Sırbistan ve Tayland: Vizesiz giriş.\n\nDikkat: Karadağ 1 Kasım 2026'dan itibaren Türk vatandaşlarından vize istiyor.\n\nVize muafiyeti girişin garanti olduğu anlamına gelmiyor; son kararı sınır görevlisi veriyor. Kalış süresi, pasaport geçerliliği ve dönüş bileti şartlarını yola çıkmadan resmi kaynaklardan kontrol et.\nBilgiler Kasım 2026 itibarıyla.",
+  "caption": "Schengen randevusu beklemeden gidebileceğin 5 kış rotası:\n\n• Japonya ve Güney Kore: 90 güne kadar vizesiz.\n• Gürcistan: Yeni tip çipli kimlik kartıyla giriş, pasaport gerekmiyor.\n• Sırbistan ve Tayland: Vizesiz giriş.\n\nDikkat: Karadağ 1 Kasım 2026'dan itibaren Türk vatandaşlarından vize istiyor.\n\nVize muafiyeti girişin garanti olduğu anlamına gelmiyor; son kararı sınır görevlisi veriyor. Kalış süresi, pasaport geçerliliği ve dönüş bileti şartlarını yola çıkmadan resmi kaynaklardan kontrol et.\nBilgiler Kasım 2026 itibarıyla.",
   "soru": "Bu kış hangisine gidiyorsun?",
   "ilk_yorum": "#vizesizülkeler #vizesiz #japonya #güneykore #gürcistan #sırbistan #tayland #seyahat",
   "fotograf_kredisi": "Fotoğraflar: Unsplash (Trac Vu, mos design, Cosmin Serban, Aleksandr Popov, Christine Isakzhanova, Andjela, Anantachai Saothong)",
@@ -57,7 +57,7 @@
   },
   "ogle": {
     "ust": "Biliyor muydun?",
-    "metin": "Japonya ve Güney Kore'ye 90 güne kadar vizesiz gidebiliyorsun.",
+    "metin": "Karadağ, 1 Kasım 2026'dan beri Türk vatandaşlarından vize istiyor.",
     "foto": "seul-saray.jpg"
   }
 }
