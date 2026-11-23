@@ -10,7 +10,7 @@ Tarzlar:
   aksam   96 BPM lo-fi / chill: yumuşak, swing'li, sıcak akorlar
   enerji  124 BPM daha parlak ve hızlı
 
-Bölgesel tarzlar (araclar/bolgesel_muzik.py): fas, hindistan, laponya, viyana, kapadokya, tiflis, paris
+Bölgesel tarzlar (araclar/bolgesel_muzik.py): fas, hindistan, laponya, viyana, kapadokya, tiflis, paris, misir
 
 Kullanım:
   python3 araclar/muzik.py <cikis.wav> <saniye> [tarz] [tohum]
@@ -35,7 +35,8 @@ TARZLAR = {
     "viyana": {"bpm": 168, "kesim": 1.5},  # 3/4 vals, glockenspiel, pizzicato, kızak zilleri
     "kapadokya": {"bpm": 96},     # hicaz, ney, bağlama, bendir
     "tiflis": {"bpm": 116},       # 6/8 Gürcü dansı, panduri, koro, doli
-    "paris": {"bpm": 132},        # manouche caz / musette: akordeon, pompe gitar
+    "paris": {"bpm": 132},
+    "misir": {"bpm": 92},         # vlog altı: ud, ney, hafif darbuka (hicaz)        # manouche caz / musette: akordeon, pompe gitar
 }
 ARALIKLAR = {"m": [0, 3, 7], "M": [0, 4, 7], "m7": [0, 3, 7, 10], "7": [0, 4, 7, 10], "M7": [0, 4, 7, 11],
              "add9": [0, 4, 7, 14], "m9": [0, 3, 7, 10, 14]}

@@ -499,3 +499,40 @@ def paris(saniye, tohum=7):
 
 
 BOLGELER["paris"] = paris
+
+
+# ---------- Mısır: hicaz, ud, ney, hafif rık/def (vlog altı için sakin) ----------
+
+def misir(saniye, tohum=7):
+    rng = np.random.default_rng(tohum)
+    v = 60 / TARZLAR["misir"]["bpm"]
+    s16 = v / 4
+    olcu = 4 * v
+    n = int(saniye * SR) + 2 * SR
+    z = izler(n, "ud", "ney", "dav", "ped", "bas")
+    kok = 62
+    usul = {0: "D", 6: "T", 8: "D", 12: "T"}  # yumuşak maksum
+    ud_desen = [(0, 0), (3, 1), (4, 2), (6, 1), (8, 0), (10, 4), (11, 3), (12, 2), (14, 1)]
+    ney_a = [(0, 4, 8), (8, 5, 4), (12, 4, 4)]
+    ney_b = [(0, 7, 6), (6, 5, 2), (8, 4, 8)]
+    for o in range(int(np.ceil(saniye / olcu)) + 1):
+        t0 = o * olcu
+        yerlestir(z["ped"], pad([kok - 12, kok - 5, kok], int(olcu * SR) + SR // 3, 0.08), t0 * SR)
+        yerlestir(z["bas"], bas_nota(kok - 24, olcu * 0.9), t0 * SR)
+        for k in range(16):
+            t = t0 + k * s16
+            if k in usul:
+                yerlestir(z["dav"], darbuka(usul[k], rng, 0.6), t * SR)
+            elif k % 2:
+                yerlestir(z["dav"], darbuka("K", rng, 0.4), t * SR)
+        for k, d in ud_desen:
+            yerlestir(z["ud"], ks(derece(kok, HICAZ, d), 0.7, rng, 0.5, 0.55, 0.26), (t0 + k * s16) * SR)
+        if o >= 2:
+            for k, d, uz in (ney_a if o % 2 else ney_b):
+                yerlestir(z["ney"], ney(derece(kok + 12, HICAZ, d), uz * s16 + 0.1, rng, 0.16), (t0 + k * s16) * SR)
+    return bitir({"ud": (z["ud"], 1.0, False), "ney": (z["ney"], 1.0, False), "dav": (z["dav"], 0.7, False),
+                  "ped": (z["ped"], 0.9, False), "bas": (z["bas"], 0.8, False)},
+                 rng, {"ud": 0.4, "ney": 0.6, "ped": 0.4, "dav": 0.1}, saniye)
+
+
+BOLGELER["misir"] = misir

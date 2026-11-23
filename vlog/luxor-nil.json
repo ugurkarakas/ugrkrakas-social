@@ -1,0 +1,63 @@
+{
+  "ad": "luxor-nil",
+  "muzik": {
+    "tarz": "misir",
+    "tohum": 11,
+    "seviye": 0.22
+  },
+  "kapanis": "Kaydet, Luxor planına ekle.",
+  "sahneler": [
+    {
+      "dosya": "16d8c15b728a45dba29b08c0012b1565.mov",
+      "bas": 19.6,
+      "sure": 2.8,
+      "ust": "Luxor, Mısır",
+      "baslik": "Nil'de bir öğleden sonra"
+    },
+    {
+      "dosya": "IMG_6850.mov",
+      "bas": 3.4,
+      "sure": 2.6,
+      "alt": "Yerel bir motorla Nil'in üstünde."
+    },
+    {
+      "dosya": "16d8c15b728a45dba29b08c0012b1565.mov",
+      "bas": 10.4,
+      "sure": 2.4,
+      "alt": "Rengârenk minderler, gölgelik ve Nil rüzgârı."
+    },
+    {
+      "dosya": "16d8c15b728a45dba29b08c0012b1565.mov",
+      "bas": 1.0,
+      "sure": 2.4
+    },
+    {
+      "dosya": "IMG_6850.mov",
+      "bas": 11.8,
+      "sure": 2.4
+    },
+    {
+      "dosya": "IMG_6794.mov",
+      "bas": 0.8,
+      "sure": 2.8,
+      "ust": "Sonra",
+      "baslik": "Binlerce yıllık taşların arasında"
+    },
+    {
+      "dosya": "IMG_6794.mov",
+      "bas": 4.6,
+      "sure": 2.4,
+      "alt": "Luxor, açık hava müzesi gibi bir şehir."
+    },
+    {
+      "dosya": "IMG_6794.mov",
+      "bas": 8.2,
+      "sure": 2.6
+    },
+    {
+      "dosya": "IMG_6850.mov",
+      "bas": 15.0,
+      "sure": 1.7
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "ad": "luxor-fayton",
+  "muzik": {
+    "tarz": "misir",
+    "tohum": 7,
+    "seviye": 0.22
+  },
+  "kapanis": "Kaydet, Mısır planına ekle.",
+  "sahneler": [
+    {
+      "dosya": "IMG_3660.mov",
+      "bas": 0.3,
+      "sure": 2.6,
+      "ust": "Luxor, Mısır",
+      "baslik": "Luxor'u bir de faytondan gör"
+    },
+    {
+      "dosya": "IMG_3656.mov",
+      "bas": 2.6,
+      "sure": 2.4,
+      "alt": "Nil kıyısından şehrin içine, at arabasıyla."
+    },
+    {
+      "dosya": "aaaad519-2624ce76ed374dbf8a321e99b05d83cb.mov",
+      "bas": 0.6,
+      "sure": 2.6,
+      "alt": "Ana caddelerden çıkıp ara sokaklara giriyoruz."
+    },
+    {
+      "dosya": "aaaad519-2624ce76ed374dbf8a321e99b05d83cb.mov",
+      "bas": 6.2,
+      "sure": 2.0
+    },
+    {
+      "dosya": "IMG_3540_1.mov",
+      "bas": 1.2,
+      "sure": 2.0,
+      "alt": "Sokakta at arabaları, minibüsler, satıcılar."
+    },
+    {
+      "dosya": "IMG_3540_1.mov",
+      "bas": 9.6,
+      "sure": 3.0
+    },
+    {
+      "dosya": "8dded841-IMG_6715.mov",
+      "bas": 0.0,
+      "sure": 2.6,
+      "alt": "Şehirden biraz uzaklaşınca Nil vadisinde köy hayatı."
+    },
+    {
+      "dosya": "IMG_3540_1.mov",
+      "bas": 17.6,
+      "sure": 2.6,
+      "alt": "Ağustos güneşi altında bile değer."
+    },
+    {
+      "dosya": "IMG_3660.mov",
+      "bas": 9.3,
+      "sure": 1.8
+    }
+  ]
+}
