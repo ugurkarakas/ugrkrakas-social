@@ -106,5 +106,12 @@
     "ust": "Biliyor muydun?",
     "metin": "Fas'a 90 güne kadar vizesiz gidebiliyorsun.",
     "foto": "fas-fes-tabakhane.jpg"
+  },
+  "sabah": {
+    "ust": "Rota önerisi",
+    "yer": "Chefchaouen",
+    "bolge": "Fas",
+    "metin": "Rif Dağları'nın eteğinde, sokakları baştan sona maviye boyanmış bir şehir.",
+    "foto": "fas-chefchaouen-2.jpg"
   }
 }

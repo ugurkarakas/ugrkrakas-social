@@ -50,5 +50,12 @@
     "ust": "Biliyor muydun?",
     "metin": "Japonya'ya 90 güne kadar vizesiz gidebiliyorsun.",
     "foto": "tokyo-shibuya-ust.jpg"
+  },
+  "sabah": {
+    "ust": "Rota önerisi",
+    "yer": "Shibuya Sky",
+    "bolge": "Tokyo, Japonya",
+    "metin": "229 metrede açık hava teras. Şehrin üzerinde gün batımı izlemek için en sevilen noktalardan biri.",
+    "foto": "tokyo-shibuya-yuksek.jpg"
   }
 }

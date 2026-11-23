@@ -155,5 +155,12 @@
     "ust": "Biliyor muydun?",
     "metin": "Galleria Borghese'ye rezervasyonsuz girilemiyor.",
     "foto": "roma-vatikan-sarmal.jpg"
+  },
+  "sabah": {
+    "ust": "Rota önerisi",
+    "yer": "Kolezyum",
+    "bolge": "Roma, İtalya",
+    "metin": "Gladyatörlerin beklediği yeraltı tünelleri, standart girişte değil ayrı bir turla geziliyor.",
+    "foto": "roma-kolezyum-ic.jpg"
   }
 }

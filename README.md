@@ -70,11 +70,9 @@ Müzik `araclar/muzik.py` ile kodla sentezlenir (hazır parça kullanılmaz, tel
 
 ## Günlük akış (takvim.csv: tarih,slot,slug,durum)
 
-- ogle (12:04): kaydırmalı gönderi (carousel) + öğlen hikayesi (akşam reels'inin "Biliyor muydun?" kartı).
-- aksam (~19:00): reels + duyuru hikayesi.
+Günde 3 hikaye:
 
-## Günlük hikayeler
-
-- Öğlen: `story/<slug>-ogle.jpg` (içerik dosyasındaki `ogle` alanından: "Biliyor muydun?" bilgisi + akşamki gönderinin duyurusu).
-- Akşam: `story/<slug>-story.jpg` (günün gönderisiyle birlikte).
+- 10:00 sabah hikayesi: konum kartı `story/<slug>-sabah.jpg` (öğlen içeriğinin `sabah` alanından: yer adı, bölge, tek cümlelik tanıtım). Öğlen satırı yoksa akşam içeriğininki kullanılır.
+- 13:00 öğlen: kaydırmalı gönderi (carousel) + bilgi hikayesi `story/<slug>-ogle.jpg` (akşam içeriğinin "Biliyor muydun?" kartı).
+- 20:00 akşam: reels + duyuru hikayesi `story/<slug>-story.jpg`.
 - Anket görseli `anket/<slug>-anket.jpg` isteğe bağlı olarak elle, anket çıkartmasıyla paylaşılır.

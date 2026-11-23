@@ -128,5 +128,12 @@
         "alt": "Sacré-Cœur merdivenleri kalabalıktan önce sessiz. Sonra bir kafe terası."
       }
     ]
+  },
+  "sabah": {
+    "ust": "Rota önerisi",
+    "yer": "Sainte-Chapelle",
+    "bolge": "Paris, Fransa",
+    "metin": "Duvarları neredeyse baştan sona 13. yüzyıldan kalma vitraylarla kaplı bir şapel.",
+    "foto": "paris-vitray.jpg"
   }
 }

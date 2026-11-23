@@ -7,6 +7,8 @@ yayına hazır görselleri üretir:
   post/<slug>.jpg              1080x1350  tek görsel gönderi / Reels kapağı
   carousel/<slug>/01.jpg ...   1080x1350  carousel (kapak + içerik + kapanış)
   story/<slug>-story.jpg       1080x1920  günün gönderisini duyuran story
+  story/<slug>-ogle.jpg        1080x1920  'Biliyor muydun?' bilgi kartı
+  story/<slug>-sabah.jpg       1080x1920  sabah konum kartı
   anket/<slug>-anket.jpg       1080x1920  anket story'si (alt kısım sticker için boş)
 
 Tasarım dili: sade, bol boşluk, Inter yazı tipi, siyah / beyaz / açık gri.
@@ -299,6 +301,38 @@ def ogle_story(veri):
     return birlestir(img, k)
 
 
+def konum_story(veri):
+    """Sabah hikayesi: konum kartı (yer adı, bölge, tek cümlelik tanıtım)."""
+    w, h = STORY
+    kenar = 90
+    genislik = w - 2 * kenar
+    o = veri["sabah"]
+    img = karartma(doldur(KOK / "kaynak" / o.get("foto", veri["foto"]), STORY, tuple(o.get("odak", (0.5, 0.5)))), ust=0.5, alt=0.9)
+    k = Image.new("RGBA", STORY, (0, 0, 0, 0))
+    ust_yazi(k, w, kenar, 150, o.get("ust", "Rota önerisi"), BEYAZ)
+    c = ImageDraw.Draw(k)
+    mf = font(GOVDE, 40)
+    mh = blok_yuksekligi(o["metin"], mf, genislik, 1.3)
+    bf = font(BASLIK, 112)
+    bh = blok_yuksekligi(o["yer"], bf, genislik, 1.04)
+    y = h - 330 - mh - 70 - bh - 90
+    # konum pini + bölge
+    pf = font(ARA, 32)
+    r = 15
+    px, py = kenar + r, y + 4 + r
+    c.ellipse((px - r, py - r, px + r, py + r), fill=BEYAZ + (240,))
+    c.polygon([(px - r * 0.82, py + r * 0.55), (px + r * 0.82, py + r * 0.55), (px, py + r * 2.1)], fill=BEYAZ + (240,))
+    c.ellipse((px - 6, py - 6, px + 6, py + 6), fill=(0, 0, 0, 0))
+    harfli(k, (kenar + 2 * r + 20, y), o["bolge"], pf, BEYAZ, seffaflik=235)
+    y += 90
+    y = yaz(k, (kenar, y), o["yer"], bf, BEYAZ, genislik, 1.04) + 70
+    c.line((kenar, y - 36, kenar + 90, y - 36), fill=BEYAZ + (200,), width=3)
+    yaz(k, (kenar, y), o["metin"], mf, BEYAZ, genislik, 1.3, seffaflik=235)
+    golge = Image.new("RGBA", STORY, (0, 0, 0, 0))
+    golge.putalpha(k.getchannel("A").filter(ImageFilter.GaussianBlur(14)).point(lambda a: int(a * 0.7)))
+    return birlestir(img, Image.alpha_composite(golge, k))
+
+
 def anket_story(veri):
     w, h = STORY
     kenar = 90
@@ -337,6 +371,8 @@ def uret(json_yolu):
     kaydet(story(veri), KOK / "story" / f"{slug}-story.jpg")
     if veri.get("ogle"):
         kaydet(ogle_story(veri), KOK / "story" / f"{slug}-ogle.jpg")
+    if veri.get("sabah"):
+        kaydet(konum_story(veri), KOK / "story" / f"{slug}-sabah.jpg")
     if veri.get("anket"):
         kaydet(anket_story(veri), KOK / "anket" / f"{slug}-anket.jpg")
 
