@@ -225,8 +225,8 @@ def uret_reels(json_yolu):
         stdin=subprocess.PIPE,
     )
     ayar = veri.get("reels", {}).get("muzik", {"tarz": "tropik", "tohum": 7})
-    bpm = muzik.TARZLAR[(ayar or {}).get("tarz", "tropik")]["bpm"]
-    vurus = 60 / bpm
+    _tarz = muzik.TARZLAR[(ayar or {}).get("tarz", "tropik")]
+    vurus = 60 / _tarz["bpm"] * _tarz.get("kesim", 1)  # kesim: hızlı tempolarda (vals) kesmeleri seyrelt
     g = int(GECIS * FPS)
     onceki = None
     zaman = 0.0  # kesmeleri vuruşa oturtmak için birikimli süre

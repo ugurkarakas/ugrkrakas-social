@@ -10,6 +10,8 @@ Tarzlar:
   aksam   96 BPM lo-fi / chill: yumuşak, swing'li, sıcak akorlar
   enerji  124 BPM daha parlak ve hızlı
 
+Bölgesel tarzlar (araclar/bolgesel_muzik.py): fas, hindistan, laponya, viyana, kapadokya, tiflis
+
 Kullanım:
   python3 araclar/muzik.py <cikis.wav> <saniye> [tarz] [tohum]
 """
@@ -26,6 +28,13 @@ TARZLAR = {
     "yaz": {"bpm": 116, "akorlar": [(57, "m"), (53, "M"), (48, "M"), (55, "M")], "swing": 0.0, "arp": True},
     "aksam": {"bpm": 96, "akorlar": [(50, "m7"), (55, "7"), (48, "M7"), (57, "m7")], "swing": 0.12, "arp": False},
     "enerji": {"bpm": 124, "akorlar": [(54, "m"), (50, "M"), (45, "M"), (52, "M")], "swing": 0.0, "arp": True},
+    # bölgesel tarzlar (aşağıda)
+    "fas": {"bpm": 108},          # hicaz, ud, darbuka (maksum)
+    "hindistan": {"bpm": 100},    # bhairav, sitar, tabla, tanpura
+    "laponya": {"bpm": 90},       # kuzey: çanlar, geniş ped, yumuşak nabız
+    "viyana": {"bpm": 168, "kesim": 1.5},  # 3/4 vals, glockenspiel, pizzicato, kızak zilleri
+    "kapadokya": {"bpm": 96},     # hicaz, ney, bağlama, bendir
+    "tiflis": {"bpm": 116},       # 6/8 Gürcü dansı, panduri, koro, doli
 }
 ARALIKLAR = {"m": [0, 3, 7], "M": [0, 4, 7], "m7": [0, 3, 7, 10], "7": [0, 4, 7, 10], "M7": [0, 4, 7, 11],
              "add9": [0, 4, 7, 14], "m9": [0, 3, 7, 10, 14]}
@@ -268,7 +277,14 @@ def _klasik(saniye, tarz, tohum):
 
 
 def uret(saniye, tarz="tropik", tohum=7):
-    st = tropik(saniye, tohum) if tarz == "tropik" else _klasik(saniye, tarz, tohum)
+    if tarz == "tropik":
+        st = tropik(saniye, tohum)
+    elif tarz in ("yaz", "aksam", "enerji"):
+        st = _klasik(saniye, tarz, tohum)
+    else:
+        from bolgesel_muzik import BOLGELER
+        st = BOLGELER[tarz](saniye, tohum)
+        st = st[: int(saniye * SR)]
     fi, fo = int(0.15 * SR), int(1.5 * SR)
     st[:fi] *= np.linspace(0, 1, fi)[:, None]
     st[-fo:] *= np.linspace(1, 0, fo)[:, None]
