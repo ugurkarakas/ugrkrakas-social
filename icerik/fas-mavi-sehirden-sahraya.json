@@ -27,14 +27,14 @@
       {
         "fotolar": [
           {
-            "video": "video/fas-v-chef-kosu.mp4",
-            "baslangic": 4.5,
+            "video": "video/fas-v-chef-sokak.mp4",
+            "baslangic": 26,
             "vurus": 4,
-            "odak_x": 0.45
+            "odak_x": 0.62
           },
+          "fas-chefchaouen-1.jpg",
           "fas-marakes-fener.jpg",
-          "fas-sahra-2.jpg",
-          "fas-riad-havuz.jpg"
+          "fas-sahra-2.jpg"
         ],
         "etiket": "Fas",
         "metin": "9.000 sokak, tek bir araba bile yok",
@@ -50,9 +50,9 @@
           },
           {
             "video": "video/fas-v-chef-sokak.mp4",
-            "baslangic": 20,
-            "vurus": 4,
-            "odak_x": 0.7
+            "baslangic": 6,
+            "vurus": 3,
+            "odak_x": 0.45
           },
           {
             "video": "video/fas-v-chef-kosu.mp4",
