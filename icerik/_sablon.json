@@ -2,7 +2,7 @@
   "slug": "roma-3-butce-3-lokanta",
   "tur": "carousel",
   "seri": "Deneyim rehberi",
-  "baslik": "Roma'da yerlilerin gittiği 3 lokanta",
+  "baslik": "Başlık: rota ya da deneyim",
   "alt_baslik": "Kısa, merak uyandıran bir alt başlık",
   "konum": "Roma, İtalya",
   "foto": "roma-kapak.jpg",
@@ -13,7 +13,7 @@
       "foto": "roma-lokanta-1.jpg"
     },
     {
-      "baslik": "Orta: Lokantanın adı",
+      "baslik": "İkinci deneyimin adı",
       "metin": "Fotoğrafsız slayt da olabilir; o zaman metin büyük yazılır."
     }
   ],
