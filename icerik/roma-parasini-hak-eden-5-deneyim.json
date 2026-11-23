@@ -10,27 +10,47 @@
     {
       "baslik": "Vatikan'ı anahtarcıyla aç",
       "metin": "Müzeler açılmadan 2 saat önce, sabah 6'da başlıyor. Anahtarcı kapıları tek tek açıyor, tur Sistine Şapeli'nde bitiyor.",
-      "foto": "roma-vatikan-merdiven.jpg"
+      "fotolar": [
+        "roma-vatikan-merdiven.jpg",
+        "roma-vatikan-tavan.jpg",
+        "roma-vatikan-sarmal.jpg"
+      ]
     },
     {
       "baslik": "Kolezyum'un yeraltına in",
       "metin": "Gladyatörlerin beklediği tüneller normal biletle görülmüyor. Ayrı bilet gerekiyor ve yerler hızla tükeniyor.",
-      "foto": "roma-kolezyum-ic.jpg"
+      "fotolar": [
+        "roma-kolezyum-ic.jpg",
+        "roma-kolezyum-ic-2.jpg",
+        "roma-kolezyum-kemer.jpg"
+      ]
     },
     {
       "baslik": "Galleria Borghese'de 2 saat",
       "metin": "Bernini, Caravaggio ve Raffaello aynı villada. Seanslar 2 saatlik ve rezervasyonsuz giriş yok.",
-      "foto": "roma-borghese-proserpina.jpg"
+      "fotolar": [
+        "roma-borghese-apollon.jpg",
+        "roma-borghese-proserpina.jpg",
+        "roma-borghese-davut.jpg"
+      ]
     },
     {
       "baslik": "Roscioli'de carbonara",
       "metin": "Campo de' Fiori'nin hemen yanında. Roma'nın en çok övülen carbonara'larından biri; masayı önceden ayırt.",
-      "foto": "roma-carbonara.jpg"
+      "fotolar": [
+        "roma-carbonara-2.jpg",
+        "roma-burrata.jpg",
+        "roma-carbonara.jpg"
+      ]
     },
     {
       "baslik": "Imàgo'da şehre tepeden bak",
       "metin": "İspanyol Merdivenleri'nin tepesindeki Hotel Hassler'in 6. katında, Michelin yıldızlı bir akşam yemeği.",
-      "foto": "roma-pincio-gunbatimi.jpg"
+      "fotolar": [
+        "roma-gunbatimi-havadan.jpg",
+        "roma-fine-dining-masa.jpg",
+        "roma-ispanyol-merdiven-safak.jpg"
+      ]
     }
   ],
   "cta": "Kaydet, Roma planına ekle.",
@@ -38,7 +58,7 @@
   "caption": "Roma'ya bir kez gidiliyorsa, bu beşi bütçeye değer.\n\n1. Vatikan Anahtarcı Turu: Müzeler açılmadan, sabah 6'da başlıyor. Gruplar en fazla 20 kişi, tur Sistine Şapeli'nde bitiyor.\n2. Kolezyum yeraltı (hypogeum): Standart biletle girilmiyor, ayrı \"yeraltı + arena\" bileti gerekiyor. Erken alın.\n3. Galleria Borghese: 2 saatlik seanslar, rezervasyon zorunlu. Yoğun sezonda 2-4 hafta önceden.\n4. Roscioli Salumeria con Cucina (Via dei Giubbonari 21): Carbonara için gidilir, rezervasyon şart.\n5. Imàgo, Hotel Hassler: İspanyol Merdivenleri'nin tepesinde, 1 Michelin yıldızlı, manzaralı akşam yemeği.\n\nBilgiler Kasım 2026 itibarıyla. Saat ve rezervasyon koşullarını gitmeden resmi sitelerden kontrol edin.",
   "soru": "Bu beşinden hangisi senin listende ilk sırada?",
   "ilk_yorum": "#roma #romaseyahati #italya #vatikan #kolezyum #avrupaseyahati #seyahat",
-  "fotograf_kredisi": "Fotoğraflar: Unsplash (Cheng Lin, Micah & Sammie Chaffin, Gary Walker-Jones, Mateus Campos Felipe, Zoran Borojevic, Gabriella Clare Marino)",
+  "fotograf_kredisi": "Fotoğraflar: Unsplash (Cheng Lin, Micah & Sammie Chaffin, Reuben Teo, Lucia Gherra, Gary Walker-Jones, Thibault Lam Tran, Mathew Schwartz, Mateus Campos Felipe, Zoran Borojevic, Pinar Kucuk, Marie Dehayes, Lorenzo Rui, Tomasz Zielonka, Marco Grosso, Hitesh Dewasi, Gabriella Clare Marino)",
   "anket": {
     "soru": "Roma'da hangisi?",
     "secenek_1": "Vatikan sabahı",
@@ -46,16 +66,89 @@
     "foto": "roma-kolezyum-ic.jpg"
   },
   "reels": {
-    "muzik": {"tarz": "yaz", "tohum": 7},
+    "muzik": {
+      "tarz": "yaz",
+      "tohum": 7
+    },
     "kapanis": "Kaydet, Roma planına ekle.",
     "kapanis_alt": "Daha fazla deneyim için takip et.",
     "sahneler": [
-      {"foto": "roma-gunbatimi-cift.jpg", "etiket": "Roma, İtalya", "metin": "Roma'da parasını hak eden 5 deneyim", "alt": "Bir kez yaşanır. Kaydet, planına ekle.", "sure": 3.4},
-      {"foto": "roma-vatikan-merdiven.jpg", "etiket": "Deneyim 1", "metin": "Vatikan'ı anahtarcıyla aç", "alt": "Müzeler açılmadan 2 saat önce. Sistine Şapeli neredeyse sana kalıyor."},
-      {"foto": "roma-kolezyum-ic.jpg", "etiket": "Deneyim 2", "metin": "Kolezyum'un yeraltına in", "alt": "Gladyatörlerin beklediği tüneller ayrı biletle açılıyor. Hızlı tükeniyor."},
-      {"foto": "roma-borghese-proserpina.jpg", "odak": [0.42, 0.5], "etiket": "Deneyim 3", "metin": "Galleria Borghese", "alt": "Bernini'nin mermere can verdiği yer. Rezervasyonsuz giriş yok."},
-      {"foto": "roma-carbonara.jpg", "etiket": "Deneyim 4", "metin": "Roscioli'de carbonara", "alt": "Roma'nın en çok konuşulan tabaklarından biri. Masayı önceden ayırt."},
-      {"foto": "roma-pincio-gunbatimi.jpg", "odak": [0.7, 0.5], "etiket": "Deneyim 5", "metin": "Imàgo'da şehre tepeden bak", "alt": "İspanyol Merdivenleri'nin tepesinde, Michelin yıldızlı bir akşam."}
+      {
+        "fotolar": [
+          "roma-gunbatimi-cift.jpg",
+          "roma-carbonara-2.jpg",
+          "roma-vatikan-sarmal.jpg",
+          "roma-kolezyum-ic.jpg"
+        ],
+        "vurus_basina": 2,
+        "etiket": "Roma, İtalya",
+        "metin": "Roma'da parasını hak eden 5 deneyim",
+        "alt": "Bir kez yaşanır. Kaydet, planına ekle."
+      },
+      {
+        "fotolar": [
+          "roma-vatikan-merdiven.jpg",
+          "roma-vatikan-tavan.jpg",
+          "roma-vatikan-sarmal.jpg"
+        ],
+        "etiket": "Deneyim 1",
+        "metin": "Vatikan'ı anahtarcıyla aç",
+        "alt": "Müzeler açılmadan 2 saat önce. Sistine Şapeli neredeyse sana kalıyor."
+      },
+      {
+        "fotolar": [
+          "roma-kolezyum-ic.jpg",
+          "roma-kolezyum-kemer.jpg",
+          "roma-kolezyum-ic-2.jpg"
+        ],
+        "etiket": "Deneyim 2",
+        "metin": "Kolezyum'un yeraltına in",
+        "alt": "Gladyatörlerin beklediği tüneller ayrı biletle açılıyor. Hızlı tükeniyor."
+      },
+      {
+        "fotolar": [
+          "roma-borghese-apollon.jpg",
+          {
+            "foto": "roma-borghese-proserpina.jpg",
+            "odak": [
+              0.42,
+              0.5
+            ]
+          },
+          "roma-borghese-davut.jpg"
+        ],
+        "etiket": "Deneyim 3",
+        "metin": "Galleria Borghese",
+        "alt": "Bernini'nin mermere can verdiği yer. Rezervasyonsuz giriş yok."
+      },
+      {
+        "fotolar": [
+          "roma-carbonara-2.jpg",
+          "roma-sarap-carbonara.jpg",
+          "roma-burrata.jpg",
+          "roma-carbonara.jpg"
+        ],
+        "etiket": "Deneyim 4",
+        "metin": "Roscioli'de carbonara",
+        "alt": "Roma'nın en çok konuşulan tabaklarından biri. Masayı önceden ayırt."
+      },
+      {
+        "fotolar": [
+          "roma-gunbatimi-havadan.jpg",
+          "roma-ispanyol-merdiven-safak.jpg",
+          "roma-fine-dining-masa.jpg",
+          {
+            "foto": "roma-pincio-gunbatimi.jpg",
+            "odak": [
+              0.7,
+              0.5
+            ]
+          }
+        ],
+        "etiket": "Deneyim 5",
+        "metin": "Imàgo'da şehre tepeden bak",
+        "alt": "İspanyol Merdivenleri'nin tepesinde, Michelin yıldızlı bir akşam."
+      }
     ]
   }
 }

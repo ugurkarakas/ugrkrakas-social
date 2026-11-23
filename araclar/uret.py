@@ -154,6 +154,8 @@ def icerik_slayti(slayt, sira, toplam, konum):
     k = Image.new("RGBA", POST, (0, 0, 0, 0))
     ust_yazi(k, w, kenar, 78, f"{sira:02d}  ·  {konum}" if konum else f"{sira:02d}", IKINCIL, 255)
 
+    if slayt.get("fotolar"):
+        return kolaj_slayti(slayt, sira, toplam, konum)
     foto_var = bool(slayt.get("foto"))
     bf = font(BASLIK, 64 if foto_var else 80)
     gf = font(GOVDE, 36 if foto_var else 42)
@@ -181,6 +183,54 @@ def icerik_slayti(slayt, sira, toplam, konum):
     for i in range(toplam):
         renk = METIN + (255,) if i == sira else (199, 199, 204, 255)
         x = tx + i * (nokta + ara)
+        c.ellipse((x, h - 62, x + nokta, h - 62 + nokta), fill=renk)
+    return birlestir(img, k)
+
+
+def yuvarlak_yapistir(img, foto, xy, r=28):
+    maske = Image.new("L", foto.size, 0)
+    ImageDraw.Draw(maske).rounded_rectangle((0, 0, foto.size[0] - 1, foto.size[1] - 1), radius=r, fill=255)
+    img.paste(foto, xy, maske)
+
+
+def kolaj_slayti(slayt, sira, toplam, konum):
+    """Başlık + 2 ya da 3 fotoğraflı kolaj (büyük solda, iki küçük sağda)."""
+    w, h = POST
+    kenar = 84
+    genislik = w - 2 * kenar
+    img = Image.new("RGB", POST, ZEMIN)
+    k = Image.new("RGBA", POST, (0, 0, 0, 0))
+    ust_yazi(k, w, kenar, 78, f"{sira:02d}  ·  {konum}" if konum else f"{sira:02d}", IKINCIL, 255)
+    y = 170
+    y = yaz(k, (kenar, y), slayt["baslik"], font(BASLIK, 64), METIN, genislik, 1.1) + 22
+    y = yaz(k, (kenar, y), slayt["metin"], font(GOVDE, 34), IKINCIL, genislik, 1.42) + 40
+
+    def foto(ad, boyut):
+        if isinstance(ad, dict):
+            return doldur(KOK / "kaynak" / ad["foto"], boyut, tuple(ad.get("odak", (0.5, 0.5))))
+        return doldur(KOK / "kaynak" / ad, boyut)
+
+    fotolar = slayt["fotolar"][:3]
+    alan_h = h - y - 110
+    ara = 16
+    if len(fotolar) >= 3:
+        sol_w = int((genislik - ara) * 0.6)
+        sag_w = genislik - ara - sol_w
+        kucuk_h = (alan_h - ara) // 2
+        yuvarlak_yapistir(img, foto(fotolar[0], (sol_w, alan_h)), (kenar, y))
+        yuvarlak_yapistir(img, foto(fotolar[1], (sag_w, kucuk_h)), (kenar + sol_w + ara, y))
+        yuvarlak_yapistir(img, foto(fotolar[2], (sag_w, alan_h - kucuk_h - ara)), (kenar + sol_w + ara, y + kucuk_h + ara))
+    else:
+        yarim = (genislik - ara) // 2
+        for i, f in enumerate(fotolar):
+            yuvarlak_yapistir(img, foto(f, (yarim, alan_h)), (kenar + i * (yarim + ara), y))
+
+    c = ImageDraw.Draw(k)
+    nokta, bosluk = 10, 14
+    tx = w / 2 - (toplam * nokta + (toplam - 1) * bosluk) / 2
+    for i in range(toplam):
+        renk = METIN + (255,) if i == sira else (199, 199, 204, 255)
+        x = tx + i * (nokta + bosluk)
         c.ellipse((x, h - 62, x + nokta, h - 62 + nokta), fill=renk)
     return birlestir(img, k)
 

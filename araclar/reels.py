@@ -18,6 +18,9 @@ Alanlar:
   foto / video   kaynak/ altındaki dosya (biri zorunlu)
   baslangic      video klipte kaçıncı saniyeden alınacağı (varsayılan 0)
   sure           sahne süresi, saniye (varsayılan: alt metin varsa 3.6, yoksa 2.8)
+  fotolar        birden fazla fotoğraf: vuruşa denk gelen hızlı kesmelerle art arda gösterilir
+                 (her biri "dosya.jpg" ya da {"foto": "dosya.jpg", "odak": [x, y]})
+  vurus_basina   çok fotoğraflı sahnede her fotoğrafın kaç vuruş kalacağı (varsayılan 2)
   etiket         küçük üst yazı (Kural 1, 02 gibi)
   metin          ana cümle
   alt            ana cümlenin altında beliren detay cümlesi
@@ -64,7 +67,9 @@ class FotoKaynak:
         self.img = ImageOps.fit(img, (bw, bh), Image.LANCZOS, centering=tuple(odak))
 
     def kare(self, ilerleme):
-        olcek = 1 + YAKINLASMA * (1 - ilerleme)
+        # kesmeden sonra hızlı, sonra yavaşlayan bir yakınlaşma hissi
+        e = 1 - (1 - ilerleme) ** 2.2
+        olcek = 1 + YAKINLASMA * (1 - e)
         cw, ch = int(W * olcek), int(H * olcek)
         bw, bh = self.img.size
         x, y = (bw - cw) // 2, (bh - ch) // 2
@@ -219,12 +224,44 @@ def uret_reels(json_yolu):
          "-movflags", "+faststart", str(cikis)],
         stdin=subprocess.PIPE,
     )
+    ayar = veri.get("reels", {}).get("muzik", {"tarz": "yaz", "tohum": 7})
+    bpm = muzik.TARZLAR[(ayar or {}).get("tarz", "yaz")]["bpm"]
+    vurus = 60 / bpm
     g = int(GECIS * FPS)
     onceki = None
+    zaman = 0.0  # kesmeleri vuruşa oturtmak için birikimli süre
 
     for idx, s in enumerate(sahneler):
+        if s.get("fotolar"):
+            # Çok fotoğraflı sahne: her fotoğraf "vurus_basina" vuruş sürer, kesmeler vuruşa denk gelir
+            vb = s.get("vurus_basina", 2)
+            ana, alt = sahne_katmanlari(s, idx == 0)
+            ana = golgeli(ana)
+            sahne_kare = 0
+            for fi, foto in enumerate(s["fotolar"]):
+                dosya, odak = (foto, (0.5, 0.5)) if isinstance(foto, str) else (foto["foto"], foto.get("odak", (0.5, 0.5)))
+                kaynak = FotoKaynak(dosya, odak)
+                bitis = zaman + vb * vurus
+                n = int(round(bitis * FPS)) - int(round(zaman * FPS))
+                for f in range(n):
+                    img = karart(kaynak.kare(f / max(1, n - 1))).convert("RGBA")
+                    a1 = yumusak((sahne_kare - 3) / 7)
+                    a2 = yumusak((sahne_kare - 18) / 8)
+                    if a1 > 0:
+                        img.alpha_composite(alfali(ana, a1))
+                    if a2 > 0:
+                        img.alpha_composite(alfali(alt, a2))
+                    img = img.convert("RGB")
+                    onceki = img
+                    ff.stdin.write(img.tobytes())
+                    sahne_kare += 1
+                zaman = bitis
+            continue
+
         sure = s.get("sure", 3.6 if s.get("alt") else 2.8)
-        n = int(sure * FPS)
+        sure = max(1, round(sure / vurus)) * vurus  # süreyi vuruşa yuvarla
+        n = int(round((zaman + sure) * FPS)) - int(round(zaman * FPS))
+        zaman += sure
         if s.get("video"):
             kaynak = VideoKaynak(s["video"], s.get("baslangic", 0), sure)
         else:
@@ -248,14 +285,12 @@ def uret_reels(json_yolu):
         kaynak.kapat()
 
     son = kapanis(veri)
-    for f in range(int(2.4 * FPS)):
-        img = son if f >= g else Image.blend(onceki, son, yumusak(f / g))
-        ff.stdin.write(img.tobytes())
+    for f in range(int(round(4 * vurus * FPS))):
+        ff.stdin.write(son.tobytes())
 
     ff.stdin.close()
     ff.wait()
 
-    ayar = veri.get("reels", {}).get("muzik", {"tarz": "yaz", "tohum": 7})
     if ayar:
         sure = float(subprocess.check_output(
             ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(cikis)]))
