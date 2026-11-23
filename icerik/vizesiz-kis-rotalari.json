@@ -54,5 +54,10 @@
     "secenek_1": "Uzak Doğu",
     "secenek_2": "Balkanlar",
     "foto": "belgrad-kale.jpg"
+  },
+  "ogle": {
+    "ust": "Biliyor muydun?",
+    "metin": "Japonya ve Güney Kore'ye 90 güne kadar vizesiz gidebiliyorsun.",
+    "foto": "seul-saray.jpg"
   }
 }

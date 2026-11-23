@@ -66,3 +66,10 @@ Müzik `araclar/muzik.py` ile kodla sentezlenir (hazır parça kullanılmaz, tel
 - Stok fotoğraf yalnızca [Unsplash](https://unsplash.com/license) gibi ticari kullanıma açık kaynaklardan alınır; Google Görseller kullanılmaz.
 - Stok fotoğraf kullanılan içeriklerde `fotograf_kredisi` doldurulur ve caption'ın sonuna eklenir.
 - Stok fotoğraf kullanılan içerik "ben gittim, ben çektim" gibi sunulmaz.
+
+
+## Günlük hikayeler
+
+- Öğlen: `story/<slug>-ogle.jpg` (içerik dosyasındaki `ogle` alanından: "Biliyor muydun?" bilgisi + akşamki gönderinin duyurusu).
+- Akşam: `story/<slug>-story.jpg` (günün gönderisiyle birlikte).
+- Anket görseli `anket/<slug>-anket.jpg` isteğe bağlı olarak elle, anket çıkartmasıyla paylaşılır.

@@ -52,5 +52,10 @@
     "secenek_1": "Sintra kuyusu",
     "secenek_2": "Meteora",
     "foto": "sintra-kuyu-1.jpg"
+  },
+  "ogle": {
+    "ust": "Biliyor muydun?",
+    "metin": "Sintra'daki 9 katlı kuyu hiçbir zaman su için kullanılmadı.",
+    "foto": "sintra-kuyu-1.jpg"
   }
 }

@@ -19,7 +19,7 @@ import json
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 KOK = Path(__file__).resolve().parent.parent
 FONT = KOK / "fonts"
@@ -271,6 +271,34 @@ def story(veri):
     return birlestir(img, k)
 
 
+def ogle_story(veri):
+    """Öğlen hikayesi: tek bir çarpıcı bilgi + akşamki gönderinin duyurusu."""
+    w, h = STORY
+    kenar = 90
+    genislik = w - 2 * kenar
+    o = veri["ogle"]
+    img = karartma(doldur(KOK / "kaynak" / o.get("foto", veri["foto"]), STORY, tuple(o.get("odak", (0.5, 0.5)))), ust=0.6, alt=0.85)
+    img = Image.blend(img.convert("RGB"), Image.new("RGB", STORY, (0, 0, 0)), 0.32)
+    k = Image.new("RGBA", STORY, (0, 0, 0, 0))
+    harfli(k, (kenar, 250), o.get("ust", "Biliyor muydun?"), font(ARA, 30), BEYAZ,
+           seffaflik=230, hiza="orta", genislik=genislik)
+    bf = font(BASLIK, 80)
+    bh = blok_yuksekligi(o["metin"], bf, genislik, 1.1)
+    y = (h - bh) // 2 - 60
+    yazi = Image.new("RGBA", STORY, (0, 0, 0, 0))
+    yaz(yazi, (kenar, y), o["metin"], bf, BEYAZ, genislik, 1.1, hiza="orta")
+    golge = Image.new("RGBA", STORY, (0, 0, 0, 0))
+    golge.putalpha(yazi.getchannel("A").filter(ImageFilter.GaussianBlur(18)).point(lambda a: int(a * 0.75)))
+    k = Image.alpha_composite(Image.alpha_composite(k, golge), yazi)
+    alt = "Bu akşam: " + veri["baslik"]
+    af = font(ARA, 34)
+    ah = blok_yuksekligi(alt, af, genislik - 80, 1.2)
+    kutu_y = h - 420
+    ImageDraw.Draw(k).rounded_rectangle((kenar, kutu_y, w - kenar, kutu_y + ah + 64), radius=36, fill=(255, 255, 255, 46))
+    yaz(k, (kenar + 40, kutu_y + 32), alt, af, BEYAZ, genislik - 80, 1.2, hiza="orta")
+    return birlestir(img, k)
+
+
 def anket_story(veri):
     w, h = STORY
     kenar = 90
@@ -307,6 +335,8 @@ def uret(json_yolu):
     else:
         kaydet(kapak(veri), KOK / "post" / f"{slug}.jpg")
     kaydet(story(veri), KOK / "story" / f"{slug}-story.jpg")
+    if veri.get("ogle"):
+        kaydet(ogle_story(veri), KOK / "story" / f"{slug}-ogle.jpg")
     if veri.get("anket"):
         kaydet(anket_story(veri), KOK / "anket" / f"{slug}-anket.jpg")
 

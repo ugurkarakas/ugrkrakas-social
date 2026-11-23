@@ -45,5 +45,10 @@
     "secenek_1": "Shibuya Sky",
     "secenek_2": "teamLab",
     "foto": "tokyo-shibuya-yuksek.jpg"
+  },
+  "ogle": {
+    "ust": "Biliyor muydun?",
+    "metin": "Shibuya Sky, Tokyo'nun 229 metre yükseğinde açık hava bir teras.",
+    "foto": "tokyo-shibuya-ust.jpg"
   }
 }
