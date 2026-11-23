@@ -498,6 +498,71 @@ def paris(saniye, tohum=7):
                   "dav": (z["dav"], 1.0, False)}, rng, {"ako": 0.35, "gitar": 0.2, "dav": 0.15}, saniye)
 
 
+
+
+# ---------- Paris (romantik): yumuşak piyano, naylon telli gitar, sıcak akordeon pedi ----------
+
+def piyano(nota, sure, guc=0.16):
+    n = int(sure * SR)
+    t = np.arange(n) / SR
+    f = frek(nota)
+    x = np.zeros(n)
+    for h, a in ((1, 1.0), (2, 0.42), (3, 0.18), (4, 0.08), (5, 0.04)):
+        x += a * np.sin(2 * np.pi * f * h * (1 + 0.0004 * h * h) * t) * np.exp(-t * (1.1 + 0.9 * h))
+    a = int(0.008 * SR)
+    x[:a] *= np.linspace(0, 1, a)
+    return x * guc
+
+
+def sicak_ped(notalar, sure, guc=0.05):
+    """Akordeon/yaylı benzeri, yumuşatılmış sıcak ped (sinüs ağırlıklı)."""
+    n = int(sure * SR)
+    t = np.arange(n) / SR
+    x = np.zeros(n)
+    for nt in notalar:
+        f = frek(nt)
+        x += np.sin(2 * np.pi * f * t) + 0.25 * np.sin(2 * np.pi * 2 * f * t) + 0.08 * np.sin(2 * np.pi * 3 * f * t)
+    x *= 1 + 0.08 * np.sin(2 * np.pi * 4.5 * t)
+    a = int(0.6 * SR)
+    z = np.ones(n)
+    z[:a] = np.linspace(0, 1, a)
+    z[-a:] = np.linspace(1, 0, a)
+    return x / len(notalar) * z * guc
+
+
+def paris(saniye, tohum=7):
+    rng = np.random.default_rng(tohum)
+    v = 60 / TARZLAR["paris"]["bpm"]
+    olcu = 4 * v
+    s8 = v / 2
+    n = int(saniye * SR) + 3 * SR
+    z = izler(n, "piyano", "gitar", "ped", "bas", "mel")
+    kok = 53  # Fa majör
+    akorlar = [(0, [0, 4, 7, 11]), (-3, [0, 3, 7, 10]), (2, [0, 3, 7, 10]), (7, [0, 4, 7, 10])]  # Fmaj7 Dm7 Gm7 C7
+    motif_a = [(0, 9, 3), (3, 7, 1), (4, 4, 2), (6, 2, 2)]
+    motif_b = [(0, 7, 2), (2, 9, 2), (4, 11, 3), (7, 9, 1)]
+    for o in range(int(np.ceil(saniye / olcu)) + 1):
+        t0 = o * olcu
+        ak, ar = akorlar[o % 4]
+        notalar = [kok + ak + a for a in ar]
+        yerlestir(z["ped"], sicak_ped([x + 12 for x in notalar[:3]], olcu + 0.8), t0 * SR)
+        yerlestir(z["bas"], piyano(kok + ak - 12, 2.5, 0.22), t0 * SR)
+        yerlestir(z["bas"], piyano(kok + ak - 5, 2.0, 0.14), (t0 + 2 * v) * SR)
+        # naylon gitar arpeji (sekizlikler)
+        sira = [0, 1, 2, 3, 2, 1, 2, 3]
+        for k in range(8):
+            yerlestir(z["gitar"], ks(notalar[sira[k]] + 12, 1.2, rng, 0.3, 0.9, 0.09), (t0 + k * s8) * SR)
+        if o >= 1:
+            motif = motif_a if (o // 2) % 2 == 0 else motif_b
+            for k, d, uz in motif:
+                nt = derece(kok + 12, MAJOR, d)
+                yerlestir(z["mel"], piyano(nt, uz * s8 + 1.2, 0.2), (t0 + k * s8) * SR)
+    st = bitir({"piyano": (z["piyano"], 1.0, False), "gitar": (z["gitar"], 1.0, False), "ped": (z["ped"], 1.0, False),
+                "bas": (z["bas"], 1.0, False), "mel": (z["mel"], 1.0, False)},
+               rng, {"mel": 0.5, "gitar": 0.35, "ped": 0.5, "bas": 0.2}, saniye, 0.25)
+    return np.stack([filtre(st[:, 0], 5500), filtre(st[:, 1], 5500)], axis=1)  # tiz yumuşatma
+
+
 BOLGELER["paris"] = paris
 
 
