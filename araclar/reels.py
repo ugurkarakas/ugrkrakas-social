@@ -80,10 +80,13 @@ class FotoKaynak:
 
 
 class VideoKaynak:
-    def __init__(self, dosya, baslangic, sure):
-        vf = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS}"
+    """Video klip: dikey kadraja kırpılır, istenirse yavaşlatılır (sinematik), hafif renk derecelendirmesi."""
+    def __init__(self, dosya, baslangic, sure, hiz=1.0, odak_x=0.5):
+        vf = (f"setpts=PTS/{hiz},scale={W}:{H}:force_original_aspect_ratio=increase,"
+              f"crop={W}:{H}:(iw-{W})*{odak_x}:(ih-{H})/2,fps={FPS},"
+              "eq=contrast=1.06:saturation=1.12,unsharp=5:5:0.6")
         self.p = subprocess.Popen(
-            ["ffmpeg", "-loglevel", "error", "-ss", str(baslangic), "-t", str(sure + 0.5),
+            ["ffmpeg", "-loglevel", "error", "-ss", str(baslangic), "-t", str(sure * hiz + 0.5),
              "-i", str(KOK / "kaynak" / dosya), "-vf", vf, "-an",
              "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
             stdout=subprocess.PIPE,
@@ -239,9 +242,14 @@ def uret_reels(json_yolu):
             ana = golgeli(ana)
             sahne_kare = 0
             for fi, foto in enumerate(s["fotolar"]):
-                dosya, odak = (foto, (0.5, 0.5)) if isinstance(foto, str) else (foto["foto"], foto.get("odak", (0.5, 0.5)))
-                kaynak = FotoKaynak(dosya, odak)
-                bitis = zaman + vb * vurus
+                ovb = foto.get("vurus", vb) if isinstance(foto, dict) else vb
+                bitis = zaman + ovb * vurus
+                if isinstance(foto, dict) and foto.get("video"):
+                    kaynak = VideoKaynak(foto["video"], foto.get("baslangic", 0), bitis - zaman,
+                                         foto.get("hiz", 0.8), foto.get("odak_x", 0.5))
+                else:
+                    dosya, odak = (foto, (0.5, 0.5)) if isinstance(foto, str) else (foto["foto"], foto.get("odak", (0.5, 0.5)))
+                    kaynak = FotoKaynak(dosya, odak)
                 n = int(round(bitis * FPS)) - int(round(zaman * FPS))
                 for f in range(n):
                     img = karart(kaynak.kare(f / max(1, n - 1))).convert("RGBA")
@@ -255,6 +263,7 @@ def uret_reels(json_yolu):
                     onceki = img
                     ff.stdin.write(img.tobytes())
                     sahne_kare += 1
+                kaynak.kapat()
                 zaman = bitis
             continue
 
@@ -263,7 +272,7 @@ def uret_reels(json_yolu):
         n = int(round((zaman + sure) * FPS)) - int(round(zaman * FPS))
         zaman += sure
         if s.get("video"):
-            kaynak = VideoKaynak(s["video"], s.get("baslangic", 0), sure)
+            kaynak = VideoKaynak(s["video"], s.get("baslangic", 0), sure, s.get("hiz", 0.8), s.get("odak_x", 0.5))
         else:
             kaynak = FotoKaynak(s["foto"], s.get("odak", (0.5, 0.5)))
         ana, alt = sahne_katmanlari(s, idx == 0)

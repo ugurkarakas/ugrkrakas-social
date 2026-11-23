@@ -26,7 +26,12 @@
     "sahneler": [
       {
         "fotolar": [
-          "fas-chefchaouen-1.jpg",
+          {
+            "video": "video/fas-v-chef-kosu.mp4",
+            "baslangic": 4.5,
+            "vurus": 4,
+            "odak_x": 0.45
+          },
           "fas-marakes-fener.jpg",
           "fas-sahra-2.jpg",
           "fas-riad-havuz.jpg"
@@ -37,9 +42,24 @@
       },
       {
         "fotolar": [
-          "fas-chefchaouen-2.jpg",
-          "fas-chefchaouen-3.jpg",
-          "fas-chefchaouen-1.jpg"
+          {
+            "video": "video/fas-v-chef-yuru.mp4",
+            "baslangic": 3,
+            "vurus": 4,
+            "odak_x": 0.5
+          },
+          {
+            "video": "video/fas-v-chef-sokak.mp4",
+            "baslangic": 20,
+            "vurus": 4,
+            "odak_x": 0.7
+          },
+          {
+            "video": "video/fas-v-chef-kosu.mp4",
+            "baslangic": 9,
+            "vurus": 3,
+            "odak_x": 0.5
+          }
         ],
         "etiket": "Chefchaouen",
         "metin": "Sokakları maviye boyanmış şehir",
