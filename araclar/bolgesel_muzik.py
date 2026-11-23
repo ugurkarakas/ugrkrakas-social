@@ -442,3 +442,60 @@ def tiflis(saniye, tohum=7):
 
 BOLGELER = {"fas": fas, "hindistan": hindistan, "laponya": laponya, "viyana": viyana,
             "kapadokya": kapadokya, "tiflis": tiflis}
+
+
+# ---------- Paris: manouche caz / musette, akordeon, pompe gitar, fırça davul ----------
+
+def akordeon(nota, sure, guc=0.13):
+    n = int(sure * SR)
+    t = np.arange(n) / SR
+    f = frek(nota)
+    x = testere(f, n, 0.004) + 0.6 * testere(f * 1.004, n) + 0.4 * np.sign(np.sin(2 * np.pi * f * 0.5 * t)) * 0.3
+    x = filtre(x, [300, 3200], "band")
+    tremolo = 1 + 0.18 * np.sin(2 * np.pi * 5.8 * t)
+    z = np.minimum(1, t / 0.03) * np.minimum(1, np.maximum(0, (sure - t) / 0.06))
+    return x * tremolo * z * guc
+
+
+def firca(rng, guc=0.08):
+    n = int(0.18 * SR)
+    t = np.arange(n) / SR
+    return filtre(rng.standard_normal(n), [2000, 7000], "band") * np.minimum(1, t / 0.02) * np.exp(-t * 14) * guc
+
+
+def paris(saniye, tohum=7):
+    rng = np.random.default_rng(tohum)
+    v = 60 / TARZLAR["paris"]["bpm"]
+    olcu = 4 * v
+    sw = v * 0.62  # swing: ikinci sekizlik geç gelir
+    n = int(saniye * SR) + 2 * SR
+    z = izler(n, "gitar", "bas", "ako", "dav")
+    kok = 57  # La minör
+    akorlar = [(0, [0, 3, 7, 12]), (5, [0, 3, 7, 10]), (7, [0, 4, 7, 10]), (0, [0, 3, 7, 9])]  # Am Dm7 E7 Am6
+    HARM = [0, 2, 3, 5, 7, 8, 11]
+    motif_a = [(0, 0, 7), (1, 0, 6), (1, 1, 4), (2, 0, 7), (3, 0, 9), (3, 1, 7)]
+    motif_b = [(0, 0, 11), (0, 1, 10), (1, 0, 9), (2, 0, 7), (2, 1, 6), (3, 0, 4)]
+    for o in range(int(np.ceil(saniye / olcu)) + 1):
+        t0 = o * olcu
+        ak, ar = akorlar[o % 4]
+        notalar = [kok + ak - 12 + a for a in ar]
+        for b in range(4):
+            tb = t0 + b * v
+            # pompe: 1 ve 3 bas, 2 ve 4 kısa vurulan akor
+            if b % 2 == 0:
+                yerlestir(z["bas"], ks(kok + ak - 24 + (7 if b == 2 else 0), v * 0.9, rng, 0.35, 0.35, 0.55), tb * SR)
+            for j, nt in enumerate(notalar):
+                yerlestir(z["gitar"], ks(nt + 12, 0.12 if b % 2 else 0.2, rng, 0.75, 0.07 if b % 2 else 0.12,
+                                         0.12 if b % 2 else 0.07), (tb + j * 0.006) * SR)
+            yerlestir(z["dav"], firca(rng, 0.09 if b % 2 else 0.05), tb * SR)
+            yerlestir(z["dav"], firca(rng, 0.04), (tb + sw) * SR)
+        motif = motif_a if (o // 2) % 2 == 0 else motif_b
+        for b, yari, d in motif:
+            tt = t0 + b * v + (sw if yari else 0)
+            uz = (v - sw) if yari else sw
+            yerlestir(z["ako"], akordeon(derece(kok + 12, HARM, d), uz * 1.6 + 0.05), tt * SR)
+    return bitir({"gitar": (z["gitar"], 1.0, False), "bas": (z["bas"], 0.9, False), "ako": (z["ako"], 1.0, False),
+                  "dav": (z["dav"], 1.0, False)}, rng, {"ako": 0.35, "gitar": 0.2, "dav": 0.15}, saniye)
+
+
+BOLGELER["paris"] = paris
