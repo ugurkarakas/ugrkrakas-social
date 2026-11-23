@@ -68,6 +68,11 @@ Müzik `araclar/muzik.py` ile kodla sentezlenir (hazır parça kullanılmaz, tel
 - Stok fotoğraf kullanılan içerik "ben gittim, ben çektim" gibi sunulmaz.
 
 
+## Günlük akış (takvim.csv: tarih,slot,slug,durum)
+
+- ogle (12:04): kaydırmalı gönderi (carousel) + öğlen hikayesi (akşam reels'inin "Biliyor muydun?" kartı).
+- aksam (~19:00): reels + duyuru hikayesi.
+
 ## Günlük hikayeler
 
 - Öğlen: `story/<slug>-ogle.jpg` (içerik dosyasındaki `ogle` alanından: "Biliyor muydun?" bilgisi + akşamki gönderinin duyurusu).
