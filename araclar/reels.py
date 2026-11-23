@@ -22,7 +22,10 @@ Alanlar:
   metin          ana cümle
   alt            ana cümlenin altında beliren detay cümlesi
 
-Müzik eklenmez: müzik Instagram uygulamasından eklenir.
+  odak          fotoğrafın dikey kırpımda nereden ortalanacağı, ör. [0.4, 0.5]
+
+Müzik: araclar/muzik.py ile kodla üretilen telifsiz ritim eklenir.
+  "muzik": {"tarz": "yaz" | "aksam" | "enerji", "tohum": 7}   kapatmak için "muzik": null
 
 Kullanım:
   python3 araclar/reels.py icerik/<slug>.json
@@ -35,6 +38,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter, ImageOps
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import muzik  # noqa: E402
 import uret  # noqa: E402
 
 KOK = uret.KOK
@@ -54,10 +58,10 @@ def yumusak(t):
 # ---------- görüntü kaynakları ----------
 
 class FotoKaynak:
-    def __init__(self, dosya):
+    def __init__(self, dosya, odak=(0.5, 0.5)):
         bw, bh = int(W * (1 + YAKINLASMA)), int(H * (1 + YAKINLASMA))
         img = ImageOps.exif_transpose(Image.open(KOK / "kaynak" / dosya)).convert("RGB")
-        self.img = ImageOps.fit(img, (bw, bh), Image.LANCZOS)
+        self.img = ImageOps.fit(img, (bw, bh), Image.LANCZOS, centering=tuple(odak))
 
     def kare(self, ilerleme):
         olcek = 1 + YAKINLASMA * (1 - ilerleme)
@@ -224,7 +228,7 @@ def uret_reels(json_yolu):
         if s.get("video"):
             kaynak = VideoKaynak(s["video"], s.get("baslangic", 0), sure)
         else:
-            kaynak = FotoKaynak(s["foto"])
+            kaynak = FotoKaynak(s["foto"], s.get("odak", (0.5, 0.5)))
         ana, alt = sahne_katmanlari(s, idx == 0)
         ana = golgeli(ana)
         for f in range(n):
@@ -250,6 +254,20 @@ def uret_reels(json_yolu):
 
     ff.stdin.close()
     ff.wait()
+
+    ayar = veri.get("reels", {}).get("muzik", {"tarz": "yaz", "tohum": 7})
+    if ayar:
+        sure = float(subprocess.check_output(
+            ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(cikis)]))
+        wav = cikis.with_suffix(".wav")
+        muzik.kaydet(muzik.uret(sure, ayar.get("tarz", "yaz"), ayar.get("tohum", 7)), wav)
+        gecici = cikis.with_name(cikis.stem + "-sessiz.mp4")
+        cikis.rename(gecici)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(gecici), "-i", str(wav),
+                        "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest",
+                        "-movflags", "+faststart", str(cikis)], check=True)
+        gecici.unlink()
+        wav.unlink()
     print("  ", cikis.relative_to(KOK))
 
 

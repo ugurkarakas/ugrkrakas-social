@@ -55,7 +55,10 @@ Caption = `caption` + boş satır + `soru`.
 ## Tasarım dili
 
 Sade ve premium: bol boşluk, Inter yazı tipi, siyah / beyaz / açık gri (#F5F5F7), fotoğraf ön planda.
-Reels: yavaş yakınlaşan fotoğraflar, yumuşak geçişler, ortalanmış kısa başlıklar, siyah kapanış kartı. Video sessiz üretilir.
+Reels: yavaş yakınlaşan fotoğraflar ya da video klipler, konuşur gibi başlıklar ve altyazı tarzı detay cümleleri, siyah kapanış kartı.
+Müzik `araclar/muzik.py` ile kodla sentezlenir (hazır parça kullanılmaz, telif sorunu yoktur); tarzlar: `yaz`, `aksam`, `enerji`.
+
+İçerik tonu: tasarruf ipuçları değil, parasını hak eden deneyimler, iyi restoranlar ve özel anlar. Mekan ve kural bilgileri yayından önce güncel kaynaktan doğrulanır.
 
 ## Fotoğraf kuralları
 
