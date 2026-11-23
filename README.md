@@ -8,7 +8,7 @@ Strateji: [@ugrkrakas İçerik Stratejisi](https://claude.ai/artifact/8q9BQq1rx9
 
 1. Ham fotoğraf ve videolar `kaynak/` klasörüne konur.
 2. Her içerik için `icerik/<slug>.json` yazılır (başlık, slaytlar, caption, soru, hashtag, anket).
-3. `python3 araclar/uret.py icerik/<slug>.json` yayına hazır görselleri üretir.
+3. `python3 araclar/uret.py icerik/<slug>.json` yayına hazır görselleri, `python3 araclar/reels.py icerik/<slug>.json` Reels videosunu üretir.
 4. İçerik `takvim.csv`'ye tarihiyle eklenir ve `durum` = `hazir` yapılır.
 5. Zamanlanmış görev her gün takvimdeki içeriği Windsor.ai üzerinden Instagram ve Facebook'a paylaşır.
 
@@ -25,8 +25,8 @@ Takvime yeni satır eklemek için zamanlanmış görevi değiştirmek gerekmez; 
 | `reels/` | Reels videoları `<slug>.mp4` | 1080x1920, 3-90 sn |
 | `story/` | Günün gönderisini duyuran story | 1080x1920 |
 | `anket/` | Anket story'leri (sticker elle eklenir) | 1080x1920 |
-| `araclar/` | Görsel üreticisi | - |
-| `fonts/` | Poppins (SIL Open Font License) | - |
+| `araclar/` | Görsel (`uret.py`) ve Reels (`reels.py`) üreticileri | - |
+| `fonts/` | Inter (SIL Open Font License) | - |
 
 ## İçerik türleri (`tur`)
 
@@ -51,3 +51,15 @@ Takvime yeni satır eklemek için zamanlanmış görevi değiştirmek gerekmez; 
 5. Anket story'si varsa: görsel otomatik atılmaz; anket sticker'ı API ile eklenemediği için uygulamadan elle paylaşılır.
 
 Caption = `caption` + boş satır + `soru`.
+
+## Tasarım dili
+
+Sade ve premium: bol boşluk, Inter yazı tipi, siyah / beyaz / açık gri (#F5F5F7), fotoğraf ön planda.
+Reels: yavaş yakınlaşan fotoğraflar, yumuşak geçişler, ortalanmış kısa başlıklar, siyah kapanış kartı. Video sessiz üretilir.
+
+## Fotoğraf kuralları
+
+- Kendi fotoğrafların her zaman önceliklidir.
+- Stok fotoğraf yalnızca [Unsplash](https://unsplash.com/license) gibi ticari kullanıma açık kaynaklardan alınır; Google Görseller kullanılmaz.
+- Stok fotoğraf kullanılan içeriklerde `fotograf_kredisi` doldurulur ve caption'ın sonuna eklenir.
+- Stok fotoğraf kullanılan içerik "ben gittim, ben çektim" gibi sunulmaz.

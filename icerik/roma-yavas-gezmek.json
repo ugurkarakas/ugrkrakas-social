@@ -1,0 +1,41 @@
+{
+  "slug": "roma-yavas-gezmek",
+  "tur": "carousel",
+  "seri": "Pratik bilgi",
+  "baslik": "Roma'yı yavaş gezmenin 4 kuralı",
+  "alt_baslik": "Kalabalığa takılmadan şehrin asıl halini görmek için.",
+  "konum": "Roma, İtalya",
+  "foto": "roma-sokak-turuncu.jpg",
+  "slaytlar": [
+    {
+      "baslik": "Güne erken başla",
+      "metin": "Trevi ve İspanyol Merdivenleri sabah 8'den önce neredeyse boş. Fotoğraf için en iyi ışık da o saatte.",
+      "foto": "roma-ispanyol-merdivenleri.jpg"
+    },
+    {
+      "baslik": "Bir sokak içeri gir",
+      "metin": "Fiyatlar düşer, menüler İtalyancaya döner. Turist menüsü asılı yerlerden uzak dur.",
+      "foto": "roma-sokak-bitkiler.jpg"
+    },
+    {
+      "baslik": "Akşam yemeğini geç ye",
+      "metin": "Romalılar akşam yemeğine genelde 20:00'den sonra oturur. 19:00'da dolu olan yerler çoğunlukla turistlere hitap eder.",
+      "foto": "roma-aksam-yemegi.jpg"
+    },
+    {
+      "baslik": "Suyu sokaktan iç",
+      "metin": "Şehrin dört bir yanındaki küçük çeşmeler, yani nasoni, içilebilir su akıtır. Şişeni doldur, para verme."
+    }
+  ],
+  "cta": "Kaydet, Roma'da aç.",
+  "caption": "Roma'yı koşturmadan gezmek için 4 basit kural. Kaydet, gidince işine yarayacak.",
+  "soru": "Roma'da seni en çok ne yoruyor: kalabalık mı, yürüyüş mü?",
+  "ilk_yorum": "#roma #romaseyahati #italya #seyahatipuçları #avrupaseyahati",
+  "fotograf_kredisi": "Fotoğraflar: Unsplash (Braden Collum, Marialaura Gionfriddo, Chalo Gallardo, Yoav Aziz)",
+  "anket": {
+    "soru": "Roma'da ilk durağın?",
+    "secenek_1": "Lezzet",
+    "secenek_2": "Tarih",
+    "foto": "roma-cepheler.jpg"
+  }
+}

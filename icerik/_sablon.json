@@ -21,10 +21,20 @@
   "caption": "Roma'da turist menüsünden kaçmak isteyenler için 3 adres.\n\n1) ...\n2) ...\n3) ...\n\nFiyatlar Kasım 2026 itibarıyla.",
   "soru": "Roma'da ilk denediğin yemek neydi?",
   "ilk_yorum": "#roma #romaseyahati #italya #seyahat #gezi",
-  "video": null,
   "anket": {
     "soru": "Roma'da ilk durağın?",
     "secenek_1": "Lezzet",
     "secenek_2": "Tarih"
+  },
+  "fotograf_kredisi": "Fotoğraflar: Unsplash (Fotoğrafçı adı) — kendi fotoğrafınsa boş bırak",
+  "reels": {
+    "sahneler": [
+      {
+        "foto": "roma-kapak.jpg",
+        "ust": "Roma, İtalya",
+        "metin": "Videonun ilk cümlesi"
+      }
+    ],
+    "sahne_suresi": 2.6
   }
 }
