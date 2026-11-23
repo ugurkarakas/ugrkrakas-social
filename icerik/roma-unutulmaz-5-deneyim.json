@@ -1,8 +1,8 @@
 {
-  "slug": "roma-parasini-hak-eden-5-deneyim",
+  "slug": "roma-unutulmaz-5-deneyim",
   "tur": "carousel",
   "seri": "Deneyim rehberi",
-  "baslik": "Roma'da parasını sonuna kadar hak eden 5 deneyim",
+  "baslik": "Roma'da unutulmaz 5 deneyim",
   "alt_baslik": "Bir kez yaşanır. İyi planlanınca unutulmaz.",
   "konum": "Roma, İtalya",
   "foto": "roma-gunbatimi-cift.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "baslik": "Kolezyum'un yeraltına in",
-      "metin": "Gladyatörlerin beklediği tüneller normal biletle görülmüyor. Ayrı bilet gerekiyor ve yerler hızla tükeniyor.",
+      "metin": "Gladyatörlerin beklediği tüneller standart turda görülmüyor. Yeraltı turu ayrı ve yerler hızla doluyor.",
       "fotolar": [
         "roma-kolezyum-ic.jpg",
         "roma-kolezyum-ic-2.jpg",
@@ -55,7 +55,7 @@
   ],
   "cta": "Kaydet, Roma planına ekle.",
   "cta_alt": "Daha fazla deneyim ve rota için takip et.",
-  "caption": "Roma'ya bir kez gidiliyorsa, bu beşi bütçeye değer.\n\n1. Vatikan Anahtarcı Turu: Müzeler açılmadan, sabah 6'da başlıyor. Gruplar en fazla 20 kişi, tur Sistine Şapeli'nde bitiyor.\n2. Kolezyum yeraltı (hypogeum): Standart biletle girilmiyor, ayrı \"yeraltı + arena\" bileti gerekiyor. Erken alın.\n3. Galleria Borghese: 2 saatlik seanslar, rezervasyon zorunlu. Yoğun sezonda 2-4 hafta önceden.\n4. Roscioli Salumeria con Cucina (Via dei Giubbonari 21): Carbonara için gidilir, rezervasyon şart.\n5. Imàgo, Hotel Hassler: İspanyol Merdivenleri'nin tepesinde, 1 Michelin yıldızlı, manzaralı akşam yemeği.\n\nBilgiler Kasım 2026 itibarıyla. Saat ve rezervasyon koşullarını gitmeden resmi sitelerden kontrol edin.",
+  "caption": "Roma'ya bir kez gidiliyorsa, bu beşi listede olmalı.\n\n1. Vatikan Anahtarcı Turu: Müzeler açılmadan, sabah 6'da başlıyor. Gruplar küçük, tur Sistine Şapeli'nde bitiyor.\n2. Kolezyum yeraltı (hypogeum): Standart girişte görülmüyor, ayrı yeraltı turu gerekiyor. Erken ayırt.\n3. Galleria Borghese: 2 saatlik seanslar, rezervasyon zorunlu. Yoğun sezonda birkaç hafta önceden.\n4. Roscioli Salumeria con Cucina: Carbonara için gidilir, masa ayırtmak şart.\n5. Imàgo, Hotel Hassler: İspanyol Merdivenleri'nin tepesinde, Michelin yıldızlı, manzaralı akşam yemeği.\n\nBilgiler Kasım 2026 itibarıyla. Saat ve rezervasyon koşullarını gitmeden resmi sitelerden kontrol et.",
   "soru": "Bu beşinden hangisi senin listende ilk sırada?",
   "ilk_yorum": "#roma #romaseyahati #italya #vatikan #kolezyum #avrupaseyahati #seyahat",
   "fotograf_kredisi": "Fotoğraflar: Unsplash (Cheng Lin, Micah & Sammie Chaffin, Reuben Teo, Lucia Gherra, Gary Walker-Jones, Thibault Lam Tran, Mathew Schwartz, Mateus Campos Felipe, Zoran Borojevic, Pinar Kucuk, Marie Dehayes, Lorenzo Rui, Tomasz Zielonka, Marco Grosso, Hitesh Dewasi, Gabriella Clare Marino)",
@@ -67,7 +67,7 @@
   },
   "reels": {
     "muzik": {
-      "tarz": "yaz",
+      "tarz": "tropik",
       "tohum": 7
     },
     "kapanis": "Kaydet, Roma planına ekle.",
@@ -82,7 +82,7 @@
         ],
         "vurus_basina": 2,
         "etiket": "Roma, İtalya",
-        "metin": "Roma'da parasını hak eden 5 deneyim",
+        "metin": "Roma'da unutulmaz 5 deneyim",
         "alt": "Bir kez yaşanır. Kaydet, planına ekle."
       },
       {
@@ -103,7 +103,7 @@
         ],
         "etiket": "Deneyim 2",
         "metin": "Kolezyum'un yeraltına in",
-        "alt": "Gladyatörlerin beklediği tüneller ayrı biletle açılıyor. Hızlı tükeniyor."
+        "alt": "Gladyatörlerin beklediği tüneller ayrı turla açılıyor. Yerler hızla doluyor."
       },
       {
         "fotolar": [

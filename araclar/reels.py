@@ -224,8 +224,8 @@ def uret_reels(json_yolu):
          "-movflags", "+faststart", str(cikis)],
         stdin=subprocess.PIPE,
     )
-    ayar = veri.get("reels", {}).get("muzik", {"tarz": "yaz", "tohum": 7})
-    bpm = muzik.TARZLAR[(ayar or {}).get("tarz", "yaz")]["bpm"]
+    ayar = veri.get("reels", {}).get("muzik", {"tarz": "tropik", "tohum": 7})
+    bpm = muzik.TARZLAR[(ayar or {}).get("tarz", "tropik")]["bpm"]
     vurus = 60 / bpm
     g = int(GECIS * FPS)
     onceki = None
@@ -295,7 +295,7 @@ def uret_reels(json_yolu):
         sure = float(subprocess.check_output(
             ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(cikis)]))
         wav = cikis.with_suffix(".wav")
-        muzik.kaydet(muzik.uret(sure, ayar.get("tarz", "yaz"), ayar.get("tohum", 7)), wav)
+        muzik.kaydet(muzik.uret(sure, ayar.get("tarz", "tropik"), ayar.get("tohum", 7)), wav)
         gecici = cikis.with_name(cikis.stem + "-sessiz.mp4")
         cikis.rename(gecici)
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(gecici), "-i", str(wav),

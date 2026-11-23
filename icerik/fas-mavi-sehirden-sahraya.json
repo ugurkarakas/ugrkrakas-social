@@ -1,0 +1,85 @@
+{
+  "slug": "fas-mavi-sehirden-sahraya",
+  "tur": "reels",
+  "seri": "Rota",
+  "baslik": "Fas: mavi şehirden Sahra'ya",
+  "alt_baslik": "Chefchaouen, Fes, Marakeş ve çölde bir gece.",
+  "konum": "Fas",
+  "foto": "fas-chefchaouen-1.jpg",
+  "caption": "Tek ülkede dört ayrı dünya: Fas.\n\n• Chefchaouen: Rif Dağları'nda, sokakları maviye boyanmış şehir. Gün batımında İspanyol Camii'ne yürü, bütün şehir ayaklarının altında.\n• Fes: Fes el-Bali, 1981'den beri UNESCO listesinde ve dünyanın araçsız en büyük kentsel alanı olarak biliniyor. Chouara tabakhanesini çevredeki teraslardan izle.\n• Marakeş: Medinanın içinde avlulu bir riadda kal. Akşam Jemaa el-Fnaa meydanı bambaşka bir yere dönüşüyor.\n• Sahra: Merzouga'daki Erg Chebbi kumullarında bir çöl kampında gece geçir.\n\nTürk vatandaşları, en az 6 ay geçerli pasaportla Fas'a 90 güne kadar vizesiz gidebiliyor.\nBilgiler Kasım 2026 itibarıyla.",
+  "soru": "Fas'ta ilk durağın hangisi olurdu?",
+  "ilk_yorum": "#fas #morocco #chefchaouen #marakeş #fes #sahra #vizesiz #seyahat",
+  "fotograf_kredisi": "Fotoğraflar: Unsplash (Milad Alizadeh, Mauro Lima, Miltiadis Fragkidis, Mark Kuiper, Alexander Psiuk, Jaanus Jagomägi, Aleks, Kyle Frost, Toa Heftiba, Martin Zangerl)",
+  "anket": {
+    "soru": "Fas'ta hangisi?",
+    "secenek_1": "Mavi şehir",
+    "secenek_2": "Sahra'da gece",
+    "foto": "fas-chefchaouen-2.jpg"
+  },
+  "reels": {
+    "muzik": {
+      "tarz": "tropik",
+      "tohum": 13
+    },
+    "kapanis": "Kaydet, Fas planına ekle.",
+    "kapanis_alt": "Daha fazla rota için takip et.",
+    "sahneler": [
+      {
+        "fotolar": [
+          "fas-chefchaouen-1.jpg",
+          "fas-marakes-fener.jpg",
+          "fas-sahra-2.jpg",
+          "fas-riad-havuz.jpg"
+        ],
+        "etiket": "Fas",
+        "metin": "Tek ülkede dört ayrı dünya",
+        "alt": "Üstelik vize derdi yok."
+      },
+      {
+        "fotolar": [
+          "fas-chefchaouen-2.jpg",
+          "fas-chefchaouen-3.jpg",
+          "fas-chefchaouen-1.jpg"
+        ],
+        "etiket": "Chefchaouen",
+        "metin": "Sokakları maviye boyanmış şehir",
+        "alt": "Gün batımında İspanyol Camii'ne yürü, şehir ayaklarının altında."
+      },
+      {
+        "fotolar": [
+          "fas-fes-tabakhane.jpg",
+          "fas-fes-medina.jpg"
+        ],
+        "etiket": "Fes",
+        "metin": "Araç girmeyen bir labirent",
+        "alt": "Fes el-Bali binlerce sokağıyla UNESCO listesinde."
+      },
+      {
+        "fotolar": [
+          "fas-riad-havuz.jpg",
+          "fas-marakes-fener.jpg",
+          "fas-riad-cesme.jpg",
+          "fas-cay.jpg"
+        ],
+        "etiket": "Marakeş",
+        "metin": "Bir riadda kal",
+        "alt": "Medinanın gürültüsünden sonra avluda nane çayı."
+      },
+      {
+        "fotolar": [
+          "fas-sahra-2.jpg",
+          {
+            "foto": "fas-sahra-2.jpg",
+            "odak": [
+              0.3,
+              0.5
+            ]
+          }
+        ],
+        "etiket": "Sahra",
+        "metin": "Çölde bir gece geçir",
+        "alt": "Merzouga'da Erg Chebbi kumullarında kamp."
+      }
+    ]
+  }
+}

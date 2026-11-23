@@ -1,0 +1,73 @@
+{
+  "slug": "kapadokya-balon",
+  "tur": "reels",
+  "seri": "Pratik bilgi",
+  "baslik": "Kapadokya'da balona binmeden önce bunu bil",
+  "alt_baslik": "Gün doğumu, hava kararı ve kışın yedek gün.",
+  "konum": "Kapadokya, Türkiye",
+  "foto": "kapadokya-balon-4.jpg",
+  "caption": "Kapadokya'da balon turu planlıyorsan bilmen gereken 3 şey.\n\n1. Uçuşlar gün doğumunda yapılıyor. Otelden alınma, hazırlık, yaklaşık 1 saat uçuş ve dönüşle birlikte toplam 3 saat kadar ayır.\n2. Kararı hava veriyor: Uçuşlar Sivil Havacılık Genel Müdürlüğü'nün izniyle yapılıyor. Sarı bayrakta beklenir, kırmızı bayrakta o günün tüm uçuşları iptal edilir.\n3. Kışın yedek gün bırak: Kar, rüzgar ve sis nedeniyle uçuşların günlerce yapılamadığı dönemler oluyor. Mümkünse balonu ilk sabaha koy, iptal olursa ertesi güne kaydır.\n\nBalon uçmasa bile, gün doğumunu bir terastan izlemek de ayrı bir deneyim.",
+  "soru": "Balona bindin mi, yoksa listende mi?",
+  "ilk_yorum": "#kapadokya #balon #göreme #nevşehir #türkiye #günbatımı #seyahat",
+  "fotograf_kredisi": "Fotoğraflar: Unsplash (v2osk, Luis Barreto D, Alex Azabache, Igor Sporynin)",
+  "anket": {
+    "soru": "Kapadokya'da hangisi?",
+    "secenek_1": "Balonla uç",
+    "secenek_2": "Yerden izle",
+    "foto": "kapadokya-balon-2.jpg"
+  },
+  "reels": {
+    "muzik": {
+      "tarz": "tropik",
+      "tohum": 3
+    },
+    "kapanis": "Kaydet, Kapadokya'ya giden birine gönder.",
+    "kapanis_alt": "Daha fazla rota için takip et.",
+    "sahneler": [
+      {
+        "fotolar": [
+          "kapadokya-balon-4.jpg",
+          "kapadokya-balon-1.jpg",
+          "kapadokya-balon-3.jpg",
+          "kapadokya-balon-2.jpg"
+        ],
+        "etiket": "Kapadokya",
+        "metin": "Balona binmeden önce bunu bil",
+        "alt": "Çoğu kişi bunları gidince öğreniyor."
+      },
+      {
+        "fotolar": [
+          "kapadokya-balon-2.jpg",
+          "kapadokya-balon-3.jpg"
+        ],
+        "etiket": "1",
+        "metin": "Uçuş gün doğumunda",
+        "alt": "Alınma, hazırlık ve 1 saatlik uçuşla toplam 3 saat ayır."
+      },
+      {
+        "fotolar": [
+          "kapadokya-balon-1.jpg",
+          "kapadokya-balon-4.jpg"
+        ],
+        "etiket": "2",
+        "metin": "Kararı hava veriyor",
+        "alt": "Uçuşlara SHGM izin veriyor. Kırmızı bayrak varsa o gün tüm uçuşlar iptal."
+      },
+      {
+        "fotolar": [
+          "kapadokya-balon-3.jpg",
+          {
+            "foto": "kapadokya-balon-2.jpg",
+            "odak": [
+              0.7,
+              0.5
+            ]
+          }
+        ],
+        "etiket": "3",
+        "metin": "Kışın yedek gün bırak",
+        "alt": "Kar, rüzgar ve sis yüzünden uçuşların günlerce yapılamadığı oluyor."
+      }
+    ]
+  }
+}

@@ -1,14 +1,14 @@
 {
   "slug": "roma-3-butce-3-lokanta",
   "tur": "carousel",
-  "seri": "3 bütçe, 3 lokanta",
+  "seri": "Deneyim rehberi",
   "baslik": "Roma'da yerlilerin gittiği 3 lokanta",
-  "alt_baslik": "Ucuz, orta ve özel gün için birer adres",
+  "alt_baslik": "Kısa, merak uyandıran bir alt başlık",
   "konum": "Roma, İtalya",
   "foto": "roma-kapak.jpg",
   "slaytlar": [
     {
-      "baslik": "Ucuz: Lokantanın adı",
+      "baslik": "Deneyimin adı",
       "metin": "Ne yenir, kişi başı yaklaşık ne tutar, ne zaman gidilmeli.",
       "foto": "roma-lokanta-1.jpg"
     },

@@ -1,0 +1,88 @@
+{
+  "slug": "tiflis-hafta-sonu",
+  "tur": "reels",
+  "seri": "Rota",
+  "baslik": "Kimlikle gidilen hafta sonu: Tiflis",
+  "alt_baslik": "Kükürt hamamları, teleferik ve haçapuri.",
+  "konum": "Tiflis, Gürcistan",
+  "foto": "tiflis-gunbatimi.jpg",
+  "caption": "Pasaport çıkarmadan yurt dışında bir hafta sonu: Tiflis.\n\n• Giriş: Türk vatandaşları yeni tip çipli kimlik kartıyla gidebiliyor, vize ya da pasaport gerekmiyor.\n• Abanotubani: Kubbeli kükürt hamamlarıyla şehrin en eski bölgesi. Hafta sonları özel odaları önceden ayırt.\n• Teleferik: Rike Parkı'ndan kalkıyor, birkaç dakikada şehrin üstündesin. Narikala Kalesi restorasyon nedeniyle kapalı olabilir, gitmeden kontrol et.\n• Haçapuri: Peynir ve yumurtayla pişen Gürcü klasiği.\n\nBilgiler Kasım 2026 itibarıyla.",
+  "soru": "Tiflis'te ilk ne yapardın?",
+  "ilk_yorum": "#tiflis #gürcistan #tbilisi #kimlikle #vizesiz #haftasonu #seyahat",
+  "fotograf_kredisi": "Fotoğraflar: Unsplash (Aleksandr Popov, Christine Isakzhanova, K T)",
+  "anket": {
+    "soru": "Hafta sonu kaçamağı?",
+    "secenek_1": "Tiflis",
+    "secenek_2": "Belgrad",
+    "foto": "tiflis-havadan.jpg"
+  },
+  "reels": {
+    "muzik": {
+      "tarz": "tropik",
+      "tohum": 5
+    },
+    "kapanis": "Kaydet, hafta sonu planına ekle.",
+    "kapanis_alt": "Daha fazla rota için takip et.",
+    "sahneler": [
+      {
+        "fotolar": [
+          "tiflis-gunbatimi.jpg",
+          "tiflis-havadan.jpg",
+          "tiflis-hacapuri.jpg",
+          "tiflis-rike.jpg"
+        ],
+        "etiket": "Tiflis, Gürcistan",
+        "metin": "Kimlikle gidilen hafta sonu",
+        "alt": "Pasaport bile gerekmiyor."
+      },
+      {
+        "fotolar": [
+          "tiflis-havadan.jpg",
+          "tiflis-rike.jpg"
+        ],
+        "etiket": "Giriş",
+        "metin": "Çipli kimlik kartı yeterli",
+        "alt": "Türk vatandaşları vize ve pasaport olmadan giriş yapabiliyor."
+      },
+      {
+        "fotolar": [
+          "tiflis-havadan.jpg",
+          {
+            "foto": "tiflis-gunbatimi.jpg",
+            "odak": [
+              0.3,
+              0.5
+            ]
+          }
+        ],
+        "etiket": "Abanotubani",
+        "metin": "Kükürt hamamında ısın",
+        "alt": "Şehrin en eski bölgesi. Hafta sonu özel oda için rezervasyon yap."
+      },
+      {
+        "fotolar": [
+          "tiflis-rike.jpg",
+          "tiflis-gunbatimi.jpg"
+        ],
+        "etiket": "Rike Parkı",
+        "metin": "Teleferikle şehre tepeden bak",
+        "alt": "Birkaç dakikada şehrin üstündesin. Narikala Kalesi restorasyonda olabilir."
+      },
+      {
+        "fotolar": [
+          "tiflis-hacapuri.jpg",
+          {
+            "foto": "tiflis-hacapuri.jpg",
+            "odak": [
+              0.3,
+              0.5
+            ]
+          }
+        ],
+        "etiket": "Lezzet",
+        "metin": "Haçapuri'yi yerinde ye",
+        "alt": "Peynir ve yumurtayla pişen Gürcü klasiği."
+      }
+    ]
+  }
+}

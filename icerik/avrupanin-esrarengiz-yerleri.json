@@ -1,0 +1,56 @@
+{
+  "slug": "avrupanin-esrarengiz-yerleri",
+  "tur": "carousel",
+  "seri": "Rota",
+  "baslik": "Avrupa'nın en esrarengiz 4 yeri",
+  "alt_baslik": "Bir kuyu, kayalara kurulmuş manastırlar ve denizin yuttuğu bir ada.",
+  "konum": "Avrupa",
+  "foto": "sintra-kuyu-2.jpg",
+  "slaytlar": [
+    {
+      "baslik": "Sintra'da ters kule",
+      "metin": "Quinta da Regaleira'daki İnisiyasyon Kuyusu hiç su için kullanılmadı. 9 katlı sarmal merdivenden inip tünellerden çıkıyorsun.",
+      "fotolar": [
+        "sintra-kuyu-2.jpg",
+        "sintra-kuyu-1.jpg",
+        "sintra-tunel.jpg"
+      ]
+    },
+    {
+      "baslik": "Meteora'da gökyüzü manastırları",
+      "metin": "Yunanistan'da dev kaya sütunlarının tepesine kurulmuş manastırlar. Gün batımında manzara gerçek dışı.",
+      "fotolar": [
+        "meteora-1.jpg",
+        "meteora-2.jpg"
+      ]
+    },
+    {
+      "baslik": "Matera'da mağara şehir",
+      "metin": "İtalya'nın güneyinde, kayaya oyulmuş Sassi evleri. Bugün bazılarında otel odası olarak kalabiliyorsun.",
+      "fotolar": [
+        "matera-1.jpg",
+        "matera-2.jpg"
+      ]
+    },
+    {
+      "baslik": "Mont-Saint-Michel",
+      "metin": "Normandiya'da gelgitle birlikte denizin çevrelediği bir ada ve tepesinde bin yıllık bir manastır.",
+      "fotolar": [
+        "msm-1.jpg",
+        "msm-2.jpg"
+      ]
+    }
+  ],
+  "cta": "Kaydet, Avrupa planına ekle.",
+  "cta_alt": "Daha fazla rota için takip et.",
+  "caption": "Avrupa'da bildiğin şehirlerin dışında, hikayesiyle insanı içine çeken 4 yer.\n\n1. Quinta da Regaleira, Sintra (Portekiz): Lizbon'a yaklaşık 30 km. İnisiyasyon Kuyusu'nun 9 katlı sarmal merdiveni, tünellerle bahçeye bağlanıyor.\n2. Meteora (Yunanistan): Kaya sütunlarının tepesindeki manastırlar. Gün batımı için Kalambaka tarafındaki seyir noktalarına çık.\n3. Matera (İtalya): Kayaya oyulmuş Sassi mahalleleri. Bir gece mağara otelde kal.\n4. Mont-Saint-Michel (Fransa): Gelgit saatlerine göre plan yap; deniz çevrelediğinde manzara bambaşka.\n\nDört ülke de Schengen bölgesinde: Türk pasaportuyla Schengen vizesi gerekir.\nBilgiler Kasım 2026 itibarıyla.",
+  "soru": "Bunlardan hangisini ilk görmek isterdin?",
+  "ilk_yorum": "#sintra #meteora #matera #montsaintmichel #avrupa #avrupaseyahati #gizemliyerler #seyahat",
+  "fotograf_kredisi": "Fotoğraflar: Unsplash (Andrey Masiero, Regös Környei, Angel Luciano, Christos Papadopoulos, Stefanos Keramaris, Daniel J. Schwarz, Sterling Lanier, Yiming Ma, Andrej A)",
+  "anket": {
+    "soru": "Hangisi daha esrarengiz?",
+    "secenek_1": "Sintra kuyusu",
+    "secenek_2": "Meteora",
+    "foto": "sintra-kuyu-1.jpg"
+  }
+}

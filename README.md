@@ -58,7 +58,7 @@ Sade ve premium: bol boşluk, Inter yazı tipi, siyah / beyaz / açık gri (#F5F
 Reels: yavaş yakınlaşan fotoğraflar ya da video klipler, konuşur gibi başlıklar ve altyazı tarzı detay cümleleri, siyah kapanış kartı.
 Müzik `araclar/muzik.py` ile kodla sentezlenir (hazır parça kullanılmaz, telif sorunu yoktur); tarzlar: `yaz`, `aksam`, `enerji`.
 
-İçerik tonu: tasarruf ipuçları değil, parasını hak eden deneyimler, iyi restoranlar ve özel anlar. Mekan ve kural bilgileri yayından önce güncel kaynaktan doğrulanır.
+İçerik tonu: dikkat çeken rotalar, unutulmaz deneyimler, iyi restoranlar ve özel anlar. Fiyat, ücret ve bütçe konuşulmaz. Mekan ve kural bilgileri yayından önce güncel kaynaktan doğrulanır.
 
 ## Fotoğraf kuralları
 

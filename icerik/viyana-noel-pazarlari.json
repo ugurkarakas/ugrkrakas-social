@@ -1,0 +1,73 @@
+{
+  "slug": "viyana-noel-pazarlari",
+  "tur": "reels",
+  "seri": "Deneyim rehberi",
+  "baslik": "Viyana'nın en güzel Noel pazarları",
+  "alt_baslik": "Saray önünde ışıklar, sıcak glühwein ve buz pateni.",
+  "konum": "Viyana, Avusturya",
+  "foto": "viyana-pazar-kemer.jpg",
+  "caption": "Aralıkta Avrupa'da tek bir şehir seçeceksen, Viyana güçlü bir aday.\n\n• Rathausplatz Christkindlmarkt: 13 Kasım – 26 Aralık, her gün 10:00–22:00. Hemen yanındaki Vienna Ice Dream buz pisti 6 Ocak'a kadar açık.\n• Schönbrunn Sarayı: 6 Kasım – 6 Ocak. Yılbaşından sonra da açık olan az sayıdaki pazardan biri.\n• Karlsplatz: Kilisenin önünde, sanat ağırlıklı Advent pazarı.\n• Freyung (Eski Viyana pazarı): 14 Kasım – 23 Aralık.\n\nAvusturya Schengen bölgesinde: Türk pasaportuyla Schengen vizesi gerekir.\nTarihler 2026 sezonu için, gitmeden resmi sitelerden kontrol et.",
+  "soru": "Noel pazarı mı, yılbaşı kutlaması mı?",
+  "ilk_yorum": "#viyana #noelpazarı #christmasmarket #avusturya #avrupaseyahati #kışseyahati #seyahat",
+  "fotograf_kredisi": "Fotoğraflar: Unsplash (Jeffrey Zhang, Alisa Anton, Mario Tuzon, Sami Ullah, Toa Heftiba)",
+  "anket": {
+    "soru": "Aralıkta hangisi?",
+    "secenek_1": "Noel pazarları",
+    "secenek_2": "Kuzey ışıkları",
+    "foto": "viyana-rathaus.jpg"
+  },
+  "reels": {
+    "muzik": {
+      "tarz": "tropik",
+      "tohum": 11
+    },
+    "kapanis": "Kaydet, aralık planına ekle.",
+    "kapanis_alt": "Daha fazla rota için takip et.",
+    "sahneler": [
+      {
+        "fotolar": [
+          "viyana-pazar-kemer.jpg",
+          "viyana-agac.jpg",
+          "viyana-karlsplatz.jpg",
+          "viyana-rathaus.jpg"
+        ],
+        "etiket": "Viyana, Avusturya",
+        "metin": "Avrupa'nın en güzel Noel pazarları",
+        "alt": "Hangisine ne zaman gidilir, anlatıyorum."
+      },
+      {
+        "fotolar": [
+          "viyana-pazar-kemer.jpg",
+          "viyana-rathaus.jpg"
+        ],
+        "etiket": "Rathausplatz",
+        "metin": "Belediye Sarayı'nın önünde",
+        "alt": "13 Kasım – 26 Aralık, her gün 10:00–22:00. Yanında buz pateni pisti var."
+      },
+      {
+        "fotolar": [
+          "viyana-agac.jpg",
+          {
+            "foto": "viyana-agac.jpg",
+            "odak": [
+              0.3,
+              0.5
+            ]
+          }
+        ],
+        "etiket": "Schönbrunn",
+        "metin": "Bir sarayın önünde Noel",
+        "alt": "6 Kasım – 6 Ocak. Yılbaşından sonra da açık."
+      },
+      {
+        "fotolar": [
+          "viyana-karlsplatz.jpg",
+          "viyana-gluhwein.jpg"
+        ],
+        "etiket": "Karlsplatz",
+        "metin": "Kilise önünde sanat pazarı",
+        "alt": "El yapımı hediyeler ve elinde sıcak bir glühwein."
+      }
+    ]
+  }
+}

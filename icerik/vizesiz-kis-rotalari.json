@@ -1,0 +1,58 @@
+{
+  "slug": "vizesiz-kis-rotalari",
+  "tur": "carousel",
+  "seri": "Pratik bilgi",
+  "baslik": "Vize derdi olmadan gidebileceğin 5 kış rotası",
+  "alt_baslik": "Bordo pasaportla, randevu beklemeden.",
+  "konum": "Vizesiz rotalar",
+  "foto": "seul-saray.jpg",
+  "slaytlar": [
+    {
+      "baslik": "Japonya",
+      "metin": "90 güne kadar vizesiz. Kışın Tokyo'nun neonları ve sıcak kaplıcalar.",
+      "fotolar": [
+        "tokyo-shibuya-1.jpg",
+        "tokyo-teamlab-2.jpg"
+      ]
+    },
+    {
+      "baslik": "Güney Kore",
+      "metin": "90 güne kadar vizesiz. Seul'de saraylar, sokak lezzetleri ve kış ışıkları.",
+      "foto": "seul-saray.jpg"
+    },
+    {
+      "baslik": "Gürcistan",
+      "metin": "Pasaport bile gerekmiyor: yeni tip çipli kimlik kartıyla giriş yapılabiliyor.",
+      "fotolar": [
+        "tiflis-gunbatimi.jpg",
+        "tiflis-hacapuri.jpg"
+      ]
+    },
+    {
+      "baslik": "Sırbistan",
+      "metin": "Vizesiz. Belgrad'da Tuna ve Sava'nın buluştuğu kaleden gün batımı.",
+      "foto": "belgrad-kale.jpg"
+    },
+    {
+      "baslik": "Tayland",
+      "metin": "Vizesiz giriş. Avrupa kışından kaçıp tapınaklar ve tropik adalar.",
+      "foto": "bangkok-wat-arun.jpg"
+    },
+    {
+      "baslik": "Dikkat: Karadağ artık vize istiyor",
+      "metin": "1 Kasım 2026'dan itibaren bordo pasaportla Karadağ'a girmek için Karadağ ya da geçerli Schengen vizesi gerekiyor."
+    }
+  ],
+  "cta": "Kaydet, sonraki tatilini planla.",
+  "cta_alt": "Güncel vize ve rota bilgileri için takip et.",
+  "caption": "Schengen randevusu beklemeden gidebileceğin 5 kış rotası.\n\n• Japonya ve Güney Kore: 90 güne kadar vizesiz.\n• Gürcistan: Yeni tip çipli kimlik kartıyla giriş, pasaport gerekmiyor.\n• Sırbistan ve Tayland: Vizesiz giriş.\n\nDikkat: Karadağ 1 Kasım 2026'dan itibaren Türk vatandaşlarından vize istiyor.\n\nVize muafiyeti girişin garanti olduğu anlamına gelmiyor; son kararı sınır görevlisi veriyor. Kalış süresi, pasaport geçerliliği ve dönüş bileti şartlarını yola çıkmadan resmi kaynaklardan kontrol et.\nBilgiler Kasım 2026 itibarıyla.",
+  "soru": "Bu kış hangisine gidiyorsun?",
+  "ilk_yorum": "#vizesizülkeler #vizesiz #japonya #güneykore #gürcistan #sırbistan #tayland #seyahat",
+  "fotograf_kredisi": "Fotoğraflar: Unsplash (Trac Vu, mos design, Cosmin Serban, Aleksandr Popov, Christine Isakzhanova, Andjela, Anantachai Saothong)",
+  "anket": {
+    "soru": "Vizesiz kış rotası?",
+    "secenek_1": "Uzak Doğu",
+    "secenek_2": "Balkanlar",
+    "foto": "belgrad-kale.jpg"
+  }
+}

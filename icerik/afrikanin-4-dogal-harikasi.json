@@ -1,0 +1,53 @@
+{
+  "slug": "afrikanin-4-dogal-harikasi",
+  "tur": "carousel",
+  "seri": "Rota",
+  "baslik": "Afrika'da başka bir gezegende hissettiren 4 yer",
+  "alt_baslik": "Kızıl kumullar, gürleyen bir şelale ve büyük göç.",
+  "konum": "Afrika",
+  "foto": "namibya-2.jpg",
+  "slaytlar": [
+    {
+      "baslik": "Deadvlei, Namibya",
+      "metin": "Dünyanın en yüksek kumullarından bazılarının arasında, yaklaşık 900 yıldır kurumuş halde ayakta duran ağaçlar.",
+      "fotolar": [
+        "namibya-2.jpg",
+        "namibya-1.jpg"
+      ]
+    },
+    {
+      "baslik": "Victoria Şelalesi",
+      "metin": "Zambiya ile Zimbabve sınırında. Yerel adı 'gürleyen duman'; su buharını kilometrelerce öteden görüyorsun.",
+      "fotolar": [
+        "victoria-2.jpg",
+        "victoria-1.jpg"
+      ]
+    },
+    {
+      "baslik": "Serengeti, Tanzanya",
+      "metin": "Milyonlarca antilop ve zebranın yağmuru takip ettiği Büyük Göç'e safari aracından tanık ol.",
+      "fotolar": [
+        "serengeti-2.jpg",
+        "serengeti-1.jpg",
+        "serengeti-aslan.jpg"
+      ]
+    },
+    {
+      "baslik": "Zanzibar",
+      "metin": "Safariden sonra baharat adası: UNESCO listesindeki Stone Town ve turkuaz Hint Okyanusu.",
+      "foto": "zanzibar-1.jpg"
+    }
+  ],
+  "cta": "Kaydet, Afrika planına ekle.",
+  "cta_alt": "Daha fazla rota için takip et.",
+  "caption": "Afrika'da insanı başka bir gezegende hissettiren 4 yer.\n\n1. Deadvlei (Namibya): Namib-Naukluft Milli Parkı'nda, kızıl kumulların ortasında beyaz bir kil düzlüğü. Ağaçlar yaklaşık 900 yıl önce kurumuş. Sabah erken git, gölgeler en güzel o saatte.\n2. Victoria Şelalesi (Zambiya–Zimbabve): Zambezi Nehri'nin dev bir uçurumdan döküldüğü, UNESCO listesindeki şelale.\n3. Serengeti (Tanzanya): Büyük Göç'e yıl boyunca parkın farklı bölgelerinde tanık olunabiliyor; tarihlere göre kamp seç.\n4. Zanzibar: UNESCO listesindeki Stone Town'un oymalı kapıları ve baharat turları, ardından beyaz kumsallar.\n\nVize ve sağlık (aşı) şartları ülkeye göre değişiyor; yola çıkmadan resmi kaynaklardan kontrol et.\nBilgiler Kasım 2026 itibarıyla.",
+  "soru": "Afrika'da ilk hangisini görmek isterdin?",
+  "ilk_yorum": "#afrika #namibya #deadvlei #victoriafalls #serengeti #zanzibar #safari #seyahat",
+  "fotograf_kredisi": "Fotoğraflar: Unsplash (Bernd Dittrich, Ed Wingate, Andreas Vonlanthen, Jorge Tung, Dawn Westveld, Crystal McClernon, Javi Lorbada)",
+  "anket": {
+    "soru": "Afrika'da hangisi?",
+    "secenek_1": "Safari",
+    "secenek_2": "Çöl",
+    "foto": "serengeti-2.jpg"
+  }
+}
