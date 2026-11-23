@@ -37,5 +37,48 @@
     "secenek_1": "Lezzet",
     "secenek_2": "Tarih",
     "foto": "roma-cepheler.jpg"
+  },
+  "reels": {
+    "kapanis": "Roma'ya giden birine gönder.",
+    "kapanis_alt": "Daha fazla rota ve durak için takip et.",
+    "sahneler": [
+      {
+        "foto": "roma-sokak-turuncu.jpg",
+        "etiket": "Roma, İtalya",
+        "metin": "Roma'ya gidiyorsan bunu kaydet",
+        "alt": "Kalabalığa takılmadan gezmenin 4 kuralı",
+        "sure": 3.4
+      },
+      {
+        "foto": "roma-ispanyol-merdivenleri.jpg",
+        "etiket": "Kural 1",
+        "metin": "Güne erken başla",
+        "alt": "Sabah 8'den önce İspanyol Merdivenleri neredeyse boş."
+      },
+      {
+        "foto": "roma-sokak-bitkiler.jpg",
+        "etiket": "Kural 2",
+        "metin": "Ana caddeden bir sokak içeri gir",
+        "alt": "Fiyatlar düşüyor, menüler İtalyancaya dönüyor."
+      },
+      {
+        "foto": "roma-cepheler.jpg",
+        "etiket": "Küçük bir ipucu",
+        "metin": "Beş dilde, fotoğraflı menü görürsen devam et",
+        "alt": "Bu tür yerler genelde turistlere göre ayarlanmış."
+      },
+      {
+        "foto": "roma-aksam-yemegi.jpg",
+        "etiket": "Kural 3",
+        "metin": "Akşam yemeğini geç ye",
+        "alt": "Romalılar genelde 20:00'den önce masaya oturmaz."
+      },
+      {
+        "foto": "roma-kemer-gece.jpg",
+        "etiket": "Kural 4",
+        "metin": "Suyu sokaktan iç",
+        "alt": "Nasoni denen küçük çeşmelerin suyu içilebilir. Şişeni doldur."
+      }
+    ]
   }
 }

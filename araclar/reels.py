@@ -1,20 +1,28 @@
 #!/usr/bin/env python3
 """@ugrkrakas Reels üreticisi.
 
-icerik/<slug>.json içindeki sahnelerden 1080x1920, 30 fps, sessiz bir MP4 üretir:
-yavaş yakınlaşan fotoğraflar, yumuşak geçişler, sade yazılar ve siyah kapanış kartı.
-
-Sahneler "reels.sahneler" alanından okunur. Yoksa kapak + fotoğraflı slaytlar kullanılır.
+icerik/<slug>.json içindeki "reels.sahneler" listesinden 1080x1920, 30 fps MP4 üretir.
+Her sahne bir fotoğraf ya da bir video klip olabilir; üstüne konuşur gibi yazılmış,
+kısa altyazı tarzı metinler gelir. Sonda siyah bir "kaydet / takip et" kartı vardır.
 
   "reels": {
     "sahneler": [
-      {"foto": "roma-sokak-turuncu.jpg", "ust": "Roma, İtalya", "metin": "Roma'yı yavaş gezmenin 4 kuralı"},
-      {"foto": "roma-ispanyol-merdivenleri.jpg", "ust": "01", "metin": "Güne erken başla"}
-    ],
-    "sahne_suresi": 2.6
+      {"video": "roma-sokak.mp4", "baslangic": 2.0, "sure": 3.0,
+       "metin": "Roma'ya gidiyorsan bunu kaydet"},
+      {"foto": "roma-merdiven.jpg", "etiket": "Kural 1",
+       "metin": "Güne erken başla", "alt": "Sabah 8'den önce merdivenler neredeyse boş."}
+    ]
   }
 
-Müzik eklenmez: Instagram'da telifsiz / trend müzik uygulamadan eklenebilir.
+Alanlar:
+  foto / video   kaynak/ altındaki dosya (biri zorunlu)
+  baslangic      video klipte kaçıncı saniyeden alınacağı (varsayılan 0)
+  sure           sahne süresi, saniye (varsayılan: alt metin varsa 3.6, yoksa 2.8)
+  etiket         küçük üst yazı (Kural 1, 02 gibi)
+  metin          ana cümle
+  alt            ana cümlenin altında beliren detay cümlesi
+
+Müzik eklenmez: müzik Instagram uygulamasından eklenir.
 
 Kullanım:
   python3 araclar/reels.py icerik/<slug>.json
@@ -24,7 +32,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageOps
+from PIL import Image, ImageDraw, ImageFilter, ImageOps
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import uret  # noqa: E402
@@ -32,58 +40,10 @@ import uret  # noqa: E402
 KOK = uret.KOK
 W, H = uret.STORY
 FPS = 30
-GECIS = 0.45  # saniye
-YAKINLASMA = 0.07
-
-
-def sahneleri_al(veri):
-    r = veri.get("reels") or {}
-    if r.get("sahneler"):
-        return r["sahneler"], r.get("sahne_suresi", 2.6)
-    sahneler = [{"foto": veri["foto"], "ust": veri.get("konum", ""), "metin": veri["baslik"]}]
-    for i, s in enumerate(veri.get("slaytlar", []), start=1):
-        if s.get("foto"):
-            sahneler.append({"foto": s["foto"], "ust": f"{i:02d}", "metin": s["baslik"]})
-    return sahneler, r.get("sahne_suresi", 2.6)
-
-
-def taban(foto):
-    """Yakınlaşma için hedeften biraz büyük, alttan karartılmış fotoğraf."""
-    bw, bh = int(W * (1 + YAKINLASMA)), int(H * (1 + YAKINLASMA))
-    img = Image.open(KOK / "kaynak" / foto)
-    img = ImageOps.exif_transpose(img).convert("RGB")
-    img = ImageOps.fit(img, (bw, bh), Image.LANCZOS)
-    return uret.karartma(img, ust=0.35, alt=0.85)
-
-
-def yazi_katmani(sahne):
-    kenar = 90
-    genislik = W - 2 * kenar
-    k = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    bf = uret.font(uret.BASLIK, 104)
-    bh = uret.blok_yuksekligi(sahne["metin"], bf, genislik, 1.08)
-    y = H - 560 - bh
-    if sahne.get("ust"):
-        uret.harfli(k, (kenar, y - 70), sahne["ust"], uret.font(uret.ARA, 30), uret.BEYAZ,
-                    seffaflik=225, hiza="orta", genislik=genislik)
-    uret.yaz(k, (kenar, y), sahne["metin"], bf, uret.BEYAZ, genislik, 1.08, hiza="orta")
-    return k
-
-
-def kapanis(veri):
-    k = Image.new("RGBA", (W, H), (0, 0, 0, 255))
-    kenar = 90
-    genislik = W - 2 * kenar
-    cta = veri.get("cta", "Kaydet, gidince aç.")
-    bf = uret.font(uret.BASLIK, 96)
-    bh = uret.blok_yuksekligi(cta, bf, genislik, 1.08)
-    y = (H - bh) // 2 - 60
-    y = uret.yaz(k, (kenar, y), cta, bf, uret.BEYAZ, genislik, 1.08, hiza="orta") + 36
-    uret.yaz(k, (kenar, y), "Daha fazla rota için takip et.", uret.font(uret.GOVDE, 40),
-             (161, 161, 166), genislik, 1.4, hiza="orta")
-    uret.harfli(k, (kenar, H - 460), uret.HANDLE, uret.font(uret.ARA, 34), uret.BEYAZ,
-                aralik=0.04, hiza="orta", genislik=genislik, buyuk=False)
-    return k.convert("RGB")
+GECIS = 0.35
+YAKINLASMA = 0.06
+KENAR = 96
+GENISLIK = W - 2 * KENAR
 
 
 def yumusak(t):
@@ -91,60 +51,205 @@ def yumusak(t):
     return t * t * (3 - 2 * t)
 
 
-def kare(tabani, katman, ilerleme, yazi_alfa):
-    olcek = 1 + YAKINLASMA * (1 - ilerleme)  # kırpma küçüldükçe görüntü yavaşça yaklaşır
-    cw, ch = int(W * olcek), int(H * olcek)
-    bw, bh = tabani.size
-    x, y = (bw - cw) // 2, (bh - ch) // 2
-    img = tabani.crop((x, y, x + cw, y + ch)).resize((W, H), Image.BILINEAR).convert("RGBA")
-    if yazi_alfa > 0:
-        if yazi_alfa < 1:
-            a = katman.getchannel("A").point(lambda v: int(v * yazi_alfa))
-            gecici = katman.copy()
-            gecici.putalpha(a)
-            img.alpha_composite(gecici)
-        else:
-            img.alpha_composite(katman)
-    return img.convert("RGB")
+# ---------- görüntü kaynakları ----------
+
+class FotoKaynak:
+    def __init__(self, dosya):
+        bw, bh = int(W * (1 + YAKINLASMA)), int(H * (1 + YAKINLASMA))
+        img = ImageOps.exif_transpose(Image.open(KOK / "kaynak" / dosya)).convert("RGB")
+        self.img = ImageOps.fit(img, (bw, bh), Image.LANCZOS)
+
+    def kare(self, ilerleme):
+        olcek = 1 + YAKINLASMA * (1 - ilerleme)
+        cw, ch = int(W * olcek), int(H * olcek)
+        bw, bh = self.img.size
+        x, y = (bw - cw) // 2, (bh - ch) // 2
+        return self.img.crop((x, y, x + cw, y + ch)).resize((W, H), Image.BILINEAR)
+
+    def kapat(self):
+        pass
+
+
+class VideoKaynak:
+    def __init__(self, dosya, baslangic, sure):
+        vf = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS}"
+        self.p = subprocess.Popen(
+            ["ffmpeg", "-loglevel", "error", "-ss", str(baslangic), "-t", str(sure + 0.5),
+             "-i", str(KOK / "kaynak" / dosya), "-vf", vf, "-an",
+             "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
+            stdout=subprocess.PIPE,
+        )
+        self.son = None
+
+    def kare(self, ilerleme):
+        veri = self.p.stdout.read(W * H * 3)
+        if len(veri) == W * H * 3:
+            self.son = Image.frombytes("RGB", (W, H), veri)
+        return self.son if self.son is not None else Image.new("RGB", (W, H))
+
+    def kapat(self):
+        self.p.kill()
+        self.p.wait()
+        self.p.stdout.close()
+
+
+# ---------- yazı katmanları ----------
+
+def _maske():
+    m = Image.new("L", (1, H), 0)
+    for y in range(H):
+        t = y / H
+        a = max(0.35 * max(0.0, 1 - t / 0.28) ** 1.6, 0.8 * max(0.0, (t - 0.42) / 0.58) ** 1.5)
+        m.putpixel((0, y), int(255 * a))
+    return m.resize((W, H))
+
+
+MASKE = _maske()
+SIYAH = Image.new("RGB", (W, H), (0, 0, 0))
+
+
+def karart(img):
+    """Fotoğraf/videonun alt ve üstünü yazı okunacak kadar koyulaştırır."""
+    return Image.composite(SIYAH, img, MASKE)
+
+
+def altyazi_kutusu(metin, fnt, y, katman):
+    """Instagram'ın kendi altyazı stilini andıran, yarı saydam yumuşak kutulu metin."""
+    c = ImageDraw.Draw(katman)
+    sh = int(fnt.size * 1.32)
+    for s in uret.satirlar(metin, fnt, GENISLIK - 60):
+        tw = c.textlength(s, font=fnt)
+        x = (W - tw) / 2
+        c.rounded_rectangle((x - 26, y - 12, x + tw + 26, y + sh - 2), radius=18, fill=(0, 0, 0, 125))
+        c.text((x, y), s, font=fnt, fill=(255, 255, 255, 255))
+        y += sh + 6
+    return y
+
+
+def sahne_katmanlari(sahne, ilk):
+    """(ana metin katmanı, detay metin katmanı) döndürür."""
+    ana = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    alt = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    etiket_f = uret.font(uret.ARA, 30)
+    if ilk:
+        # İlk sahne: büyük, net bir giriş cümlesi (hook) ekranın üst kısmında
+        y = 380
+        if sahne.get("etiket"):
+            uret.harfli(ana, (KENAR, y - 80), sahne["etiket"], etiket_f, uret.BEYAZ,
+                        seffaflik=230, hiza="orta", genislik=GENISLIK)
+        uret.yaz(ana, (KENAR, y), sahne["metin"], uret.font(uret.BASLIK, 108), uret.BEYAZ,
+                 GENISLIK, 1.08, hiza="orta")
+        if sahne.get("alt"):
+            altyazi_kutusu(sahne["alt"], uret.font(uret.KUCUK, 42), H - 640, alt)
+        return ana, alt
+
+    bf = uret.font(uret.BASLIK, 78)
+    af = uret.font(uret.KUCUK, 42)
+    bh = uret.blok_yuksekligi(sahne["metin"], bf, GENISLIK, 1.1)
+    ah = len(uret.satirlar(sahne.get("alt", ""), af, GENISLIK - 60)) * (int(af.size * 1.32) + 6)
+    y = H - 520 - ah - (40 if ah else 0) - bh
+    if sahne.get("etiket"):
+        uret.harfli(ana, (KENAR, y - 70), sahne["etiket"], etiket_f, uret.BEYAZ,
+                    seffaflik=235, hiza="orta", genislik=GENISLIK)
+    y = uret.yaz(ana, (KENAR, y), sahne["metin"], bf, uret.BEYAZ, GENISLIK, 1.1, hiza="orta") + 40
+    if sahne.get("alt"):
+        altyazi_kutusu(sahne["alt"], af, y, alt)
+    return ana, alt
+
+
+def golgeli(katman, guc=0.6, yaricap=18):
+    """Yazının arkasına yumuşak bir gölge ekler; açık renkli fotoğraflarda okunurluğu korur."""
+    a = katman.getchannel("A").filter(ImageFilter.GaussianBlur(yaricap)).point(lambda v: int(min(255, v * guc * 1.6)))
+    golge = Image.new("RGBA", katman.size, (0, 0, 0, 0))
+    golge.putalpha(a)
+    golge.alpha_composite(katman)
+    return golge
+
+
+def alfali(katman, alfa):
+    if alfa >= 1:
+        return katman
+    k = katman.copy()
+    k.putalpha(katman.getchannel("A").point(lambda v: int(v * alfa)))
+    return k
+
+
+def kapanis(veri):
+    r = veri.get("reels", {})
+    k = Image.new("RGBA", (W, H), (0, 0, 0, 255))
+    cta = r.get("kapanis", veri.get("cta", "Kaydet, gidince aç."))
+    bf = uret.font(uret.BASLIK, 96)
+    bh = uret.blok_yuksekligi(cta, bf, GENISLIK, 1.08)
+    y = (H - bh) // 2 - 80
+    y = uret.yaz(k, (KENAR, y), cta, bf, uret.BEYAZ, GENISLIK, 1.08, hiza="orta") + 40
+    uret.yaz(k, (KENAR, y), r.get("kapanis_alt", "Daha fazla rota için takip et."),
+             uret.font(uret.GOVDE, 42), (161, 161, 166), GENISLIK, 1.4, hiza="orta")
+    uret.harfli(k, (KENAR, H - 460), uret.HANDLE, uret.font(uret.ARA, 34), uret.BEYAZ,
+                aralik=0.04, hiza="orta", genislik=GENISLIK, buyuk=False)
+    return k.convert("RGB")
+
+
+# ---------- üretim ----------
+
+def sahneleri_al(veri):
+    r = veri.get("reels") or {}
+    if r.get("sahneler"):
+        return r["sahneler"]
+    sahneler = [{"foto": veri["foto"], "metin": veri["baslik"], "alt": veri.get("alt_baslik", "")}]
+    for i, s in enumerate(veri.get("slaytlar", []), start=1):
+        if s.get("foto"):
+            sahneler.append({"foto": s["foto"], "etiket": f"{i:02d}", "metin": s["baslik"], "alt": s["metin"]})
+    return sahneler
 
 
 def uret_reels(json_yolu):
     veri = json.loads(Path(json_yolu).read_text(encoding="utf-8"))
-    sahneler, sure = sahneleri_al(veri)
+    sahneler = sahneleri_al(veri)
     cikis = KOK / "reels" / f"{veri['slug']}.mp4"
     cikis.parent.mkdir(exist_ok=True)
 
-    ffmpeg = subprocess.Popen(
+    ff = subprocess.Popen(
         ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
          "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
          "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p",
          "-movflags", "+faststart", str(cikis)],
         stdin=subprocess.PIPE,
     )
-
-    hazir = [(taban(s["foto"]), yazi_katmani(s)) for s in sahneler]
-    son = kapanis(veri)
-    n = int(sure * FPS)
     g = int(GECIS * FPS)
-    onceki_son = None
+    onceki = None
 
-    for idx, (tb, kt) in enumerate(hazir):
+    for idx, s in enumerate(sahneler):
+        sure = s.get("sure", 3.6 if s.get("alt") else 2.8)
+        n = int(sure * FPS)
+        if s.get("video"):
+            kaynak = VideoKaynak(s["video"], s.get("baslangic", 0), sure)
+        else:
+            kaynak = FotoKaynak(s["foto"])
+        ana, alt = sahne_katmanlari(s, idx == 0)
+        ana = golgeli(ana)
         for f in range(n):
-            ilerleme = f / (n - 1)
-            alfa = yumusak((f - 6) / 12)  # yazı 0.2 sn sonra 0.4 sn'de belirir
-            img = kare(tb, kt, ilerleme, alfa)
-            if onceki_son is not None and f < g:
-                img = Image.blend(onceki_son, img, yumusak(f / g))
+            img = karart(kaynak.kare(f / max(1, n - 1))).convert("RGBA")
+            a1 = yumusak((f - 4) / 9)
+            a2 = yumusak((f - 22) / 9)  # detay cümlesi ~0.7 sn sonra gelir
+            if a1 > 0:
+                img.alpha_composite(alfali(ana, a1))
+            if a2 > 0:
+                img.alpha_composite(alfali(alt, a2))
+            img = img.convert("RGB")
+            if onceki is not None and f < g:
+                img = Image.blend(onceki, img, yumusak(f / g))
             if f == n - 1:
-                onceki_son = img
-            ffmpeg.stdin.write(img.tobytes())
+                onceki = img
+            ff.stdin.write(img.tobytes())
+        kaynak.kapat()
 
-    for f in range(int(2.2 * FPS)):
-        img = son if f >= g else Image.blend(onceki_son, son, yumusak(f / g))
-        ffmpeg.stdin.write(img.tobytes())
+    son = kapanis(veri)
+    for f in range(int(2.4 * FPS)):
+        img = son if f >= g else Image.blend(onceki, son, yumusak(f / g))
+        ff.stdin.write(img.tobytes())
 
-    ffmpeg.stdin.close()
-    ffmpeg.wait()
+    ff.stdin.close()
+    ff.wait()
     print("  ", cikis.relative_to(KOK))
 
 
