@@ -189,6 +189,19 @@ def alfali(katman, alfa):
     return k
 
 
+def isaret_katmani():
+    """Sağ üstte sabit @ugrkrakas imzası (kapanış kartı hariç tüm karelerde)."""
+    k = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    c = ImageDraw.Draw(k)
+    f = uret.font(uret.KUCUK, 34)
+    hw = c.textlength(uret.HANDLE, font=f)
+    c.text((W - KENAR + 36 - hw, 150), uret.HANDLE, font=f, fill=uret.BEYAZ + (225,))
+    return golgeli(k, guc=0.5, yaricap=10)
+
+
+ISARET = None
+
+
 def kapanis(veri):
     r = veri.get("reels", {})
     k = Image.new("RGBA", (W, H), (0, 0, 0, 255))
@@ -218,6 +231,9 @@ def sahneleri_al(veri):
 
 
 def uret_reels(json_yolu):
+    global ISARET
+    if ISARET is None:
+        ISARET = isaret_katmani()
     veri = json.loads(Path(json_yolu).read_text(encoding="utf-8"))
     sahneler = sahneleri_al(veri)
     cikis = KOK / "reels" / f"{veri['slug']}.mp4"
@@ -266,6 +282,7 @@ def uret_reels(json_yolu):
                         img.alpha_composite(alfali(ana, a1))
                     if a2 > 0:
                         img.alpha_composite(alfali(alt, a2))
+                    img.alpha_composite(ISARET)
                     img = img.convert("RGB")
                     onceki = img
                     ff.stdin.write(img.tobytes())
@@ -292,6 +309,7 @@ def uret_reels(json_yolu):
                 img.alpha_composite(alfali(ana, a1))
             if a2 > 0:
                 img.alpha_composite(alfali(alt, a2))
+            img.alpha_composite(ISARET)
             img = img.convert("RGB")
             if onceki is not None and f < g:
                 img = Image.blend(onceki, img, yumusak(f / g))
