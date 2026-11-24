@@ -82,12 +82,24 @@ class FotoKaynak:
         pass
 
 
+RENKLER = {
+    # varsayılan: canlı ve net
+    None: "eq=contrast=1.06:saturation=1.12,unsharp=5:5:0.6",
+    # film: sıcak, hafif soluk, yumuşak kontrast, ince vinyet ve gren (belgesel / Apple havası)
+    "film": ("eq=contrast=1.03:saturation=0.86:gamma=1.03:brightness=0.01,"
+             "colorbalance=rs=0.05:bs=-0.05:rm=0.03:bm=-0.03:rh=0.02:bh=-0.03,"
+             "curves=all='0/0.03 0.5/0.5 1/0.97',vignette=angle=PI/6,"
+             "unsharp=5:5:0.4,noise=alls=3:allf=t"),
+}
+RENK = RENKLER[None]
+
+
 class VideoKaynak:
     """Video klip: dikey kadraja kırpılır, istenirse yavaşlatılır (sinematik), hafif renk derecelendirmesi."""
     def __init__(self, dosya, baslangic, sure, hiz=1.0, odak_x=0.5):
         vf = (f"setpts=PTS/{hiz},scale={W}:{H}:force_original_aspect_ratio=increase,"
               f"crop={W}:{H}:(iw-{W})*{odak_x}:(ih-{H})/2,fps={FPS},"
-              "eq=contrast=1.06:saturation=1.12,unsharp=5:5:0.6")
+              + RENK)
         self.p = subprocess.Popen(
             ["ffmpeg", "-loglevel", "error", "-ss", str(baslangic), "-t", str(sure * hiz + 0.5),
              "-i", str(KOK / "kaynak" / dosya), "-vf", vf, "-an",
@@ -231,10 +243,11 @@ def sahneleri_al(veri):
 
 
 def uret_reels(json_yolu):
-    global ISARET
+    global ISARET, RENK
     if ISARET is None:
         ISARET = isaret_katmani()
     veri = json.loads(Path(json_yolu).read_text(encoding="utf-8"))
+    RENK = RENKLER[veri.get("reels", {}).get("renk")]
     sahneler = sahneleri_al(veri)
     cikis = KOK / "reels" / f"{veri['slug']}.mp4"
     cikis.parent.mkdir(exist_ok=True)
