@@ -1,0 +1,131 @@
+{
+  "slug": "hindistan-trenleri",
+  "tur": "reels",
+  "seri": "Sokaktan",
+  "baslik": "Kapıyı tutan kazanır",
+  "alt_baslik": "Hindistan'da trenlerin bir günü.",
+  "konum": "Hindistan",
+  "foto": "hindistan-tren-peron.jpg",
+  "caption": "Hindistan'da trenler yılda 7 milyardan fazla yolcu taşıyor. Trenlerle geçen bir günün içinden:\n\n1. Chhatrapati Shivaji Terminus, Mumbai: 19. yüzyıldan kalma, UNESCO Dünya Mirası listesindeki istasyon. Hâlâ her gün çalışıyor.\n2. Peron: Tren yanaşınca bekleyiş bir anda koşuşturmaya dönüyor.\n3. Kapı: Yer kapmak için kimi trene raylar tarafından biniyor.\n4. Pencere: Uzun yol trenlerinde yolculuk saatler, bazen günler sürüyor.\n\nYolcu sayısı Hindistan Demiryolları'nın 2025–26 verisine dayanıyor.",
+  "soru": "Bu trene binmeye cesaret eder miydin?",
+  "ilk_yorum": "#hindistan #india #mumbai #indianrailways #tren #sokaktan #seyahat",
+  "fotograf_kredisi": "Video: Pexels · Müzik: Alex Morgan (Pixabay)",
+  "anket": {
+    "soru": "Bu trene biner miydin?",
+    "secenek_1": "Hemen",
+    "secenek_2": "Asla",
+    "foto": "hindistan-tren-kapi.jpg"
+  },
+  "ogle": {
+    "ust": "Biliyor muydun?",
+    "metin": "Mumbai'deki Chhatrapati Shivaji Terminus, UNESCO Dünya Mirası listesinde ve hâlâ her gün çalışan bir istasyon.",
+    "foto": "hindistan-csmt.jpg"
+  },
+  "sabah": {
+    "ust": "Sokaktan",
+    "yer": "Chhatrapati Shivaji Terminus",
+    "bolge": "Mumbai, Hindistan",
+    "metin": "Gotik ve Hint mimarisini buluşturan 19. yüzyıl istasyonu. Bugün de şehrin en işlek noktalarından biri.",
+    "foto": "hindistan-csmt.jpg"
+  },
+  "reels": {
+    "muzik": {
+      "dosya": "muzik/sitar-alex-morgan.mp3",
+      "bpm": 92.3,
+      "baslangic": 29.4
+    },
+    "kapanis": "Kaydet, bir gün o perondasın.",
+    "kapanis_alt": "Daha fazla sokak hikayesi için takip et.",
+    "sahneler": [
+      {
+        "fotolar": [
+          {
+            "video": "video/mumbai-treni/14773281_720_1280_60fps.mp4",
+            "baslangic": 2,
+            "vurus": 6,
+            "odak_x": 0.5
+          },
+          {
+            "video": "video/mumbai-treni/6023186-hd_1920_1080_30fps.mp4",
+            "baslangic": 12,
+            "vurus": 4,
+            "odak_x": 0.6
+          }
+        ],
+        "etiket": "Hindistan",
+        "metin": "Bu trenler yılda 7 milyardan fazla yolcu taşıyor",
+        "alt": "Burada tren, bir ulaşım aracından fazlası."
+      },
+      {
+        "fotolar": [
+          {
+            "video": "video/mumbai-treni/15074518_1280_720_60fps.mp4",
+            "baslangic": 0,
+            "vurus": 4,
+            "odak_x": 0.5
+          },
+          {
+            "video": "video/mumbai-treni/12979657_1280_720_30fps.mp4",
+            "baslangic": 2,
+            "vurus": 3,
+            "odak_x": 0.5
+          }
+        ],
+        "etiket": "Mumbai",
+        "metin": "Her şey bu binada başlıyor",
+        "alt": "Chhatrapati Shivaji Terminus. UNESCO Dünya Mirası, hâlâ her gün çalışıyor."
+      },
+      {
+        "fotolar": [
+          {
+            "video": "video/mumbai-treni/14970637_1280_720_60fps.mp4",
+            "baslangic": 1,
+            "vurus": 3,
+            "odak_x": 0.55
+          },
+          {
+            "video": "video/mumbai-treni/6023186-hd_1920_1080_30fps.mp4",
+            "baslangic": 20,
+            "vurus": 4,
+            "odak_x": 0.6
+          }
+        ],
+        "etiket": "Peron",
+        "metin": "Önce bekleyiş",
+        "alt": "Tren yanaşınca peron bir anda hareketleniyor."
+      },
+      {
+        "fotolar": [
+          {
+            "video": "video/mumbai-treni/14973384_1280_720_60fps.mp4",
+            "baslangic": 2,
+            "vurus": 4,
+            "odak_x": 0.4
+          },
+          {
+            "video": "video/mumbai-treni/14970851_1280_720_60fps.mp4",
+            "baslangic": 3,
+            "vurus": 4,
+            "odak_x": 0.62
+          }
+        ],
+        "etiket": "Kapı",
+        "metin": "Kapıyı tutan kazanır",
+        "alt": "Kimi yer kapmak için trene raylar tarafından biniyor."
+      },
+      {
+        "fotolar": [
+          {
+            "video": "video/mumbai-treni/14973368_1280_720_60fps.mp4",
+            "baslangic": 1,
+            "vurus": 5,
+            "odak_x": 0.5
+          }
+        ],
+        "etiket": "Yolculuk",
+        "metin": "Her pencerede bir hikaye",
+        "alt": "Uzun yol trenlerinde yolculuk saatler, bazen günler sürüyor."
+      }
+    ]
+  }
+}
