@@ -13,12 +13,20 @@
       "fotolar": [
         "tokyo-shibuya-1.jpg",
         "tokyo-teamlab-2.jpg"
+      ],
+      "detay": [
+        "90 güne kadar vizesiz",
+        "Kışın: Tokyo'nun neonları ve kaplıcalar"
       ]
     },
     {
       "baslik": "Güney Kore",
       "metin": "90 güne kadar vizesiz. Seul'de saraylar, sokak lezzetleri ve kış ışıkları.",
-      "foto": "seul-saray.jpg"
+      "foto": "seul-saray.jpg",
+      "detay": [
+        "90 güne kadar vizesiz",
+        "Kışın: saraylar, sokak lezzetleri, kış ışıkları"
+      ]
     },
     {
       "baslik": "Gürcistan",
@@ -26,21 +34,37 @@
       "fotolar": [
         "tiflis-gunbatimi.jpg",
         "tiflis-hacapuri.jpg"
+      ],
+      "detay": [
+        "Yeni tip çipli kimlik kartıyla giriş",
+        "Pasaport gerekmiyor"
       ]
     },
     {
       "baslik": "Sırbistan",
       "metin": "Vizesiz. Belgrad'da Tuna ve Sava'nın buluştuğu kaleden gün batımı.",
-      "foto": "belgrad-kale.jpg"
+      "foto": "belgrad-kale.jpg",
+      "detay": [
+        "Vizesiz giriş",
+        "Belgrad: Tuna ile Sava'nın buluştuğu kale"
+      ]
     },
     {
       "baslik": "Tayland",
       "metin": "Vizesiz giriş. Avrupa kışından kaçıp tapınaklar ve tropik adalar.",
-      "foto": "bangkok-wat-arun.jpg"
+      "foto": "bangkok-wat-arun.jpg",
+      "detay": [
+        "Vizesiz giriş",
+        "Tapınaklar ve tropik adalar"
+      ]
     },
     {
       "baslik": "Dikkat: Karadağ artık vize istiyor",
-      "metin": "1 Kasım 2026'dan itibaren bordo pasaportla Karadağ'a girmek için Karadağ ya da geçerli Schengen vizesi gerekiyor."
+      "metin": "1 Kasım 2026'dan itibaren bordo pasaportla Karadağ'a girmek için Karadağ ya da geçerli Schengen vizesi gerekiyor.",
+      "detay": [
+        "1 Kasım 2026'dan itibaren vize gerekiyor",
+        "Karadağ vizesi ya da geçerli Schengen vizesi"
+      ]
     }
   ],
   "cta": "Kaydet, sonraki tatilini planla.",

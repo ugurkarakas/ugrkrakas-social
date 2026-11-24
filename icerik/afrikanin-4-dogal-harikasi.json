@@ -13,6 +13,11 @@
       "fotolar": [
         "namibya-2.jpg",
         "namibya-1.jpg"
+      ],
+      "detay": [
+        "Nerede: Namib-Naukluft Milli Parkı",
+        "Kızıl kumulların ortasında beyaz kil düzlüğü",
+        "İpucu: sabah erken git, gölgeler en güzel o saatte"
       ]
     },
     {
@@ -21,6 +26,11 @@
       "fotolar": [
         "victoria-2.jpg",
         "victoria-1.jpg"
+      ],
+      "detay": [
+        "Nerede: Zambiya–Zimbabve sınırı",
+        "Zambezi Nehri dev bir uçurumdan dökülüyor",
+        "UNESCO Dünya Mirası listesinde"
       ]
     },
     {
@@ -30,12 +40,22 @@
         "serengeti-2.jpg",
         "serengeti-1.jpg",
         "serengeti-aslan.jpg"
+      ],
+      "detay": [
+        "Nerede: kuzey Tanzanya",
+        "Büyük Göç yıl boyunca parkın farklı bölgelerinde",
+        "İpucu: kampını göçün tarihlerine göre seç"
       ]
     },
     {
       "baslik": "Zanzibar",
       "metin": "Safariden sonra baharat adası: UNESCO listesindeki Stone Town ve turkuaz Hint Okyanusu.",
-      "foto": "zanzibar-1.jpg"
+      "foto": "zanzibar-1.jpg",
+      "detay": [
+        "Stone Town: UNESCO listesinde, oymalı kapılar",
+        "Baharat turları",
+        "Ardından beyaz kumsallar ve Hint Okyanusu"
+      ]
     }
   ],
   "cta": "Kaydet, Afrika planına ekle.",
