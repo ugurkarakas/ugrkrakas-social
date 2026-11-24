@@ -1,6 +1,6 @@
 {
   "slug": "avrupanin-esrarengiz-yerleri",
-  "tur": "reels",
+  "tur": "carousel",
   "seri": "Rota",
   "baslik": "Bu kuyu hiç su için kazılmadı",
   "alt_baslik": "Avrupa'nın en esrarengiz 4 yeri.",
@@ -65,7 +65,6 @@
     "metin": "9 katlı sarmal merdiveniyle, hiç su için kullanılmamış gizemli bir kuyu.",
     "foto": "sintra-kuyu-2.jpg"
   },
-  "tur_onceki": "carousel",
   "reels": {
     "muzik": {
       "tarz": "aksam",

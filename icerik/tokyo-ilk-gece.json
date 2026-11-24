@@ -1,6 +1,6 @@
 {
   "slug": "tokyo-ilk-gece",
-  "tur": "reels",
+  "tur": "carousel",
   "seri": "Deneyim rehberi",
   "baslik": "Tokyo'ya 229 metreden bak",
   "alt_baslik": "İlk gece yapılacak 3 şey. Japonya'ya vizesiz.",
@@ -58,7 +58,6 @@
     "metin": "229 metrede açık hava teras. Şehrin üzerinde gün batımı izlemek için en sevilen noktalardan biri.",
     "foto": "tokyo-shibuya-yuksek.jpg"
   },
-  "tur_onceki": "carousel",
   "reels": {
     "muzik": {
       "tarz": "enerji",

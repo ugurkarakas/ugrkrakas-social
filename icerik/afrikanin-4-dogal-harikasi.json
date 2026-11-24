@@ -1,6 +1,6 @@
 {
   "slug": "afrikanin-4-dogal-harikasi",
-  "tur": "reels",
+  "tur": "carousel",
   "seri": "Rota",
   "baslik": "900 yıldır ölü, hâlâ ayakta",
   "alt_baslik": "Afrika'da başka bir gezegende hissettiren 4 yer.",
@@ -62,7 +62,6 @@
     "metin": "Dünyanın en yüksek kumullarından bazılarının arasında, yaklaşık 900 yıldır ayakta duran kurumuş ağaçlar.",
     "foto": "namibya-2.jpg"
   },
-  "tur_onceki": "carousel",
   "reels": {
     "muzik": {
       "tarz": "tropik",
