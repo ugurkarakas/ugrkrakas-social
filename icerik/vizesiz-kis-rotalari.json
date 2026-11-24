@@ -1,6 +1,6 @@
 {
   "slug": "vizesiz-kis-rotalari",
-  "tur": "carousel",
+  "tur": "reels",
   "seri": "Pratik bilgi",
   "baslik": "Randevu beklemeden gidebileceğin 5 ülke",
   "alt_baslik": "Karadağ artık bu listede değil.",
@@ -66,5 +66,74 @@
     "bolge": "Bangkok, Tayland",
     "metin": "Chao Phraya Nehri kıyısındaki 'Şafak Tapınağı'. Gün batımında karşı kıyıdan izlemeye değer.",
     "foto": "bangkok-wat-arun.jpg"
+  },
+  "tur_onceki": "carousel",
+  "reels": {
+    "muzik": {
+      "tarz": "yaz",
+      "tohum": 7
+    },
+    "renk": "film",
+    "kapanis": "Kaydet, sonraki tatilini planla.",
+    "kapanis_alt": "Güncel vize ve rota bilgileri için takip et.",
+    "sahneler": [
+      {
+        "fotolar": [
+          {
+            "foto": "tokyo-shibuya-1.jpg",
+            "vurus": 3
+          },
+          "seul-saray.jpg",
+          "tiflis-gunbatimi.jpg",
+          "belgrad-kale.jpg"
+        ],
+        "vurus_basina": 1,
+        "etiket": "Vizesiz rotalar",
+        "metin": "Randevu beklemeden gidebileceğin 5 ülke",
+        "alt": "Gitmeden kaydet."
+      },
+      {
+        "fotolar": [
+          "tokyo-shibuya-1.jpg",
+          "tokyo-teamlab-2.jpg"
+        ],
+        "etiket": "01",
+        "metin": "Japonya",
+        "alt": "90 güne kadar vizesiz."
+      },
+      {
+        "fotolar": [
+          "seul-saray.jpg"
+        ],
+        "etiket": "02",
+        "metin": "Güney Kore",
+        "alt": "90 güne kadar vizesiz."
+      },
+      {
+        "fotolar": [
+          "tiflis-gunbatimi.jpg",
+          "tiflis-hacapuri.jpg"
+        ],
+        "etiket": "03",
+        "metin": "Gürcistan",
+        "alt": "Pasaport bile gerekmiyor: yeni tip çipli kimlik kartıyla giriş yapılabiliyor."
+      },
+      {
+        "fotolar": [
+          "belgrad-kale.jpg"
+        ],
+        "etiket": "04",
+        "metin": "Sırbistan",
+        "alt": "Vizesiz."
+      },
+      {
+        "fotolar": [
+          "bangkok-wat-arun.jpg"
+        ],
+        "etiket": "05",
+        "metin": "Tayland",
+        "alt": "Vizesiz giriş."
+      }
+    ]
   }
 }

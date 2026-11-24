@@ -1,6 +1,6 @@
 {
   "slug": "avrupanin-esrarengiz-yerleri",
-  "tur": "carousel",
+  "tur": "reels",
   "seri": "Rota",
   "baslik": "Bu kuyu hiç su için kazılmadı",
   "alt_baslik": "Avrupa'nın en esrarengiz 4 yeri.",
@@ -64,5 +64,69 @@
     "bolge": "Sintra, Portekiz",
     "metin": "9 katlı sarmal merdiveniyle, hiç su için kullanılmamış gizemli bir kuyu.",
     "foto": "sintra-kuyu-2.jpg"
+  },
+  "tur_onceki": "carousel",
+  "reels": {
+    "muzik": {
+      "tarz": "aksam",
+      "tohum": 7
+    },
+    "renk": "film",
+    "kapanis": "Kaydet, Avrupa planına ekle.",
+    "kapanis_alt": "Daha fazla rota için takip et.",
+    "sahneler": [
+      {
+        "fotolar": [
+          {
+            "foto": "sintra-kuyu-2.jpg",
+            "vurus": 3
+          },
+          "meteora-1.jpg",
+          "matera-1.jpg",
+          "msm-1.jpg"
+        ],
+        "vurus_basina": 1,
+        "etiket": "Avrupa",
+        "metin": "Bu kuyu hiç su için kazılmadı",
+        "alt": "Gitmeden kaydet."
+      },
+      {
+        "fotolar": [
+          "sintra-kuyu-2.jpg",
+          "sintra-kuyu-1.jpg",
+          "sintra-tunel.jpg"
+        ],
+        "etiket": "01",
+        "metin": "Sintra'da ters kule",
+        "alt": "Quinta da Regaleira'daki İnisiyasyon Kuyusu hiç su için kullanılmadı."
+      },
+      {
+        "fotolar": [
+          "meteora-1.jpg",
+          "meteora-2.jpg"
+        ],
+        "etiket": "02",
+        "metin": "Meteora'da gökyüzü manastırları",
+        "alt": "Yunanistan'da dev kaya sütunlarının tepesine kurulmuş manastırlar."
+      },
+      {
+        "fotolar": [
+          "matera-1.jpg",
+          "matera-2.jpg"
+        ],
+        "etiket": "03",
+        "metin": "Matera'da mağara şehir",
+        "alt": "İtalya'nın güneyinde, kayaya oyulmuş Sassi evleri."
+      },
+      {
+        "fotolar": [
+          "msm-1.jpg",
+          "msm-2.jpg"
+        ],
+        "etiket": "04",
+        "metin": "Mont-Saint-Michel",
+        "alt": "Normandiya'da gelgitle birlikte denizin çevrelediği bir ada ve tepesinde bin yıllık bir manastır."
+      }
+    ]
   }
 }

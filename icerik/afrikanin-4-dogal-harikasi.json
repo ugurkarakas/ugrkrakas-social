@@ -1,6 +1,6 @@
 {
   "slug": "afrikanin-4-dogal-harikasi",
-  "tur": "carousel",
+  "tur": "reels",
   "seri": "Rota",
   "baslik": "900 yıldır ölü, hâlâ ayakta",
   "alt_baslik": "Afrika'da başka bir gezegende hissettiren 4 yer.",
@@ -61,5 +61,68 @@
     "bolge": "Namibya",
     "metin": "Dünyanın en yüksek kumullarından bazılarının arasında, yaklaşık 900 yıldır ayakta duran kurumuş ağaçlar.",
     "foto": "namibya-2.jpg"
+  },
+  "tur_onceki": "carousel",
+  "reels": {
+    "muzik": {
+      "tarz": "tropik",
+      "tohum": 7
+    },
+    "renk": "film",
+    "kapanis": "Kaydet, Afrika planına ekle.",
+    "kapanis_alt": "Daha fazla rota için takip et.",
+    "sahneler": [
+      {
+        "fotolar": [
+          {
+            "foto": "namibya-2.jpg",
+            "vurus": 3
+          },
+          "victoria-2.jpg",
+          "serengeti-2.jpg",
+          "zanzibar-1.jpg"
+        ],
+        "vurus_basina": 1,
+        "etiket": "Afrika",
+        "metin": "900 yıldır ölü, hâlâ ayakta",
+        "alt": "Gitmeden kaydet."
+      },
+      {
+        "fotolar": [
+          "namibya-2.jpg",
+          "namibya-1.jpg"
+        ],
+        "etiket": "01",
+        "metin": "Deadvlei, Namibya",
+        "alt": "Dünyanın en yüksek kumullarından bazılarının arasında, yaklaşık 900 yıldır kurumuş halde ayakta duran ağaçlar."
+      },
+      {
+        "fotolar": [
+          "victoria-2.jpg",
+          "victoria-1.jpg"
+        ],
+        "etiket": "02",
+        "metin": "Victoria Şelalesi",
+        "alt": "Zambiya ile Zimbabve sınırında."
+      },
+      {
+        "fotolar": [
+          "serengeti-2.jpg",
+          "serengeti-1.jpg",
+          "serengeti-aslan.jpg"
+        ],
+        "etiket": "03",
+        "metin": "Serengeti, Tanzanya",
+        "alt": "Milyonlarca antilop ve zebranın yağmuru takip ettiği Büyük Göç'e safari aracından tanık ol."
+      },
+      {
+        "fotolar": [
+          "zanzibar-1.jpg"
+        ],
+        "etiket": "04",
+        "metin": "Zanzibar",
+        "alt": "Safariden sonra baharat adası: UNESCO listesindeki Stone Town ve turkuaz Hint Okyanusu."
+      }
+    ]
   }
 }

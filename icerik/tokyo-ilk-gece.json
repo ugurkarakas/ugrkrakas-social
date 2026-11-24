@@ -1,6 +1,6 @@
 {
   "slug": "tokyo-ilk-gece",
-  "tur": "carousel",
+  "tur": "reels",
   "seri": "Deneyim rehberi",
   "baslik": "Tokyo'ya 229 metreden bak",
   "alt_baslik": "İlk gece yapılacak 3 şey. Japonya'ya vizesiz.",
@@ -57,5 +57,60 @@
     "bolge": "Tokyo, Japonya",
     "metin": "229 metrede açık hava teras. Şehrin üzerinde gün batımı izlemek için en sevilen noktalardan biri.",
     "foto": "tokyo-shibuya-yuksek.jpg"
+  },
+  "tur_onceki": "carousel",
+  "reels": {
+    "muzik": {
+      "tarz": "enerji",
+      "tohum": 7
+    },
+    "renk": "film",
+    "kapanis": "Kaydet, Tokyo'da aç.",
+    "kapanis_alt": "Daha fazla rota ve deneyim için takip et.",
+    "sahneler": [
+      {
+        "fotolar": [
+          {
+            "foto": "tokyo-shibuya-yuksek.jpg",
+            "vurus": 3
+          },
+          "tokyo-shibuya-1.jpg",
+          "tokyo-teamlab-2.jpg"
+        ],
+        "vurus_basina": 1,
+        "etiket": "Tokyo, Japonya",
+        "metin": "Tokyo'ya 229 metreden bak",
+        "alt": "Gitmeden kaydet."
+      },
+      {
+        "fotolar": [
+          "tokyo-shibuya-yuksek.jpg",
+          "tokyo-shibuya-ust.jpg",
+          "tokyo-shibuya-1.jpg"
+        ],
+        "etiket": "01",
+        "metin": "Shibuya Sky'dan şehre bak",
+        "alt": "229 metrede açık hava teras."
+      },
+      {
+        "fotolar": [
+          "tokyo-shibuya-1.jpg",
+          "tokyo-shibuya-ust.jpg"
+        ],
+        "etiket": "02",
+        "metin": "Shibuya Kavşağı'na karış",
+        "alt": "Dünyanın en ünlü yaya geçitlerinden biri."
+      },
+      {
+        "fotolar": [
+          "tokyo-teamlab-2.jpg",
+          "tokyo-teamlab-1.jpg",
+          "tokyo-teamlab-3.jpg"
+        ],
+        "etiket": "03",
+        "metin": "teamLab'in dijital dünyası",
+        "alt": "Işık ve sudan oluşan dev eserlerin içinde yürüyorsun."
+      }
+    ]
   }
 }
