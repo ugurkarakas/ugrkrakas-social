@@ -41,7 +41,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter, ImageOps
+from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import muzik  # noqa: E402
@@ -143,9 +143,44 @@ MASKE = _maske()
 SIYAH = Image.new("RGB", (W, H), (0, 0, 0))
 
 
+MEKTUP = False  # "stil": "mektup" -> yazısız, serif başlıklı sinematik seyahat filmi
+MASKE_HAFIF = MASKE.point(lambda v: int(v * 0.35))
+
+
 def karart(img):
     """Fotoğraf/videonun alt ve üstünü yazı okunacak kadar koyulaştırır."""
-    return Image.composite(SIYAH, img, MASKE)
+    return Image.composite(SIYAH, img, MASKE_HAFIF if MEKTUP else MASKE)
+
+
+def serif(boyut, agirlik="Medium", italik=False):
+    f = ImageFont.truetype(str(uret.FONT / ("CormorantGaramond-Italic.ttf" if italik else "CormorantGaramond.ttf")), boyut)
+    f.set_variation_by_axes([{"Light": 300, "Regular": 400, "Medium": 500, "SemiBold": 600, "Bold": 700}[agirlik]])
+    return f
+
+
+def mektup_katmanlari(sahne, ilk):
+    """Mektup stili: ilk sahnede ortada büyük serif başlık, diğerlerinde (varsa) küçük italik not."""
+    ana = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    alt = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    if ilk:
+        bf = serif(190, "Medium")
+        metin = sahne["metin"].upper()
+        c = ImageDraw.Draw(ana)
+        # geniş harf aralığı
+        ara = 18
+        gen = sum(c.textlength(ch, font=bf) for ch in metin) + ara * (len(metin) - 1)
+        x, y = (W - gen) / 2, H * 0.40
+        for ch in metin:
+            c.text((x, y), ch, font=bf, fill=uret.BEYAZ + (245,))
+            x += c.textlength(ch, font=bf) + ara
+        if sahne.get("alt"):
+            uret.yaz(ana, (KENAR, int(y + 240)), sahne["alt"], serif(66, "Medium", True), uret.BEYAZ,
+                     GENISLIK, 1.2, hiza="orta")
+        return ana, alt
+    if sahne.get("metin"):
+        uret.yaz(ana, (KENAR, H - 560), sahne["metin"], serif(64, "Regular", True), uret.BEYAZ,
+                 GENISLIK, 1.2, hiza="orta")
+    return ana, alt
 
 
 def altyazi_kutusu(metin, fnt, y, katman):
@@ -163,6 +198,8 @@ def altyazi_kutusu(metin, fnt, y, katman):
 
 def sahne_katmanlari(sahne, ilk):
     """(ana metin katmanı, detay metin katmanı) döndürür."""
+    if MEKTUP:
+        return mektup_katmanlari(sahne, ilk)
     ana = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     alt = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     etiket_f = uret.font(uret.ARA, 30)
@@ -224,6 +261,15 @@ ISARET = None
 
 def kapanis(veri):
     r = veri.get("reels", {})
+    if MEKTUP:
+        k = Image.new("RGBA", (W, H), (0, 0, 0, 255))
+        y = uret.yaz(k, (KENAR, H // 2 - 140), r.get("kapanis", ""), serif(96, "Medium", True),
+                     uret.BEYAZ, GENISLIK, 1.15, hiza="orta") + 50
+        uret.yaz(k, (KENAR, y), r.get("kapanis_alt", ""), uret.font(uret.GOVDE, 38), (161, 161, 166),
+                 GENISLIK, 1.4, hiza="orta")
+        uret.harfli(k, (KENAR, H - 460), uret.HANDLE, uret.font(uret.ARA, 34), uret.BEYAZ,
+                    aralik=0.04, hiza="orta", genislik=GENISLIK, buyuk=False)
+        return k.convert("RGB")
     k = Image.new("RGBA", (W, H), (0, 0, 0, 255))
     cta = r.get("kapanis", veri.get("cta", "Kaydet, gidince aç."))
     bf = uret.font(uret.BASLIK, 96)
@@ -251,11 +297,12 @@ def sahneleri_al(veri):
 
 
 def uret_reels(json_yolu):
-    global ISARET, RENK
+    global ISARET, RENK, MEKTUP
     if ISARET is None:
         ISARET = isaret_katmani()
     veri = json.loads(Path(json_yolu).read_text(encoding="utf-8"))
     RENK = RENKLER[veri.get("reels", {}).get("renk")]
+    MEKTUP = veri.get("reels", {}).get("stil") == "mektup"
     sahneler = sahneleri_al(veri)
     cikis = KOK / "reels" / f"{veri['slug']}.mp4"
     cikis.parent.mkdir(exist_ok=True)
