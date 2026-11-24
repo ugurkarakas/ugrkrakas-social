@@ -27,13 +27,6 @@
       {
         "fotolar": [
           {
-            "video": "video/lap-v-aurora.mp4",
-            "baslangic": 11.8,
-            "vurus": 4,
-            "odak_x": 0.5,
-            "hiz": 1.0
-          },
-          {
             "video": "video/lap-v-kizak-2.mp4",
             "baslangic": 3.5,
             "vurus": 3,
@@ -41,6 +34,13 @@
             "hiz": 1.0
           },
           "laponya-aurora-3.jpg",
+          {
+            "video": "video/lap-v-aurora.mp4",
+            "baslangic": 11.8,
+            "vurus": 3,
+            "odak_x": 0.5,
+            "hiz": 1.0
+          },
           "laponya-husky-1.jpg"
         ],
         "etiket": "Laponya, Finlandiya",
@@ -52,7 +52,7 @@
           {
             "video": "video/lap-v-aurora.mp4",
             "baslangic": 8,
-            "vurus": 4,
+            "vurus": 3,
             "odak_x": 0.65,
             "hiz": 1.0
           },
@@ -90,14 +90,14 @@
           {
             "video": "video/lap-v-kizak-1.mp4",
             "baslangic": 0.3,
-            "vurus": 4,
+            "vurus": 3,
             "odak_x": 0.5,
             "hiz": 0.9
           },
           {
             "video": "video/lap-v-kizak-2.mp4",
             "baslangic": 0.5,
-            "vurus": 4,
+            "vurus": 3,
             "odak_x": 0.5,
             "hiz": 0.85
           },
@@ -107,7 +107,8 @@
         "metin": "Husky kızağıyla karlı ormana dal",
         "alt": "Laponya'nın en eğlenceli deneyimlerinden biri."
       }
-    ]
+    ],
+    "renk": "film"
   },
   "ogle": {
     "ust": "Biliyor muydun?",

@@ -44,54 +44,60 @@
       {
         "fotolar": [
           {
-            "video": "video/dakka-vapurlari/13026966_1280_720_30fps.mp4",
-            "baslangic": 2,
-            "vurus": 6,
-            "odak_x": 0.55
+            "video": "video/dakka-vapurlari/13207945_1280_720_30fps.mp4",
+            "baslangic": 3,
+            "vurus": 3,
+            "odak_x": 0.55,
+            "hiz": 1.0
           },
           {
-            "video": "video/dakka-vapurlari/17341035_1280_720_60fps.mp4",
-            "baslangic": 4,
-            "vurus": 4,
-            "odak_x": 0.5
+            "video": "video/dakka-vapurlari/13026966_1280_720_30fps.mp4",
+            "baslangic": 2,
+            "vurus": 3,
+            "odak_x": 0.55,
+            "hiz": 0.8
           }
         ],
         "etiket": "Bangladeş",
         "metin": "Dakka'nın kalbi bu nehirde atıyor",
-        "alt": "Buriganga kıyısında Sadarghat, ülkenin en işlek nehir limanlarından biri."
+        "alt": "Gitmeden kaydet."
       },
       {
         "fotolar": [
           {
             "video": "video/dakka-vapurlari/16659540_1280_720_30fps.mp4",
             "baslangic": 2,
-            "vurus": 3,
-            "odak_x": 0.45
+            "vurus": 2,
+            "odak_x": 0.45,
+            "hiz": 0.8
           },
           {
             "video": "video/dakka-vapurlari/15186148_1280_720_50fps.mp4",
             "baslangic": 0,
-            "vurus": 4,
-            "odak_x": 0.35
+            "vurus": 3,
+            "odak_x": 0.35,
+            "hiz": 0.8
           }
         ],
         "etiket": "Sadarghat",
         "metin": "Çok katlı vapurlar",
-        "alt": "Dakka'dan ülkenin güneyine, nehir yoluyla gece yolculukları."
+        "alt": "Ülkenin en işlek nehir limanlarından biri. Buradan güneye gece yolculukları."
       },
       {
         "fotolar": [
           {
-            "video": "video/dakka-vapurlari/13207945_1280_720_30fps.mp4",
-            "baslangic": 3,
-            "vurus": 4,
-            "odak_x": 0.55
-          },
-          {
             "video": "video/dakka-vapurlari/14969761_1280_720_30fps.mp4",
             "baslangic": 4,
-            "vurus": 4,
-            "odak_x": 0.5
+            "vurus": 3,
+            "odak_x": 0.5,
+            "hiz": 0.8
+          },
+          {
+            "video": "video/dakka-vapurlari/17341035_1280_720_60fps.mp4",
+            "baslangic": 4,
+            "vurus": 3,
+            "odak_x": 0.5,
+            "hiz": 0.8
           }
         ],
         "etiket": "Bayram",
@@ -103,20 +109,16 @@
           {
             "video": "video/dakka-vapurlari/16181928_1280_720_60fps.mp4",
             "baslangic": 5,
-            "vurus": 4,
-            "odak_x": 0.45
+            "vurus": 3,
+            "odak_x": 0.45,
+            "hiz": 0.8
           },
           {
             "video": "video/dakka-vapurlari/17035349_1280_720_60fps.mp4",
             "baslangic": 1,
-            "vurus": 3,
-            "odak_x": 0.4
-          },
-          {
-            "video": "video/dakka-vapurlari/15696518_1280_720_60fps.mp4",
-            "baslangic": 3,
             "vurus": 2,
-            "odak_x": 0.6
+            "odak_x": 0.4,
+            "hiz": 0.8
           }
         ],
         "etiket": "Kayıkçılar",
@@ -128,14 +130,16 @@
           {
             "video": "video/dakka-vapurlari/15468416_1280_720_24fps.mp4",
             "baslangic": 3,
-            "vurus": 5,
-            "odak_x": 0.55
+            "vurus": 4,
+            "odak_x": 0.55,
+            "hiz": 0.8
           }
         ],
         "etiket": "Rikşa",
         "metin": "Kıyıya çıkınca rikşalar",
         "alt": "Dakka'nın rikşaları ve resimleri UNESCO'nun kültürel miras listesinde."
       }
-    ]
+    ],
+    "renk": "film"
   }
 }

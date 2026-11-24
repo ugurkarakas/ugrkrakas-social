@@ -29,30 +29,31 @@
       {
         "fotolar": [
           {
-            "video": "video/hin-v-tac-sis.mp4",
-            "baslangic": 20,
-            "vurus": 4,
-            "odak_x": 0.5
-          },
-          {
             "video": "video/hin-v-aarti-2.mp4",
             "baslangic": 0.5,
-            "vurus": 3,
-            "odak_x": 0.3
+            "vurus": 2,
+            "odak_x": 0.3,
+            "hiz": 1.0
           },
-          "hindistan-jaipur-gece.jpg",
-          "hindistan-tac-2.jpg"
+          {
+            "video": "video/hin-v-tac-sis.mp4",
+            "baslangic": 20,
+            "vurus": 2,
+            "odak_x": 0.5
+          },
+          "hindistan-jaipur-gece.jpg"
         ],
         "etiket": "Hindistan",
         "metin": "Tac Mahal'e cuma günü gitme",
-        "alt": "Hindistan'da hayatında bir kez yaşanacak 3 an."
+        "alt": "Hayatında bir kez yaşanacak 3 an. Gitmeden kaydet.",
+        "vurus_basina": 1
       },
       {
         "fotolar": [
           {
             "video": "video/hin-v-tac-sis.mp4",
             "baslangic": 26,
-            "vurus": 4,
+            "vurus": 3,
             "odak_x": 0.5
           },
           {
@@ -65,27 +66,29 @@
         ],
         "etiket": "1 · Agra",
         "metin": "Tac Mahal'de gün doğumu",
-        "alt": "Gün doğumundan 30 dakika önce açılıyor. Cuma günleri kapalı."
+        "alt": "Gün doğumundan 30 dakika önce açılıyor. Cuma günleri kapalı.",
+        "vurus_basina": 1
       },
       {
         "fotolar": [
           {
             "video": "video/hin-v-aarti-2.mp4",
             "baslangic": 6,
-            "vurus": 4,
+            "vurus": 3,
             "odak_x": 0.25
           },
           {
             "video": "video/hin-v-aarti.mp4",
             "baslangic": 4.5,
-            "vurus": 4,
+            "vurus": 3,
             "odak_x": 0.5
           },
           "hindistan-varanasi.jpg"
         ],
         "etiket": "2 · Varanasi",
         "metin": "Ganj kıyısında ateş ritüeli",
-        "alt": "Her akşam gün batımından sonra. En iyisi nehirden, tekneden izlemek."
+        "alt": "Her akşam gün batımından sonra. En iyisi nehirden, tekneden izlemek.",
+        "vurus_basina": 1
       },
       {
         "fotolar": [
@@ -95,7 +98,8 @@
         ],
         "etiket": "3 · Jaipur",
         "metin": "Pembe şehrin rüzgar sarayı",
-        "alt": "Hawa Mahal, akşam ışıklar yanınca bambaşka."
+        "alt": "Hawa Mahal, akşam ışıklar yanınca bambaşka.",
+        "vurus_basina": 1
       }
     ],
     "renk": "film"

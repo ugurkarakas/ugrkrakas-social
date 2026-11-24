@@ -297,8 +297,13 @@ def uret_reels(json_yolu):
                 n = int(round(bitis * FPS)) - int(round(zaman * FPS))
                 for f in range(n):
                     img = karart(kaynak.kare(f / max(1, n - 1))).convert("RGBA")
-                    a1 = yumusak((sahne_kare - 3) / 7)
-                    a2 = yumusak((sahne_kare - 18) / 8)
+                    if idx == 0:
+                        # kanca: ilk karede başlık hazır, detay hemen ardından (ilk 3 sn'de kaybetmemek için)
+                        a1 = 1.0
+                        a2 = yumusak((sahne_kare - 6) / 6)
+                    else:
+                        a1 = yumusak((sahne_kare - 3) / 7)
+                        a2 = yumusak((sahne_kare - 18) / 8)
                     if a1 > 0:
                         img.alpha_composite(alfali(ana, a1))
                     if a2 > 0:
@@ -324,8 +329,11 @@ def uret_reels(json_yolu):
         ana = golgeli(ana)
         for f in range(n):
             img = karart(kaynak.kare(f / max(1, n - 1))).convert("RGBA")
-            a1 = yumusak((f - 4) / 9)
-            a2 = yumusak((f - 22) / 9)  # detay cümlesi ~0.7 sn sonra gelir
+            if idx == 0:
+                a1, a2 = 1.0, yumusak((f - 6) / 6)  # kanca: başlık ilk karede
+            else:
+                a1 = yumusak((f - 4) / 9)
+                a2 = yumusak((f - 22) / 9)  # detay cümlesi ~0.7 sn sonra gelir
             if a1 > 0:
                 img.alpha_composite(alfali(ana, a1))
             if a2 > 0:

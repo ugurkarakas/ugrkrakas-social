@@ -40,35 +40,39 @@
       {
         "fotolar": [
           {
-            "video": "video/mumbai-treni/14773281_720_1280_60fps.mp4",
-            "baslangic": 2,
-            "vurus": 6,
-            "odak_x": 0.5
+            "video": "video/mumbai-treni/14973384_1280_720_60fps.mp4",
+            "baslangic": 3,
+            "vurus": 3,
+            "odak_x": 0.4,
+            "hiz": 1.0
           },
           {
-            "video": "video/mumbai-treni/6023186-hd_1920_1080_30fps.mp4",
-            "baslangic": 12,
-            "vurus": 4,
-            "odak_x": 0.6
+            "video": "video/mumbai-treni/14773281_720_1280_60fps.mp4",
+            "baslangic": 2,
+            "vurus": 3,
+            "odak_x": 0.5,
+            "hiz": 0.8
           }
         ],
         "etiket": "Hindistan",
         "metin": "Bu trenler yılda 7 milyardan fazla yolcu taşıyor",
-        "alt": "Burada tren, bir ulaşım aracından fazlası."
+        "alt": "Gitmeden kaydet."
       },
       {
         "fotolar": [
           {
             "video": "video/mumbai-treni/15074518_1280_720_60fps.mp4",
             "baslangic": 0,
-            "vurus": 4,
-            "odak_x": 0.5
+            "vurus": 3,
+            "odak_x": 0.5,
+            "hiz": 0.8
           },
           {
             "video": "video/mumbai-treni/12979657_1280_720_30fps.mp4",
             "baslangic": 2,
-            "vurus": 3,
-            "odak_x": 0.5
+            "vurus": 2,
+            "odak_x": 0.5,
+            "hiz": 0.8
           }
         ],
         "etiket": "Mumbai",
@@ -80,14 +84,16 @@
           {
             "video": "video/mumbai-treni/14970637_1280_720_60fps.mp4",
             "baslangic": 1,
-            "vurus": 3,
-            "odak_x": 0.55
+            "vurus": 2,
+            "odak_x": 0.55,
+            "hiz": 0.8
           },
           {
             "video": "video/mumbai-treni/6023186-hd_1920_1080_30fps.mp4",
-            "baslangic": 20,
-            "vurus": 4,
-            "odak_x": 0.6
+            "baslangic": 18,
+            "vurus": 3,
+            "odak_x": 0.6,
+            "hiz": 0.8
           }
         ],
         "etiket": "Peron",
@@ -97,16 +103,18 @@
       {
         "fotolar": [
           {
-            "video": "video/mumbai-treni/14973384_1280_720_60fps.mp4",
-            "baslangic": 2,
-            "vurus": 4,
-            "odak_x": 0.4
-          },
-          {
             "video": "video/mumbai-treni/14970851_1280_720_60fps.mp4",
             "baslangic": 3,
-            "vurus": 4,
-            "odak_x": 0.62
+            "vurus": 3,
+            "odak_x": 0.62,
+            "hiz": 0.8
+          },
+          {
+            "video": "video/mumbai-treni/14973384_1280_720_60fps.mp4",
+            "baslangic": 8,
+            "vurus": 2,
+            "odak_x": 0.4,
+            "hiz": 0.8
           }
         ],
         "etiket": "Kapı",
@@ -118,14 +126,16 @@
           {
             "video": "video/mumbai-treni/14973368_1280_720_60fps.mp4",
             "baslangic": 1,
-            "vurus": 5,
-            "odak_x": 0.5
+            "vurus": 4,
+            "odak_x": 0.5,
+            "hiz": 0.8
           }
         ],
         "etiket": "Yolculuk",
         "metin": "Her pencerede bir hikaye",
         "alt": "Uzun yol trenlerinde yolculuk saatler, bazen günler sürüyor."
       }
-    ]
+    ],
+    "renk": "film"
   }
 }

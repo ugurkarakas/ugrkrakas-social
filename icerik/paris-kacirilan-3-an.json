@@ -33,25 +33,25 @@
       {
         "fotolar": [
           {
-            "video": "video/paris/12620494_720_1280_60fps.mp4",
-            "baslangic": 1,
-            "vurus": 4,
+            "video": "video/paris/12546524_720_1280_60fps.mp4",
+            "baslangic": 8,
+            "vurus": 2,
             "odak_x": 0.5,
-            "hiz": 0.65
+            "hiz": 1.0
           },
           {
-            "video": "video/paris/16910747_720_1280_30fps.mp4",
-            "baslangic": 1,
-            "vurus": 3,
-            "odak_x": 0.5,
-            "hiz": 0.65
+            "video": "video/paris/8430966-hd_1366_720_25fps.mp4",
+            "baslangic": 9,
+            "vurus": 2,
+            "odak_x": 0.45,
+            "hiz": 0.8
           },
           {
             "video": "video/paris/15790798_720_1280_30fps.mp4",
             "baslangic": 2,
-            "vurus": 3,
+            "vurus": 2,
             "odak_x": 0.5,
-            "hiz": 0.65
+            "hiz": 0.9
           }
         ],
         "etiket": "Paris, Fransa",
@@ -63,21 +63,21 @@
           {
             "video": "video/paris/7197893-hd_1280_720_30fps.mp4",
             "baslangic": 3,
-            "vurus": 4,
+            "vurus": 3,
             "odak_x": 0.5,
             "hiz": 0.65
           },
           {
-            "video": "video/paris/12546524_720_1280_60fps.mp4",
-            "baslangic": 8,
-            "vurus": 3,
+            "video": "video/paris/12620494_720_1280_60fps.mp4",
+            "baslangic": 1,
+            "vurus": 2,
             "odak_x": 0.5,
             "hiz": 0.65
           },
           {
             "video": "video/paris/par-v-eyfel.mp4",
             "baslangic": 1,
-            "vurus": 4,
+            "vurus": 3,
             "odak_x": 0.5,
             "hiz": 0.65
           }
@@ -91,7 +91,7 @@
           {
             "video": "video/paris/par-v-vitray.mp4",
             "baslangic": 0,
-            "vurus": 5,
+            "vurus": 4,
             "odak_x": 0.5,
             "hiz": 0.75
           }
@@ -105,7 +105,7 @@
           {
             "video": "video/paris/par-v-sacrecoeur.mp4",
             "baslangic": 0,
-            "vurus": 4,
+            "vurus": 3,
             "odak_x": 0.5,
             "hiz": 0.65
           },
@@ -114,13 +114,6 @@
             "baslangic": 1,
             "vurus": 3,
             "odak_x": 0.5,
-            "hiz": 0.65
-          },
-          {
-            "video": "video/paris/8430966-hd_1366_720_25fps.mp4",
-            "baslangic": 9,
-            "vurus": 3,
-            "odak_x": 0.45,
             "hiz": 0.65
           },
           {
