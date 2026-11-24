@@ -9,7 +9,7 @@
   "caption": "Paris'e giden herkes Eyfel'i görüyor ama çoğu bu 3 anı kaçırıyor.\n\n1. Eyfel'in 5 dakikası: Hava karardıktan sonra kule her saat başı 5 dakika boyunca ışıl ışıl yanıp sönüyor. Saati ayarla, Trocadéro'dan ya da Seine kıyısından izle.\n2. Sainte-Chapelle: Yaklaşık 800 yıllık şapelde duvarların yerini binden fazla vitray alıyor. Işığın içeri dolduğu güneşli bir sabah git.\n3. Montmartre'da sabah: Sacré-Cœur merdivenleri kalabalık gelmeden sessiz. Ardından bir kafe terasında kahvaltı.\n\nFransa Schengen bölgesinde: Türk pasaportuyla Schengen vizesi gerekir.\nBilgiler Kasım 2026 itibarıyla.",
   "soru": "Paris'te ilk hangisini yapardın?",
   "ilk_yorum": "#paris #eyfel #saintechapelle #montmartre #fransa #avrupaseyahati #seyahat",
-  "fotograf_kredisi": "Videolar: Pexels",
+  "fotograf_kredisi": "Video: Pexels · Müzik: Andrii H (Pixabay)",
   "anket": {
     "soru": "Paris'te hangisi?",
     "secenek_1": "Eyfel gecesi",
@@ -23,8 +23,9 @@
   },
   "reels": {
     "muzik": {
-      "tarz": "paris",
-      "tohum": 7
+      "dosya": "muzik/french-coffee-andriih.mp3",
+      "bpm": 86.13,
+      "baslangic": 55.26
     },
     "kapanis": "Kaydet, Paris planına ekle.",
     "kapanis_alt": "Daha fazla rota için takip et.",
@@ -32,32 +33,34 @@
       {
         "fotolar": [
           {
-            "video": "video/par-v-eyfel.mp4",
-            "baslangic": 0.3,
-            "vurus": 4,
-            "odak_x": 0.5,
-            "hiz": 0.9
+            "video": "video/paris/12620494_720_1280_60fps.mp4",
+            "baslangic": 1,
+            "vurus": 3,
+            "odak_x": 0.5
           },
           {
-            "video": "video/par-v-vitray.mp4",
-            "baslangic": 0,
-            "vurus": 3,
-            "odak_x": 0.5,
-            "hiz": 0.9
+            "video": "video/paris/12017213_720_1280_60fps.mp4",
+            "baslangic": 1,
+            "vurus": 2,
+            "odak_x": 0.5
           },
           {
-            "video": "video/par-v-sacrecoeur.mp4",
-            "baslangic": 0.3,
-            "vurus": 3,
-            "odak_x": 0.5,
-            "hiz": 0.9
+            "video": "video/paris/16910747_720_1280_30fps.mp4",
+            "baslangic": 1,
+            "vurus": 2,
+            "odak_x": 0.5
           },
           {
-            "video": "video/par-v-kafe.mp4",
-            "baslangic": 0.5,
-            "vurus": 3,
-            "odak_x": 0.5,
-            "hiz": 0.9
+            "video": "video/paris/15790798_720_1280_30fps.mp4",
+            "baslangic": 2,
+            "vurus": 2,
+            "odak_x": 0.5
+          },
+          {
+            "video": "video/paris/8430966-hd_1366_720_25fps.mp4",
+            "baslangic": 9,
+            "vurus": 2,
+            "odak_x": 0.45
           }
         ],
         "etiket": "Paris, Fransa",
@@ -67,39 +70,41 @@
       {
         "fotolar": [
           {
-            "video": "video/par-v-eyfel.mp4",
-            "baslangic": 1.2,
-            "vurus": 4,
-            "odak_x": 0.5,
-            "hiz": 0.8
+            "video": "video/paris/7197893-hd_1280_720_30fps.mp4",
+            "baslangic": 3,
+            "vurus": 3,
+            "odak_x": 0.5
           },
           {
-            "video": "video/par-v-eyfel.mp4",
-            "baslangic": 6.2,
-            "vurus": 4,
-            "odak_x": 0.45,
-            "hiz": 0.8
+            "video": "video/paris/12546524_720_1280_60fps.mp4",
+            "baslangic": 8,
+            "vurus": 3,
+            "odak_x": 0.5
+          },
+          {
+            "video": "video/paris/14960315_720_1280_60fps.mp4",
+            "baslangic": 1,
+            "vurus": 2,
+            "odak_x": 0.5
+          },
+          {
+            "video": "video/paris/par-v-eyfel.mp4",
+            "baslangic": 1,
+            "vurus": 3,
+            "odak_x": 0.5
           }
         ],
         "etiket": "1 · Eyfel",
-        "metin": "Her saat başı 5 dakika ışıl ışıl",
-        "alt": "Hava karardıktan sonra başlıyor. Trocadéro'dan ya da Seine kıyısından izle."
+        "metin": "Eyfel'i bir de akşam gör",
+        "alt": "Hava karardıktan sonra her saat başı 5 dakika ışıl ışıl. Trocadéro'dan ya da Seine kıyısından izle."
       },
       {
         "fotolar": [
           {
-            "video": "video/par-v-vitray.mp4",
+            "video": "video/paris/par-v-vitray.mp4",
             "baslangic": 0,
-            "vurus": 4,
-            "odak_x": 0.5,
-            "hiz": 0.7
-          },
-          {
-            "video": "video/par-v-vitray.mp4",
-            "baslangic": 1.0,
-            "vurus": 3,
-            "odak_x": 0.3,
-            "hiz": 0.7
+            "vurus": 5,
+            "odak_x": 0.5
           }
         ],
         "etiket": "2 · Sainte-Chapelle",
@@ -109,18 +114,28 @@
       {
         "fotolar": [
           {
-            "video": "video/par-v-sacrecoeur.mp4",
-            "baslangic": 0.5,
+            "video": "video/paris/par-v-sacrecoeur.mp4",
+            "baslangic": 0,
             "vurus": 4,
-            "odak_x": 0.5,
-            "hiz": 0.8
+            "odak_x": 0.5
           },
           {
-            "video": "video/par-v-kafe.mp4",
-            "baslangic": 2,
-            "vurus": 4,
-            "odak_x": 0.5,
-            "hiz": 0.8
+            "video": "video/paris/par-v-kafe.mp4",
+            "baslangic": 1,
+            "vurus": 3,
+            "odak_x": 0.5
+          },
+          {
+            "video": "video/paris/19698996-hd_720_1280_25fps.mp4",
+            "baslangic": 1,
+            "vurus": 2,
+            "odak_x": 0.5
+          },
+          {
+            "video": "video/paris/8922357-hd_1366_720_25fps.mp4",
+            "baslangic": 8,
+            "vurus": 3,
+            "odak_x": 0.5
           }
         ],
         "etiket": "3 · Montmartre",
