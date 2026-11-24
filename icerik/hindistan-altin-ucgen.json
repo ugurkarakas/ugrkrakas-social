@@ -9,7 +9,7 @@
   "caption": "Tac Mahal'e cuma günü gidersen kapıda kalırsın. Hindistan'da hayatında bir kez yaşanacak 3 an:\n\n1. Tac Mahal, Agra: Gün doğumundan 30 dakika önce açılıyor. Işık mermere vurmadan içeride ol. Cuma günleri ziyarete kapalı.\n2. Ganga Aarti, Varanasi: Her akşam gün batımından sonra Dashashwamedh Ghat'ta yaklaşık 45 dakikalık ateş ritüeli. Kışın 18:00 civarı başlıyor; nehirden, bir teknenin üstünden izle.\n3. Jaipur: Pembe şehrin simgesi Hawa Mahal. Akşam ışıklar yandığında ayrı bir güzellik.\n\nEn iyi dönem ekim–mart arası. Hindistan Türk vatandaşlarından vize istiyor; başvuru yolunu resmi vize portalından kontrol et.\nBilgiler Kasım 2026 itibarıyla.",
   "soru": "Hindistan listende mi?",
   "ilk_yorum": "#hindistan #india #tacmahal #varanasi #jaipur #agra #seyahat",
-  "fotograf_kredisi": "Fotoğraflar: Unsplash (Shan Elahi, Pratyush Mishra, Martijn Vonk, Hanan Edwards, Julian Yu, Arto Suraj, Vizag Explore, Annie Spratt, Roberto Reposo), Video: Pexels (Puneet Singh Rawat, Siddharth Pandit, Iqbal farooz, shantanu biswas)",
+  "fotograf_kredisi": "Fotoğraflar: Unsplash (Shan Elahi, Pratyush Mishra, Martijn Vonk, Hanan Edwards, Julian Yu, Arto Suraj, Vizag Explore, Annie Spratt, Roberto Reposo), Video: Pexels (Puneet Singh Rawat, Siddharth Pandit, Iqbal farooz, shantanu biswas) · Müzik: Maksym Malko (Pixabay)",
   "anket": {
     "soru": "Hindistan'da hangisi?",
     "secenek_1": "Tac Mahal",
@@ -18,8 +18,10 @@
   },
   "reels": {
     "muzik": {
-      "tarz": "hindistan",
-      "tohum": 7
+      "dosya": "muzik/india-maksym-malko.mp3",
+      "bpm": 143.55,
+      "kesim": 2,
+      "baslangic": 34.16
     },
     "kapanis": "Kaydet, Hindistan planına ekle.",
     "kapanis_alt": "Daha fazla rota için takip et.",
