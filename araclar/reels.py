@@ -29,6 +29,9 @@ Alanlar:
 
 Müzik: araclar/muzik.py ile kodla üretilen telifsiz ritim eklenir.
   "muzik": {"tarz": "yaz" | "aksam" | "enerji", "tohum": 7}   kapatmak için "muzik": null
+  Hazır telifsiz parça (Pixabay Music vb.), kaynak/ altında:
+  "muzik": {"dosya": "muzik/sitar-story.mp3", "bpm": 100, "baslangic": 0, "ses": 1.0}
+  Parça videodan kısaysa başa sarılır; sonda 1.5 sn'de kısılır. Kredi caption'a yazılır.
 
 Kullanım:
   python3 araclar/reels.py icerik/<slug>.json
@@ -228,7 +231,11 @@ def uret_reels(json_yolu):
         stdin=subprocess.PIPE,
     )
     ayar = veri.get("reels", {}).get("muzik", {"tarz": "tropik", "tohum": 7})
-    _tarz = muzik.TARZLAR[(ayar or {}).get("tarz", "tropik")]
+    if ayar and ayar.get("dosya"):
+        # Hazır, telifsiz parça (ör. Pixabay Music): kesmeler parçanın bpm'ine oturur
+        _tarz = {"bpm": ayar.get("bpm", 100), "kesim": ayar.get("kesim", 1)}
+    else:
+        _tarz = muzik.TARZLAR[(ayar or {}).get("tarz", "tropik")]
     vurus = 60 / _tarz["bpm"] * _tarz.get("kesim", 1)  # kesim: hızlı tempolarda (vals) kesmeleri seyrelt
     g = int(GECIS * FPS)
     onceki = None
@@ -300,7 +307,23 @@ def uret_reels(json_yolu):
     ff.stdin.close()
     ff.wait()
 
-    if ayar:
+    if ayar and ayar.get("dosya"):
+        sure = float(subprocess.check_output(
+            ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(cikis)]))
+        parca = KOK / "kaynak" / ayar["dosya"]
+        bas = float(ayar.get("baslangic", 0))
+        sonmak = max(sure - 1.5, 0)
+        gecici = cikis.with_name(cikis.stem + "-sessiz.mp4")
+        cikis.rename(gecici)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(gecici),
+                        "-stream_loop", "-1", "-ss", str(bas), "-i", str(parca),
+                        "-filter_complex",
+                        f"[1:a]volume={ayar.get('ses', 1.0)},afade=t=in:d=0.3,"
+                        f"afade=t=out:st={sonmak}:d=1.5,atrim=0:{sure}[a]",
+                        "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+                        "-shortest", "-movflags", "+faststart", str(cikis)], check=True)
+        gecici.unlink()
+    elif ayar:
         sure = float(subprocess.check_output(
             ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(cikis)]))
         wav = cikis.with_suffix(".wav")
