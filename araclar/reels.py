@@ -68,6 +68,14 @@ class FotoKaynak:
         bw, bh = int(W * (1 + YAKINLASMA)), int(H * (1 + YAKINLASMA))
         img = ImageOps.exif_transpose(Image.open(KOK / "kaynak" / dosya)).convert("RGB")
         self.img = ImageOps.fit(img, (bw, bh), Image.LANCZOS, centering=tuple(odak))
+        if RENK != RENKLER[None]:
+            # fotoğraflara da videolarla aynı renk derecelendirmesi (gren hariç)
+            vf = ",".join(p for p in RENK.split(",") if not p.startswith("noise"))
+            out = subprocess.run(
+                ["ffmpeg", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{bw}x{bh}",
+                 "-i", "-", "-vf", vf, "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
+                input=self.img.tobytes(), capture_output=True, check=True).stdout
+            self.img = Image.frombytes("RGB", (bw, bh), out)
 
     def kare(self, ilerleme):
         # kesmeden sonra hızlı, sonra yavaşlayan bir yakınlaşma hissi
