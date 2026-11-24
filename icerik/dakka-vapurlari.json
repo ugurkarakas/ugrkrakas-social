@@ -1,0 +1,141 @@
+{
+  "slug": "dakka-vapurlari",
+  "tur": "reels",
+  "seri": "Sokaktan",
+  "baslik": "Dakka'nın kalbi nehirde atıyor",
+  "alt_baslik": "Sadarghat'ta vapurların, kayıkların ve rikşaların bir günü.",
+  "konum": "Dakka, Bangladeş",
+  "foto": "dakka-vapur-yolcular.jpg",
+  "caption": "Dakka'nın kalbi bu nehirde atıyor. Buriganga kıyısında, Sadarghat'ta bir günün içinden:\n\n1. Sadarghat: Ülkenin en işlek nehir limanlarından biri. Çok katlı vapurlar buradan güneye, nehir yoluyla yola çıkıyor.\n2. Bayram: Bayram dönemlerinde bu iskeleden milyonlarca yolcu memleketine dönüyor.\n3. Kayıkçılar: Tahta kayıklar nehrin iki yakasını her gün birbirine bağlıyor.\n4. Rikşalar: Dakka'nın rikşaları ve rikşa resimleri 2023'ten beri UNESCO Somut Olmayan Kültürel Miras listesinde.\n\nBilgiler Kasım 2026 itibarıyla.",
+  "soru": "Bu vapurla bir gece yolculuğuna çıkar mıydın?",
+  "ilk_yorum": "#bangladeş #bangladesh #dakka #dhaka #sadarghat #sokaktan #seyahat",
+  "fotograf_kredisi": "Video: Pexels · Müzik: DesiFreeMusic (Pixabay)",
+  "anket": {
+    "soru": "Dakka'da hangisi?",
+    "secenek_1": "Vapur",
+    "secenek_2": "Rikşa",
+    "foto": "dakka-kayik.jpg"
+  },
+  "ogle": {
+    "ust": "Biliyor muydun?",
+    "metin": "Dakka'nın rikşaları ve rikşa resimleri UNESCO'nun Somut Olmayan Kültürel Miras listesinde.",
+    "foto": "dakka-riksa.jpg",
+    "odak": [
+      0.72,
+      0.5
+    ]
+  },
+  "sabah": {
+    "ust": "Sokaktan",
+    "yer": "Sadarghat",
+    "bolge": "Dakka, Bangladeş",
+    "metin": "Buriganga Nehri kıyısında, çok katlı vapurların yanaştığı tarihi iskele.",
+    "foto": "dakka-sadarghat-havadan.jpg"
+  },
+  "reels": {
+    "muzik": {
+      "dosya": "muzik/folk-nostalgia-desifreemusic.mp3",
+      "bpm": 86.13,
+      "baslangic": 28.12
+    },
+    "kapanis": "Kaydet, bir gün o güvertedesin.",
+    "kapanis_alt": "Daha fazla sokak hikayesi için takip et.",
+    "sahneler": [
+      {
+        "fotolar": [
+          {
+            "video": "video/dakka-vapurlari/13026966_1280_720_30fps.mp4",
+            "baslangic": 2,
+            "vurus": 6,
+            "odak_x": 0.55
+          },
+          {
+            "video": "video/dakka-vapurlari/17341035_1280_720_60fps.mp4",
+            "baslangic": 4,
+            "vurus": 4,
+            "odak_x": 0.5
+          }
+        ],
+        "etiket": "Bangladeş",
+        "metin": "Dakka'nın kalbi bu nehirde atıyor",
+        "alt": "Buriganga kıyısında Sadarghat, ülkenin en işlek nehir limanlarından biri."
+      },
+      {
+        "fotolar": [
+          {
+            "video": "video/dakka-vapurlari/16659540_1280_720_30fps.mp4",
+            "baslangic": 2,
+            "vurus": 3,
+            "odak_x": 0.45
+          },
+          {
+            "video": "video/dakka-vapurlari/15186148_1280_720_50fps.mp4",
+            "baslangic": 0,
+            "vurus": 4,
+            "odak_x": 0.35
+          }
+        ],
+        "etiket": "Sadarghat",
+        "metin": "Çok katlı vapurlar",
+        "alt": "Dakka'dan ülkenin güneyine, nehir yoluyla gece yolculukları."
+      },
+      {
+        "fotolar": [
+          {
+            "video": "video/dakka-vapurlari/13207945_1280_720_30fps.mp4",
+            "baslangic": 3,
+            "vurus": 4,
+            "odak_x": 0.55
+          },
+          {
+            "video": "video/dakka-vapurlari/14969761_1280_720_30fps.mp4",
+            "baslangic": 4,
+            "vurus": 4,
+            "odak_x": 0.5
+          }
+        ],
+        "etiket": "Bayram",
+        "metin": "Bayramda milyonlar yola çıkıyor",
+        "alt": "Bu iskeleden memlekete dönüş, vapurla başlıyor."
+      },
+      {
+        "fotolar": [
+          {
+            "video": "video/dakka-vapurlari/16181928_1280_720_60fps.mp4",
+            "baslangic": 5,
+            "vurus": 4,
+            "odak_x": 0.45
+          },
+          {
+            "video": "video/dakka-vapurlari/17035349_1280_720_60fps.mp4",
+            "baslangic": 1,
+            "vurus": 3,
+            "odak_x": 0.4
+          },
+          {
+            "video": "video/dakka-vapurlari/15696518_1280_720_60fps.mp4",
+            "baslangic": 3,
+            "vurus": 2,
+            "odak_x": 0.6
+          }
+        ],
+        "etiket": "Kayıkçılar",
+        "metin": "Karşıya geçmenin en eski yolu",
+        "alt": "Tahta kayıklar nehrin iki yakasını her gün birbirine bağlıyor."
+      },
+      {
+        "fotolar": [
+          {
+            "video": "video/dakka-vapurlari/15468416_1280_720_24fps.mp4",
+            "baslangic": 3,
+            "vurus": 5,
+            "odak_x": 0.55
+          }
+        ],
+        "etiket": "Rikşa",
+        "metin": "Kıyıya çıkınca rikşalar",
+        "alt": "Dakka'nın rikşaları ve resimleri UNESCO'nun kültürel miras listesinde."
+      }
+    ]
+  }
+}
