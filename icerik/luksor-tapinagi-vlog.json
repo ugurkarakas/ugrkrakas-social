@@ -34,5 +34,16 @@
     "bolge": "Luxor, Mısır",
     "metin": "Girişteki obeliskin ikizi 1836'dan beri Paris'te. Akşam tapınak ışıklandırılıyor.",
     "foto": "luksor-pilon.jpg"
+  },
+  "ogle_konum": {
+    "ust": "Rota önerisi",
+    "yer": "Abu'l Haccac Camii",
+    "bolge": "Luxor, Mısır",
+    "metin": "Tapınak kumun altındayken üstüne yapıldı. Kapısı bugün zeminden metrelerce yukarıda.",
+    "foto": "luksor-cami.jpg",
+    "odak": [
+      0.5,
+      0.6
+    ]
   }
 }
