@@ -1,0 +1,162 @@
+{
+  "slug": "amsterdam-harita",
+  "tur": "reels",
+  "seri": "Harita rehberi",
+  "baslik": "Amsterdam'da 10 yer",
+  "alt_baslik": "Tek harita: gez, ye, al.",
+  "konum": "Amsterdam, Hollanda",
+  "foto": "amsterdam-kanal.jpg",
+  "harita": {
+    "sehir": "Amsterdam",
+    "ulke_bayrak": "NL",
+    "giris_ust": "Gitmeden önce kaydet",
+    "giris_baslik": "Amsterdam'da\n10 yer",
+    "giris_alt": "Gezilecek, yenecek, alınacak — tek haritada.",
+    "baslangic": {
+      "merkez": [
+        5.3,
+        52.2
+      ],
+      "zoom": 6.4
+    },
+    "sehir_kamera": {
+      "merkez": [
+        4.888,
+        52.368
+      ],
+      "zoom": 12.7
+    },
+    "durak_zoom": 14.6,
+    "kategoriler": {
+      "gez": {
+        "ad": "Gezilecek",
+        "renk": "#0A84FF"
+      },
+      "ye": {
+        "ad": "Yenecek",
+        "renk": "#FF9F0A"
+      },
+      "al": {
+        "ad": "Alınacak",
+        "renk": "#BF5AF2"
+      }
+    },
+    "duraklar": [
+      {
+        "kat": "gez",
+        "ad": "Rijksmuseum",
+        "konum": [
+          4.8852,
+          52.36
+        ],
+        "foto": "amsterdam-rijks.jpg",
+        "metin": "Rembrandt'ın Gece Devriyesi burada.",
+        "etiket": "Online bilet"
+      },
+      {
+        "kat": "gez",
+        "ad": "Van Gogh Müzesi",
+        "konum": [
+          4.8811,
+          52.3584
+        ],
+        "foto": "amsterdam-vangogh.jpg",
+        "metin": "Saatli giriş, biletler online. Birkaç gün önceden ayırt.",
+        "etiket": "Online bilet"
+      },
+      {
+        "kat": "gez",
+        "ad": "Anne Frank Evi",
+        "konum": [
+          4.8841,
+          52.3752
+        ],
+        "foto": "amsterdam-annefrank.jpg",
+        "metin": "Bilet sadece online satılıyor ve hızla tükeniyor.",
+        "etiket": "Erken ayırt"
+      },
+      {
+        "kat": "gez",
+        "ad": "Dam Meydanı",
+        "konum": [
+          4.8928,
+          52.3729
+        ],
+        "foto": "amsterdam-dam.jpg",
+        "metin": "Kraliyet Sarayı ve şehrin tam kalbi.",
+        "etiket": "Ücretsiz"
+      },
+      {
+        "kat": "gez",
+        "ad": "Jordaan",
+        "konum": [
+          4.8811,
+          52.3754
+        ],
+        "foto": "amsterdam-jordaan.jpg",
+        "metin": "Kanal kenarı sokaklar. Şehrin en güzel yürüyüş rotası.",
+        "etiket": "Ücretsiz"
+      },
+      {
+        "kat": "gez",
+        "ad": "Vondelpark",
+        "konum": [
+          4.8686,
+          52.358
+        ],
+        "foto": "amsterdam-vondelpark.jpg",
+        "metin": "Şehrin en sevilen parkı. Bisiklet kirala, piknik yap.",
+        "etiket": "Ücretsiz"
+      },
+      {
+        "kat": "ye",
+        "ad": "Winkel 43",
+        "konum": [
+          4.8862,
+          52.3791
+        ],
+        "foto": "amsterdam-elmali.jpg",
+        "metin": "Şehrin en meşhur elmalı turtası. Kremayla iste."
+      },
+      {
+        "kat": "ye",
+        "ad": "Albert Cuyp Markt",
+        "konum": [
+          4.8944,
+          52.3557
+        ],
+        "foto": "amsterdam-albertcuyp.jpg",
+        "metin": "Taze stroopwafel'i burada ye. Pazar günü kapalı."
+      },
+      {
+        "kat": "al",
+        "ad": "De 9 Straatjes",
+        "konum": [
+          4.885,
+          52.3702
+        ],
+        "foto": "amsterdam-9straatjes.jpg",
+        "metin": "Kanallar arası dokuz sokak: butikler ve vintage dükkânlar."
+      },
+      {
+        "kat": "al",
+        "ad": "Bloemenmarkt",
+        "konum": [
+          4.8908,
+          52.3669
+        ],
+        "foto": "amsterdam-bloemenmarkt.jpg",
+        "metin": "Kanal üstündeki çiçek pazarı. Lale soğanı hediye için ideal."
+      }
+    ],
+    "kapanis": "Kaydet, gidince aç.",
+    "muzik": {
+      "tarz": "yaz",
+      "tohum": 11
+    }
+  },
+  "caption": "Amsterdam'a gidiyorsan bunu kaydet: 10 yer, tek harita.\n\nGezilecek\n1. Rijksmuseum: Rembrandt'ın Gece Devriyesi burada. Bileti online al.\n2. Van Gogh Müzesi: Saatli giriş, biletler online. Birkaç gün önceden ayırt.\n3. Anne Frank Evi: Bilet sadece online satılıyor ve hızla tükeniyor.\n4. Dam Meydanı: Kraliyet Sarayı ve şehrin kalbi.\n5. Jordaan: Kanal kenarı sokaklar, en güzel yürüyüş rotası.\n6. Vondelpark: Bisiklet kirala, piknik yap.\n\nYenecek\n7. Winkel 43: Şehrin en meşhur elmalı turtası.\n8. Albert Cuyp Markt: Taze stroopwafel. Pazar günü kapalı.\n\nAlınacak\n9. De 9 Straatjes: Butikler ve vintage dükkânlar.\n10. Bloemenmarkt: Kanal üstündeki çiçek pazarı, lale soğanları.\n\nİpucu: Müze biletlerini gitmeden online al; kapıda bilet bulmak zor.",
+  "soru": "Amsterdam'da ilk durağın hangisi olurdu?",
+  "ilk_yorum": "#amsterdam #hollanda #amsterdamgezisi #avrupaseyahati #seyahat #gezi",
+  "fotograf_kredisi": "Fotoğraflar: Unsplash (Frans Ruiter, Fabrizio Coco, Aquiles Carattino, Tobias Reich, Kristijan Arsov, Sereja, fountain Pen, Ronnie Overgoor, Omar Ramadan, Dmitrii E.) · Harita: © OpenStreetMap katkıcıları, OpenFreeMap"
+}

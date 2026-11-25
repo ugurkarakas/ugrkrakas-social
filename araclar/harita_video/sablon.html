@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Inter;src:url(../../fonts/Inter-Regular.otf);font-weight:400}
+@font-face{font-family:Inter;src:url(../../fonts/Inter-Medium.otf);font-weight:500}
+@font-face{font-family:Inter;src:url(../../fonts/Inter-SemiBold.otf);font-weight:600}
+@font-face{font-family:InterDisplay;src:url(../../fonts/InterDisplay-SemiBold.otf);font-weight:600}
+@font-face{font-family:InterDisplay;src:url(../../fonts/InterDisplay-Medium.otf);font-weight:500}
+:root{--ink:#1D1D1F;--ink2:#6E6E73;--glass:rgba(255,255,255,.86)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#F4F1EA;font-family:Inter;color:var(--ink);-webkit-font-smoothing:antialiased}
+#m{position:absolute;inset:0}
+#ui{position:absolute;inset:0;pointer-events:none}
+.ust{position:absolute;top:132px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:center;font:600 28px Inter;letter-spacing:.18em;text-transform:uppercase}
+.ust .h{letter-spacing:0;text-transform:none;font-weight:500;font-size:28px}
+.ust span{text-shadow:0 0 18px rgba(255,255,255,.95),0 0 4px rgba(255,255,255,.9)}
+.bar{position:absolute;top:186px;left:64px;right:64px;display:flex;gap:8px}
+.bar i{flex:1;height:6px;border-radius:3px;background:rgba(29,29,31,.12);overflow:hidden;position:relative}
+.bar i b{position:absolute;inset:0;transform-origin:left;transform:scaleX(0)}
+.kart{position:absolute;left:60px;width:960px;top:262px;border-radius:44px;overflow:hidden;background:var(--glass);
+  backdrop-filter:blur(30px) saturate(1.6);box-shadow:0 30px 80px rgba(0,0,0,.18),0 2px 6px rgba(0,0,0,.06);opacity:0}
+.kart .foto{height:640px;overflow:hidden;position:relative}
+.kart .foto img{width:100%;height:100%;object-fit:cover;transform-origin:50% 55%}
+.kart .govde{padding:34px 44px 42px}
+.kart .satir{display:flex;align-items:center;gap:16px;margin-bottom:14px}
+.no{width:52px;height:52px;border-radius:26px;color:#fff;font:600 26px Inter;display:flex;align-items:center;justify-content:center}
+.katad{font:600 24px Inter;letter-spacing:.14em;text-transform:uppercase}
+.etiket{margin-left:auto;font:600 24px Inter;padding:10px 20px;border-radius:22px;background:rgba(29,29,31,.07);color:var(--ink)}
+.ad{font:600 70px InterDisplay;letter-spacing:-.01em;line-height:1.05;margin-bottom:14px}
+.metin{font:400 36px Inter;line-height:1.35;color:var(--ink2)}
+.orta{position:absolute;left:60px;right:60px;top:0;bottom:0;display:flex;align-items:center;justify-content:center;opacity:0}
+.giris{width:960px;border-radius:48px;background:var(--glass);backdrop-filter:blur(30px) saturate(1.6);box-shadow:0 30px 80px rgba(0,0,0,.16);padding:64px 60px;text-align:center}
+.giris .k{font:600 26px Inter;letter-spacing:.2em;text-transform:uppercase;color:var(--ink2);margin-bottom:26px}
+.giris .b{font:600 112px InterDisplay;letter-spacing:-.02em;line-height:1.02;white-space:pre-line}
+.giris .a{font:400 38px Inter;color:var(--ink2);margin-top:26px;line-height:1.3}
+.giris .cipler{display:flex;justify-content:center;gap:14px;margin-top:38px}
+.cip{display:flex;align-items:center;gap:12px;font:600 28px Inter;padding:14px 24px;border-radius:30px;background:rgba(29,29,31,.06)}
+.cip i{width:16px;height:16px;border-radius:8px;display:block}
+.bolum{display:flex;flex-direction:column;align-items:center;gap:22px;padding:56px 80px;border-radius:48px;background:var(--glass);backdrop-filter:blur(30px) saturate(1.6);box-shadow:0 30px 80px rgba(0,0,0,.16)}
+.bolum .d{width:28px;height:28px;border-radius:14px}
+.bolum .t{font:600 92px InterDisplay;letter-spacing:-.02em}
+.bolum .s{font:500 34px Inter;color:var(--ink2)}
+.pin{position:absolute;left:0;top:0;width:0;height:0}
+.pin .g{position:absolute;left:-47px;top:-120px;width:94px;height:120px;transform-origin:50% 100%}
+.pin svg{position:absolute;inset:0;filter:drop-shadow(0 8px 12px rgba(0,0,0,.25))}
+.pin .n{position:absolute;left:0;right:0;top:22px;text-align:center;color:#fff;font:600 36px Inter}
+.pin .h{position:absolute;left:-60px;top:-60px;width:120px;height:120px;border-radius:60px;opacity:0}
+.pin .golge{position:absolute;left:-14px;top:-5px;width:28px;height:10px;border-radius:50%;background:rgba(0,0,0,.18)}
+.son .b{font-size:92px}
+</style></head>
+<body><div id="m"></div><div id="ui"></div>
+<script src="node_modules/maplibre-gl/dist/maplibre-gl.js"></script>
+<script>
+const V = window.VERI;           // enjekte edilir
+const H = V.harita, K = H.kategoriler, D = H.duraklar;
+const FPS = V.fps || 30;
+const ease = u => u<.5 ? 4*u*u*u : 1-Math.pow(-2*u+2,3)/2;
+const eOut = u => 1-Math.pow(1-u,3);
+const cl = (x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lerp=(a,b,u)=>a+(b-a)*u;
+const sp = (u)=>{u=cl(u);return 1-Math.exp(-6*u)*Math.cos(10*u)}; // yay
+
+// ---------- zaman çizelgesi ----------
+const SEG=[]; let t0=0;
+const add=(o)=>{o.t=t0;SEG.push(o);t0+=o.d;return o};
+add({tip:'giris',d:3.6});
+let katSira=[]; for(const s of D) if(!katSira.includes(s.kat)) katSira.push(s.kat);
+D.forEach((s,i)=>{s.i=i});
+for(const k of katSira){ add({tip:'kat',kat:k,d:1.25,adet:D.filter(s=>s.kat===k).length});
+  for(const s of D.filter(s=>s.kat===k)) add({tip:'durak',s,d:3.5}); }
+add({tip:'son',d:4.2});
+const TOPLAM=t0;
+
+// ---------- kamera ----------
+const PAD_DURAK=1010;
+let KEYS=[];
+function kameraKur(map){
+  const nl={c:H.baslangic.merkez,z:H.baslangic.zoom,p:0}, city={c:H.sehir_kamera.merkez,z:H.sehir_kamera.zoom,p:0};
+  KEYS=[{t:0,...nl},{t:.5,...nl},{t:3.0,...city}];
+  let son=city;
+  for(const g of SEG){
+    if(g.tip==='durak'){const c={c:g.s.konum,z:H.durak_zoom,p:PAD_DURAK};
+      KEYS.push({t:g.t,...son}); KEYS.push({t:g.t+1.0,...c}); son=c;}
+    if(g.tip==='son'){
+      const b=new maplibregl.LngLatBounds(); D.forEach(s=>b.extend(s.konum));
+      const cam=map.cameraForBounds(b,{padding:{top:860,bottom:330,left:150,right:150}});
+      const c={c:[cam.center.lng,cam.center.lat],z:cam.zoom,p:0};
+      KEYS.push({t:g.t,...son}); KEYS.push({t:g.t+1.4,...c}); son=c;}
+  }
+  KEYS.push({t:TOPLAM+1,...son});
+}
+function kamera(t){
+  let i=0; while(i<KEYS.length-2 && KEYS[i+1].t<=t) i++;
+  const a=KEYS[i], b=KEYS[i+1]; const u=ease(cl((t-a.t)/Math.max(1e-6,b.t-a.t)));
+  let z=lerp(a.z,b.z,u);
+  const dx=(b.c[0]-a.c[0])*68, dy=(b.c[1]-a.c[1])*111, km=Math.hypot(dx,dy);
+  if(a.z>13 && b.z>13) z-=Math.min(1.1,km*.32)*Math.sin(Math.PI*u);
+  return {center:[lerp(a.c[0],b.c[0],u),lerp(a.c[1],b.c[1],u)],zoom:z,padding:{top:lerp(a.p,b.p,u),bottom:0,left:0,right:0}};
+}
+
+// ---------- arayüz ----------
+const ui=document.getElementById('ui');
+const el=(h)=>{const d=document.createElement('div');d.innerHTML=h.trim();return d.firstChild};
+const ust=el(`<div class="ust"><span>${H.sehir}</span><span class="h">@ugrkrakas</span></div>`); ui.appendChild(ust);
+const bar=el(`<div class="bar">${D.map(s=>`<i><b style="background:${K[s.kat].renk}"></b></i>`).join('')}</div>`); ui.appendChild(bar);
+const pinler=D.map(s=>{const p=el(`<div class="pin"><div class="golge"></div><div class="h" style="background:${K[s.kat].renk}"></div><div class="g">
+ <svg viewBox="-2 -2 76 96"><path d="M36 90 C36 90 6 56 6 34 A30 30 0 0 1 66 34 C66 56 36 90 36 90Z" fill="${K[s.kat].renk}" stroke="#fff" stroke-width="5"/></svg>
+ <div class="n">${s.i+1}</div></div></div>`); ui.appendChild(p); return p});
+const giris=el(`<div class="orta"><div class="giris"><div class="k">${H.giris_ust}</div><div class="b">${H.giris_baslik}</div><div class="a">${H.giris_alt}</div>
+ <div class="cipler">${katSira.map(k=>`<div class="cip"><i style="background:${K[k].renk}"></i>${K[k].ad}</div>`).join('')}</div></div></div>`); ui.appendChild(giris);
+const bolumler={}; for(const k of katSira){const n=D.filter(s=>s.kat===k).length;
+  bolumler[k]=el(`<div class="orta"><div class="bolum"><div class="d" style="background:${K[k].renk}"></div><div class="t">${K[k].ad}</div><div class="s">${n} yer</div></div></div>`); ui.appendChild(bolumler[k]);}
+const kartlar=D.map(s=>{const k=el(`<div class="kart"><div class="foto"><img src="../../kaynak/${s.foto}"></div><div class="govde">
+ <div class="satir"><div class="no" style="background:${K[s.kat].renk}">${s.i+1}</div><div class="katad" style="color:${K[s.kat].renk}">${K[s.kat].ad}</div>${s.etiket?`<div class="etiket">${s.etiket}</div>`:''}</div>
+ <div class="ad">${s.ad}</div><div class="metin">${s.metin}</div></div></div>`); ui.appendChild(k); return k});
+const son=el(`<div class="kart son" style="top:262px"><div class="govde" style="padding:56px 56px 52px;text-align:center">
+ <div class="k" style="font:600 26px Inter;letter-spacing:.2em;text-transform:uppercase;color:#6E6E73;margin-bottom:22px">${D.length} yer · tek harita</div>
+ <div class="ad" style="font-size:92px;margin-bottom:20px">${H.kapanis}</div>
+ <div class="cipler" style="display:flex;justify-content:center;gap:14px">${katSira.map(k=>`<div class="cip"><i style="background:${K[k].renk}"></i>${K[k].ad}</div>`).join('')}</div></div></div>`); ui.appendChild(son);
+
+function seg(t){for(let i=SEG.length-1;i>=0;i--) if(t>=SEG[i].t) return SEG[i]; return SEG[0]}
+function gorun(e,o,ty=0,sc=1){e.style.opacity=o;e.style.transform=`translateY(${ty}px) scale(${sc})`}
+
+function arayuz(t,map){
+  const g=seg(t), u=t-g.t;
+  // giriş
+  { const a=cl((t-.35)/.5), b=1-cl((t-3.0)/.4); gorun(giris,Math.min(a,b),lerp(40,0,eOut(a))+(1-b)*-30,lerp(.96,1,eOut(a))); }
+  // bölüm
+  for(const k of katSira){const e=bolumler[k];
+    if(g.tip==='kat'&&g.kat===k){const a=eOut(cl(u/.35)),b=1-cl((u-(g.d-.3))/.3); gorun(e,Math.min(a,b),lerp(30,0,a),lerp(.94,1,a));}
+    else e.style.opacity=0;}
+  // kartlar
+  D.forEach((s,i)=>{const e=kartlar[i];
+    if(g.tip==='durak'&&g.s===s){const a=eOut(cl((u-.9)/.5)), b=cl((u-(g.d-.35))/.35);
+      gorun(e,a*(1-b),lerp(60,0,a)-b*24,lerp(.97,1,a));
+      e.querySelector('img').style.transform=`scale(${1.12-0.08*cl(u/g.d)})`;}
+    else e.style.opacity=0;});
+  // ilerleme çubuğu
+  bar.querySelectorAll('b').forEach((b,i)=>{const s=SEG.find(x=>x.tip==='durak'&&x.s.i===i);
+    b.style.transform=`scaleX(${cl((t-s.t-.9)/(s.d-.9))})`;});
+  // pinler
+  D.forEach((s,i)=>{const p=pinler[i], gs=SEG.find(x=>x.tip==='durak'&&x.s.i===i);
+    const q=map.project(s.konum); p.style.transform=`translate(${q.x}px,${q.y}px)`;
+    const td=t-(gs.t+.75); const aktif=(g===gs);
+    if(td<0){p.style.opacity=0;return}
+    p.style.opacity=1;
+    const dus=sp(td/.9); const gs2=p.querySelector('.g');
+    let olcek=aktif?1.15:0.82; if(g.tip==='son') olcek=lerp(.82,1,eOut(cl((t-g.t-1.2)/.6)));
+    gs2.style.transform=`translateY(${(1-cl(td/.35))*-140}px) scale(${olcek*(td<.35?1:lerp(.9,1,dus))})`;
+    const h=p.querySelector('.h'); if(aktif){const w=((u-1)%1.6+1.6)%1.6/1.6; h.style.opacity=(u>1)?(1-w)*.35:0; h.style.transform=`scale(${.3+w})`;} else h.style.opacity=0;
+    p.querySelector('.golge').style.opacity=cl(td/.35);});
+  // kapanış
+  if(g.tip==='son'){const a=eOut(cl((u-1.3)/.5)); gorun(son,a,lerp(50,0,a),lerp(.96,1,a));} else son.style.opacity=0;
+}
+
+// ---------- harita ----------
+function stil(s){
+  const R={background:'#F4F1EA',park:'#D9E9CC',water:'#A9CFEE',landuse_residential:'#EFEBE3',landcover_wood:'#D9E9CC',building:'#E7E1D6'};
+  s.layers=s.layers.filter(l=>l.type!=='symbol' && !/^boundary|aeroway|railway|tunnel/.test(l.id) && !/ice|glacier/.test(l.id));
+  for(const l of s.layers){
+    if(l.type==='background') l.paint={'background-color':R.background};
+    else if(R[l.id]&&l.type==='fill') {l.paint={'fill-color':R[l.id],'fill-antialias':true}; if(l.id==='building') l.paint['fill-opacity']=['interpolate',['linear'],['zoom'],13,0,15,1];}
+    else if(l.id==='waterway') l.paint={'line-color':R.water,'line-width':['interpolate',['linear'],['zoom'],10,1,16,6]};
+    else if(l.type==='line'){
+      const cas=/casing/.test(l.id), mot=/motorway/.test(l.id), maj=/major/.test(l.id), path=/path|pier/.test(l.id);
+      const w = path?[13,0,16,1.5]: mot?[6,.6,16,14]: maj?[9,.6,16,12]:[11,.2,16,6];
+      l.paint={'line-color':cas?'#E3DDD2':(mot?'#FDF6E6':'#FFFFFF'),'line-width':['interpolate',['exponential',1.5],['zoom'],w[0],w[1]*(cas?1.4:1),w[2],w[3]*(cas?1.25:1)],'line-opacity':path?.7:1};
+      if(l.layout) delete l.layout['visibility'];
+    }}
+  return s;
+}
+window.basla=async()=>{
+  const s=stil(window.STIL);
+  const map=new maplibregl.Map({container:'m',style:s,center:H.baslangic.merkez,zoom:H.baslangic.zoom,attributionControl:false,interactive:false,fadeDuration:0,pixelRatio:1,canvasContextAttributes:{preserveDrawingBuffer:true,antialias:true}});
+  window.map=map;
+  await new Promise(r=>map.once('load',r));
+  await document.fonts.ready;
+  await Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r})));
+  kameraKur(map);
+  window.TOPLAM=TOPLAM;
+};
+window.kare=async(t)=>{
+  const map=window.map; map.jumpTo(kamera(t)); arayuz(t,map);
+  for(let i=0;i<600;i++){ await new Promise(r=>requestAnimationFrame(r)); if(map.loaded()&&map.areTilesLoaded()&&!map.isMoving()) break; }
+  await new Promise(r=>requestAnimationFrame(r));
+};
+</script></body></html>
