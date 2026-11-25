@@ -299,7 +299,7 @@ def ogle_story(veri):
     # kutu yazıyı sarsın: genişlik = en uzun satır + iç boşluk
     d = ImageDraw.Draw(k)
     tw = max(d.textlength(s, font=af) for s in satirlar(alt, af, genislik - 80))
-    kx0 = (w - tw) / 2 - 44
+    kx0 = (w - tw) / 2 - 64
     d.rounded_rectangle((kx0, kutu_y, w - kx0, kutu_y + ah + 64), radius=(ah + 64) // 2 if ah < 60 else 36, fill=(255, 255, 255, 46))
     yaz(k, (kenar + 40, kutu_y + 32), alt, af, BEYAZ, genislik - 80, 1.2, hiza="orta")
     return birlestir(img, k)
