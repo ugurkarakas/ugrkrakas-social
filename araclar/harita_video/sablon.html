@@ -68,7 +68,8 @@ const pencere=(u,a,b,gir=.4,cik=.35)=>Math.min(eOut(cl((u-a)/gir)),1-cl((u-(b-ci
 
 // ---------- zaman çizelgesi ----------
 const SEG=[]; let t0=0;
-const add=(o)=>{o.t=t0;SEG.push(o);t0+=o.d;return o};
+const SURE=H.sureler||null; let si=0;
+const add=(o)=>{if(SURE) o.d=SURE[si++]; o.t=t0;SEG.push(o);t0+=o.d;return o};
 const G=add({tip:'giris',d:4.4});
 const katSira=[]; for(const s of D) if(!katSira.includes(s.kat)) katSira.push(s.kat);
 D.forEach((s,i)=>{s.i=i});
@@ -83,11 +84,11 @@ const PAD_DURAK=1240;
 let KEYS=[];
 function kameraKur(map){
   const nl={c:H.baslangic.merkez,z:H.baslangic.zoom,p:0}, city={c:H.sehir_kamera.merkez,z:H.sehir_kamera.zoom,p:0};
-  KEYS=[{t:0,...nl},{t:2.2,...nl},{t:4.4,...city}];
+  KEYS=[{t:0,...nl},{t:G.d-2.2,...nl},{t:G.d,...city}];
   let son=city;
   for(const g of SEG){
     if(g.tip==='durak'){const c={c:g.s.konum,z:H.durak_zoom,p:PAD_DURAK};
-      KEYS.push({t:g.t,...son}); KEYS.push({t:g.t+1.0,...c}); son=c;}
+      KEYS.push({t:g.t,...son}); KEYS.push({t:g.t+.9,...c}); son=c;}
     if(g.tip==='son'){
       const b=new maplibregl.LngLatBounds(); D.forEach(s=>b.extend(s.konum));
       const cam=map.cameraForBounds(b,{padding:{top:860,bottom:330,left:150,right:150}});
@@ -134,9 +135,9 @@ function arayuz(t,map){
   const g=seg(t), u=t-g.t;
   let foto=0;   // üstte fotoğraf görünürlüğü (başlık rengi için)
   // giriş: tam ekran fotoğraf -> harita
-  { const o=1-ease(cl((t-2.6)/.9)); girisFoto.style.opacity=o; foto=Math.max(foto,o);
-    girisFoto.querySelector('img').style.transform=`scale(${lerp(1.12,1.0,ease(cl(t/3.5)))})`;
-    const a=eOut(cl((t-.25)/.6)), b=1-cl((t-2.5)/.45); gorun(girisYazi,Math.min(a,b),lerp(40,0,a)-(1-b)*30); }
+  { const o=1-ease(cl((t-(G.d-1.8))/.9)); girisFoto.style.opacity=o; foto=Math.max(foto,o);
+    girisFoto.querySelector('img').style.transform=`scale(${lerp(1.12,1.0,ease(cl(t/(G.d-.9))))})`;
+    const a=eOut(cl((t-.25)/.6)), b=1-cl((t-(G.d-1.9))/.45); gorun(girisYazi,Math.min(a,b),lerp(40,0,a)-(1-b)*30); }
   // bölümler: tam ekran fotoğraf
   for(const k of katSira){const B=bolumler[k];
     if(g.tip==='kat'&&g.kat===k){const o=pencere(u,0,g.d,.35,.4); B.f.style.opacity=o; foto=Math.max(foto,o);
@@ -146,9 +147,9 @@ function arayuz(t,map){
   // duraklar
   D.forEach((s,i)=>{const f=ustFotolar[i], k=kartlar[i];
     if(g.tip==='durak'&&g.s===s){
-      const of=pencere(u,.55,g.d,.6,.4); f.style.opacity=of; foto=Math.max(foto,of);
+      const of=pencere(u,.35,g.d,.55,.35); f.style.opacity=of; foto=Math.max(foto,of);
       f.querySelector('img').style.transform=`scale(${lerp(1.1,1.0,cl(u/g.d))})`;
-      const a=eOut(cl((u-.95)/.5)), b=cl((u-(g.d-.35))/.35);
+      const a=eOut(cl((u-.65)/.45)), b=cl((u-(g.d-.3))/.3);
       gorun(k,a*(1-b),lerp(60,0,a)-b*24,lerp(.97,1,a));}
     else {f.style.opacity=0;k.style.opacity=0;}});
   ustA.style.opacity=foto; ustK.style.opacity=1-foto;
@@ -159,7 +160,7 @@ function arayuz(t,map){
   // pinler
   D.forEach((s,i)=>{const p=pinler[i], gs=SEG.find(x=>x.tip==='durak'&&x.s.i===i);
     const q=map.project(s.konum); p.style.transform=`translate(${q.x}px,${q.y}px)`;
-    const td=t-(gs.t+.85), aktif=(g===gs);
+    const td=t-(gs.t+.7), aktif=(g===gs);
     if(td<0){p.style.opacity=0;return}
     p.style.opacity=1;
     let olcek=aktif?1.12:0.78; if(g.tip==='son') olcek=lerp(.78,1,eOut(cl((t-g.t-1.2)/.6)));
