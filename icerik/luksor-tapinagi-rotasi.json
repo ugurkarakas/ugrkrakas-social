@@ -1,0 +1,83 @@
+{
+  "slug": "luksor-tapinagi-rotasi",
+  "tur": "carousel",
+  "seri": "Rota",
+  "baslik": "Luksor Tapınağı rotası",
+  "alt_baslik": "Kendi fotoğraflarımla, durak durak.",
+  "konum": "Luksor, Mısır",
+  "foto": "luksor-giris-ugur.jpg",
+  "rota": {
+    "sehir": "LUKSOR",
+    "alt": "Tapınak Rotası",
+    "ust": "Mısır",
+    "kapak": "luksor-giris-ugur.jpg",
+    "kapak_odak": [
+      0.5,
+      0.6
+    ],
+    "duraklar": [
+      {
+        "etiket": "1. DURAK – GİRİŞ PİLONU",
+        "maddeler": [
+          "II. Ramses'in dev giriş kapısı",
+          "Oturan Ramses heykelleri",
+          "Obelisk: ikizi Paris'te, Concorde Meydanı'nda"
+        ],
+        "foto": "luksor-ramses-heykel.jpg",
+        "konum": 0.09
+      },
+      {
+        "etiket": "2. DURAK – RAMSES AVLUSU",
+        "maddeler": [
+          "Sütunlar arasında ayakta Ramses heykelleri",
+          "Fotoğraf için en kalabalıksız köşe"
+        ],
+        "foto": "luksor-ramses-avlu-ugur.jpg",
+        "konum": 0.6
+      },
+      {
+        "etiket": "3. DURAK – TAPINAKTAKİ CAMİ",
+        "maddeler": [
+          "Abu'l Haccac Camii",
+          "Tapınak kumun altındayken üstüne yapıldı",
+          "Kapısı bugün zeminden metrelerce yukarıda"
+        ],
+        "foto": "luksor-cami.jpg",
+        "konum": 0.12
+      },
+      {
+        "etiket": "4. DURAK – SÜTUNLU AVLU",
+        "maddeler": [
+          "Papirüs demeti biçiminde sütunlar",
+          "Gölgeler öğleden sonra en güzel"
+        ],
+        "foto": "luksor-sutunlar-ugur.jpg",
+        "konum": 0.07
+      },
+      {
+        "etiket": "İPUÇLARI",
+        "maddeler": [
+          "Sabah erken ya da gün batımında git",
+          "Akşam tapınak ışıklandırılıyor",
+          "Şapka, güneş kremi ve su şart"
+        ],
+        "foto": "luksor-col-kemer-ugur.jpg",
+        "odak": [
+          0.5,
+          0.5
+        ],
+        "konum": 0.7
+      }
+    ],
+    "kapanis": {
+      "foto": "luksor-col-kemer.jpg",
+      "metin": "Kaydet, Luksor'a giderken aç.",
+      "alt": "Daha fazla rota için takip et."
+    }
+  },
+  "cta": "Kaydet, Luksor planına ekle.",
+  "caption": "Luksor Tapınağı'nda 4 durak, kendi fotoğraflarımla:\n\n1. Giriş pilonu: II. Ramses'in dev kapısı, oturan heykelleri ve obelisk. Obeliskin ikizi bugün Paris'te, Concorde Meydanı'nda.\n2. Ramses avlusu: Sütunların arasında ayakta duran Ramses heykelleri.\n3. Abu'l Haccac Camii: Tapınak kumun altındayken üstüne yapılmış, kapısı bugün zeminden metrelerce yukarıda kalıyor.\n4. Sütunlu avlu: Papirüs demeti biçimindeki sütunlar, gölgeler öğleden sonra en güzel.\n\nİpucu: Öğle sıcağında gitme. Sabah erken ya da gün batımına doğru git; akşam tapınak ışıklandırılıyor.",
+  "soru": "Mısır'da seni en çok hangisi çeker: tapınaklar mı, çöl mü?",
+  "ilk_yorum": "#luksor #luxor #mısır #egypt #luksortapinagi #seyahat #gezi",
+  "fotograf_kredisi": ""
+}
