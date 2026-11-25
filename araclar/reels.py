@@ -254,7 +254,7 @@ def isaret_katmani(konum=""):
         uret.harfli(k, (KENAR - 36, 152), konum, uret.font(uret.ARA, 30), uret.BEYAZ, seffaflik=225)
     f = uret.font(uret.KUCUK, 34)
     hw = c.textlength(uret.HANDLE, font=f)
-    c.text((W - KENAR + 36 - hw, 150), uret.HANDLE, font=f, fill=uret.BEYAZ + (225,))
+    c.text((W - KENAR + 6 - hw, 150), uret.HANDLE, font=f, fill=uret.BEYAZ + (225,))
     return golgeli(k, guc=0.5, yaricap=10)
 
 
