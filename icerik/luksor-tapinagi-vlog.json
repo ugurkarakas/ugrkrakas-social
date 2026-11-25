@@ -28,9 +28,11 @@
     "secenek_2": "Felucca",
     "foto": "luksor-pilon.jpg"
   },
-  "story_bilgi": {
-    "ust": "Biliyor muydun?",
-    "metin": "Bu girişte iki obelisk vardı. Diğeri 1836'dan beri Paris'te duruyor.",
+  "story_konum": {
+    "ust": "Rota önerisi",
+    "yer": "Luxor Tapınağı",
+    "bolge": "Luxor, Mısır",
+    "metin": "Girişteki obeliskin ikizi 1836'dan beri Paris'te. Akşam tapınak ışıklandırılıyor.",
     "foto": "luksor-pilon.jpg"
   }
 }
