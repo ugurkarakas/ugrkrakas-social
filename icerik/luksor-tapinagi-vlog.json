@@ -1,0 +1,31 @@
+{
+  "slug": "luksor-tapinagi-vlog",
+  "tur": "reels",
+  "seri": "Kendi çekimim",
+  "baslik": "Luksor'da 1 gün",
+  "alt_baslik": "Yapılacaklar listesi açıklamada.",
+  "konum": "Luksor, Mısır",
+  "foto": "luksor-giris-ugur.jpg",
+  "caption": "📍 Luxor, Mısır\n\nLuksor'a gidersen yapılacaklar listen:\n\n1. Luksor Tapınağı: Girişteki Ramses heykelleri ve obelisk. Gün batımında git, akşam tapınak ışıklandırılıyor.\n2. Karnak Tapınağı: Dev sütunlu salonuyla Mısır'ın en büyük tapınak kompleksi.\n3. Sfenks Yolu: Luksor ile Karnak tapınaklarını birbirine bağlayan, iki yanı sfenkslerle dizili antik yol.\n4. Krallar Vadisi: Batı yakada firavunların kayaya oyulmuş mezarları.\n5. Hatşepsut Tapınağı: Kayalıkların önüne kurulmuş teraslı tapınak.\n6. Memnon Kolosları: Batı yakaya geçerken yol kenarındaki iki dev heykel.\n7. Sıcak hava balonu: Gün doğumunda Nil'in batı yakası üzerinde.\n8. Felucca: Gün batımında Nil'de yelkenli tekne turu.\n\nİpucu: Öğle sıcağında açık alanlardan kaç. Tapınakları sabah erken ya da öğleden sonra gez.",
+  "soru": "Luksor'da ilk hangisini yapardın?",
+  "ilk_yorum": "#luxor #luksor #mısır #egypt #karnak #nil #seyahat #gezi",
+  "fotograf_kredisi": "Video: kendi çekimim",
+  "ogle": {
+    "ust": "Biliyor muydun?",
+    "metin": "Luksor Tapınağı'nın girişindeki obeliskin ikizi bugün Paris'te, Concorde Meydanı'nda duruyor.",
+    "foto": "luksor-ramses-heykel.jpg"
+  },
+  "sabah": {
+    "ust": "Bu akşam",
+    "yer": "Luksor Tapınağı",
+    "bolge": "Luxor, Mısır",
+    "metin": "Ramses heykelleri, obelisk ve sütunlu avlular. Akşam Luksor'dan bir video geliyor.",
+    "foto": "luksor-sutunlar-ugur.jpg"
+  },
+  "anket": {
+    "soru": "Luksor'da hangisi?",
+    "secenek_1": "Balon",
+    "secenek_2": "Felucca",
+    "foto": "luksor-pilon.jpg"
+  }
+}
