@@ -1,0 +1,77 @@
+{
+  "slug": "lahor-sokak-lezzetleri",
+  "tur": "reels",
+  "seri": "Belgesel",
+  "baslik": "Lahor sokaklarında bir gün",
+  "alt_baslik": "Pakistan'ın yemek başkentinde sokak lezzetleri.",
+  "konum": "Lahor, Pakistan",
+  "foto": "",
+  "caption": "Lahor'a \"Pakistan'ın yemek başkenti\" denir. Şehri anlamanın en kısa yolu sokaktaki tezgahlardan geçiyor:\n\n• Tava: Dev saclarda, gözünün önünde cızırdayarak pişen et.\n• Tikka: Közde dönen şişler; duman sokağa karışıyor.\n• Atıştırmalıklar: Ayakta, kaseden, hızlıca.\n• Gece pazarı: Akşam olunca meyve ve sebze tezgahları ışıl ışıl.\n\nİlk durak için: Badşahi Camii'nin karşısındaki Fort Road Food Street ve eski şehirdeki Gawalmandi.\nPakistan Türk vatandaşlarından vize istiyor; başvuru yolunu resmi vize portalından kontrol et.\nBilgiler Kasım 2026 itibarıyla.",
+  "soru": "Pakistan mutfağını denedin mi?",
+  "ilk_yorum": "#lahor #lahore #pakistan #sokaklezzetleri #streetfood #seyahat",
+  "fotograf_kredisi": "Video: Pexels · Müzik: DesiFreeMusic (Pixabay)",
+  "anket": {
+    "soru": "Lahor'da ilk ne denersin?",
+    "secenek_1": "Tikka",
+    "secenek_2": "Tava"
+  },
+  "reels": {
+    "konum": "Lahor, Pakistan",
+    "muzik": {
+      "dosya": "muzik/folk-nostalgia-desifreemusic.mp3",
+      "bpm": 86.13,
+      "baslangic": 122.86
+    },
+    "kapanis": "Kaydet, bir gün o sokaktasın.",
+    "kapanis_alt": "Daha fazla rota için takip et.",
+    "sahneler": [
+      {
+        "fotolar": [
+          {"video": "video/lahor-sokaklari/12155292_1920_1080_25fps.mp4", "baslangic": 19, "vurus": 4, "odak_x": 0.55},
+          {"video": "video/lahor-sokaklari/12155278_1280_720_25fps.mp4", "baslangic": 2.5, "vurus": 3, "odak_x": 0.62}
+        ],
+        "etiket": "Sokak lezzetleri",
+        "metin": "Lahor sokaklarında bir gün",
+        "alt": "Pakistan'ın yemek başkenti denir."
+      },
+      {
+        "fotolar": [
+          {"video": "video/lahor-sokaklari/12155278_1280_720_25fps.mp4", "baslangic": 6, "vurus": 4, "odak_x": 0.6}
+        ],
+        "etiket": "Tava",
+        "metin": "Dev sacda cızırdayan et"
+      },
+      {
+        "fotolar": [
+          {"video": "video/lahor-sokaklari/12155292_1920_1080_25fps.mp4", "baslangic": 4, "vurus": 4, "odak_x": 0.72},
+          {"video": "video/lahor-sokaklari/12155291_1280_720_25fps.mp4", "baslangic": 24, "vurus": 3, "odak_x": 0.45}
+        ],
+        "etiket": "Tikka",
+        "metin": "Közün dumanı sokağa karışır"
+      },
+      {
+        "fotolar": [
+          {"video": "video/lahor-sokaklari/12885269_1280_720_30fps.mp4", "baslangic": 0.5, "vurus": 4, "odak_x": 0.5}
+        ],
+        "etiket": "Atıştırmalık",
+        "metin": "Ayakta, kaseden, hızlıca"
+      },
+      {
+        "fotolar": [
+          {"video": "video/lahor-sokaklari/5709963-hd_1280_720_50fps.mp4", "baslangic": 1, "vurus": 4, "odak_x": 0.45}
+        ],
+        "etiket": "Meyve tezgahı",
+        "metin": "Renk renk, sabırla dizilmiş"
+      },
+      {
+        "fotolar": [
+          {"video": "video/lahor-sokaklari/13716577_1280_720_24fps.mp4", "baslangic": 6, "vurus": 4, "odak_x": 0.45},
+          {"video": "video/lahor-sokaklari/13716577_1280_720_24fps.mp4", "baslangic": 18, "vurus": 3, "odak_x": 0.55}
+        ],
+        "etiket": "Gece pazarı",
+        "metin": "Akşam olunca pazar canlanır"
+      }
+    ],
+    "renk": "film"
+  }
+}
