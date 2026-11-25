@@ -246,10 +246,12 @@ def alfali(katman, alfa):
     return k
 
 
-def isaret_katmani():
-    """Sağ üstte sabit @ugrkrakas imzası (kapanış kartı hariç tüm karelerde)."""
+def isaret_katmani(konum=""):
+    """Sol üstte konum, sağ üstte @ugrkrakas imzası (kapanış kartı hariç tüm karelerde)."""
     k = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     c = ImageDraw.Draw(k)
+    if konum:
+        uret.harfli(k, (KENAR - 36, 152), konum, uret.font(uret.ARA, 30), uret.BEYAZ, seffaflik=225)
     f = uret.font(uret.KUCUK, 34)
     hw = c.textlength(uret.HANDLE, font=f)
     c.text((W - KENAR + 36 - hw, 150), uret.HANDLE, font=f, fill=uret.BEYAZ + (225,))
@@ -298,9 +300,8 @@ def sahneleri_al(veri):
 
 def uret_reels(json_yolu):
     global ISARET, RENK, MEKTUP
-    if ISARET is None:
-        ISARET = isaret_katmani()
     veri = json.loads(Path(json_yolu).read_text(encoding="utf-8"))
+    ISARET = isaret_katmani(veri.get("reels", {}).get("konum", veri.get("konum", "")))
     RENK = RENKLER[veri.get("reels", {}).get("renk")]
     MEKTUP = veri.get("reels", {}).get("stil") == "mektup"
     sahneler = sahneleri_al(veri)
