@@ -12,7 +12,7 @@
   "fotograf_kredisi": "",
   "ogle": {
     "ust": "Biliyor muydun?",
-    "metin": "Tapınak yüzyıllarca kumun altındayken üstüne bir cami yapıldı. Abu'l Haccac Camii'nin kapısı bugün zeminden metrelerce yukarıda.",
+    "metin": "Tapınak kumun altındayken üstüne bir cami yapıldı. Kapısı bugün zeminden metrelerce yukarıda.",
     "foto": "luksor-cami.jpg"
   },
   "sabah": {
@@ -29,7 +29,8 @@
     "foto": "luksor-pilon.jpg"
   },
   "story_bilgi": {
-    "foto": "luksor-pilon.jpg",
-    "metin": "Bu girişte bir zamanlar iki obelisk vardı. Diğeri 1836'dan beri Paris'te, Concorde Meydanı'nda duruyor."
+    "ust": "Biliyor muydun?",
+    "metin": "Bu girişte iki obelisk vardı. Diğeri 1836'dan beri Paris'te duruyor.",
+    "foto": "luksor-pilon.jpg"
   }
 }
