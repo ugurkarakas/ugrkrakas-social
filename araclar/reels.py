@@ -251,7 +251,7 @@ def isaret_katmani(konum=""):
     k = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     c = ImageDraw.Draw(k)
     if konum:
-        uret.harfli(k, (KENAR - 36, 152), konum, uret.font(uret.ARA, 30), uret.BEYAZ, seffaflik=225)
+        uret.harfli(k, (KENAR - 6, 152), konum, uret.font(uret.ARA, 30), uret.BEYAZ, seffaflik=225)
     f = uret.font(uret.KUCUK, 34)
     hw = c.textlength(uret.HANDLE, font=f)
     c.text((W - KENAR + 6 - hw, 150), uret.HANDLE, font=f, fill=uret.BEYAZ + (225,))
