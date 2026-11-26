@@ -14,6 +14,7 @@ icerik/<slug>.json içinde:
     "ortam": "ruzgar",                       ortam yatağı: "ruzgar" | null
     "kapanis": "Heykeller gitti. Hikayesi kaldı.",
     "kapanis_alt": "Kaydet. Bu hikayeyi bilen az.",
+    "gecis_sesi": "ters_yanki",              geçiş sesi: "ters_yanki" (varsayılan) | "whoosh" | null
     "sahneler": [ ... ]
   }
 
@@ -58,6 +59,11 @@ SR = sx.SR
 KENAR = 96
 GENIS = W - 2 * KENAR
 BEYAZ = (255, 255, 255)
+
+
+def buyuk(metin):
+    """Türkçe büyük harf (i -> İ, ı -> I)."""
+    return metin.replace("i", "İ").replace("ı", "I").upper()
 
 
 def yumusak(t):
@@ -161,12 +167,12 @@ def baslik_sprite(baslik, bolum=None):
     y = int(H * 0.40)
     if bolum:
         f = uret.font(uret.ARA, 30)
-        gen = aralikli(c, (0, y - 90), bolum.upper(), f, BEYAZ + (230,), 9)
+        gen = aralikli(c, (0, y - 90), buyuk(bolum), f, BEYAZ + (230,), 9)
         orta = W / 2
         c.line((orta - gen / 2 - 90, y - 72, orta - gen / 2 - 26, y - 72), fill=BEYAZ + (200,), width=2)
         c.line((orta + gen / 2 + 26, y - 72, orta + gen / 2 + 90, y - 72), fill=BEYAZ + (200,), width=2)
     boyut = 168 if len(baslik) <= 7 else (130 if len(baslik) <= 11 else 100)
-    aralikli(c, (0, y), baslik.upper(), reels.serif(boyut, "Medium"), BEYAZ + (250,), int(boyut * 0.12))
+    aralikli(c, (0, y), buyuk(baslik), reels.serif(boyut, "Medium"), BEYAZ + (250,), int(boyut * 0.12))
     return _sprite(k, 0.8, 22)
 
 
@@ -177,12 +183,12 @@ def bant_sprite(satirlar):
     c.rectangle((x, y, x + 64, y + 4), fill=BEYAZ + (240,))
     y += 30
     if satirlar:
-        aralikli(c, (x, y), satirlar[0].upper(), uret.font(uret.ARA, 40), BEYAZ + (250,), 6, hiza="sol")
+        aralikli(c, (x, y), buyuk(satirlar[0]), uret.font(uret.ARA, 40), BEYAZ + (250,), 6, hiza="sol")
         y += 62
     for s in satirlar[1:]:
-        aralikli(c, (x, y), s.upper(), uret.font(uret.KUCUK, 30), (235, 235, 235, 225), 5, hiza="sol")
+        aralikli(c, (x, y), buyuk(s), uret.font(uret.KUCUK, 30), (235, 235, 235, 225), 5, hiza="sol")
         y += 46
-    return _sprite(k, 0.75, 14)
+    return _sprite(k, 1.0, 20)
 
 
 def sayac_sprite(deger, birim, ust):
@@ -190,13 +196,13 @@ def sayac_sprite(deger, birim, ust):
     c = ImageDraw.Draw(k)
     y = int(H * 0.34)
     if ust:
-        aralikli(c, (0, y - 60), ust.upper(), uret.font(uret.ARA, 30), BEYAZ + (230,), 9)
+        aralikli(c, (0, y - 60), buyuk(ust), uret.font(uret.ARA, 30), BEYAZ + (230,), 9)
     f = uret.font(uret.BASLIK, 260)
     s = f"{deger:,}".replace(",", ".")
     tw = c.textlength(s, font=f)
     c.text(((W - tw) / 2, y), s, font=f, fill=BEYAZ + (252,))
     if birim:
-        aralikli(c, (0, y + 335), birim.upper(), uret.font(uret.ARA, 40), BEYAZ + (240,), 14)
+        aralikli(c, (0, y + 335), buyuk(birim), uret.font(uret.ARA, 40), BEYAZ + (240,), 14)
     return _sprite(k, 0.8, 22)
 
 
@@ -299,7 +305,8 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
     ff = subprocess.Popen(
         ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
          "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
-         "-c:v", "libx264", "-preset", "ultrafast" if taslak else "medium", "-crf", "17",
+         "-c:v", "libx264", "-preset", "ultrafast" if taslak else "medium", "-crf", "18",
+         "-maxrate", "11M", "-bufsize", "22M",
          "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(sessiz)],
         stdin=subprocess.PIPE)
 
@@ -317,10 +324,18 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
         kaynak = kaynak_ac(s)
 
         # --- ses olayları ---
-        if gecis == "erime" and i:
-            olaylar.append((zaman - 0.45, sx.whoosh(0.9, i, 0.6), 0.35))
-        if gecis == "siyah" and i:
-            olaylar.append((zaman - 0.5, sx.whoosh(1.0, i, 0.8), 0.45))
+        gs = b.get("gecis_sesi", "ters_yanki")
+        if gecis == "erime" and i and gs:
+            if gs == "whoosh":
+                olaylar.append((zaman - 0.45, sx.whoosh(0.9, i, 0.6), 0.35))
+            else:
+                olaylar.append((zaman + 0.05 - 1.2, sx.ters_yanki(1.2, i, 45 + (i % 3) * 2, 0.3), 0.16))
+        if gecis == "siyah" and i and gs:
+            if gs == "whoosh":
+                olaylar.append((zaman - 0.5, sx.whoosh(1.0, i, 0.8), 0.45))
+            else:
+                olaylar.append((zaman - 1.6, sx.ters_yanki(1.7, i, 40, 0.45), 0.24))
+                olaylar.append((zaman, sx.alcak_vurus(i), 0.3))
         if gecis == "darbe":
             olaylar.append((zaman, sx.darbe(3.2, i), 1.0))
         if s.get("riser"):
@@ -336,7 +351,7 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
         # --- yazı katmanları ---
         baslik = baslik_sprite(s["baslik"], s.get("bolum")) if s.get("baslik") else None
         if baslik:
-            olaylar.append((zaman + 0.15, sx.nefes(0.8, i), 0.25))
+            olaylar.append((zaman + 0.15, sx.nefes(0.8, i), 0.12))
         bant = bant_sprite(s["bant"]) if s.get("bant") else None
         yazi = Daktilo(s["yazi"], yazi_sprite, s.get("yazi_hiz", 20)) if s.get("yazi") else None
         yazi_bas = s.get("yazi_bas", 0.5)

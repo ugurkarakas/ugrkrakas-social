@@ -56,7 +56,7 @@ def _degisken_filtre(x, merkezler, genislik=1.6, blok=512):
     out = np.zeros_like(x)
     zi = None
     for i in range(0, len(x), blok):
-        fc = float(merkezler[min(i, len(merkezler) - 1)])
+        fc = max(120.0, float(merkezler[min(i, len(merkezler) - 1)]))
         lo, hi = max(40, fc / genislik), min(SR / 2 - 200, fc * genislik)
         b, a = butter(2, [lo / (SR / 2), hi / (SR / 2)], btype="band")
         if zi is None or len(zi) != max(len(a), len(b)) - 1:
@@ -190,3 +190,37 @@ def ekle(iz, ses, zaman, kazanc=1.0):
     son = min(len(iz), bas + len(ses))
     if son > bas:
         iz[bas:son] += ses[: son - bas] * kazanc
+
+
+def ters_yanki(sure=1.4, tohum=9, nota=45, parlak=0.4):
+    """Belgesel geçişi: yumuşak bir vuruşun yankısı ters çevrilir; kesmeye doğru sessizce kabarır.
+    Whoosh'tan çok daha doğal ve müzikal (alçak geçirilmiş, tonal)."""
+    rng = np.random.default_rng(tohum)
+    n = int(sure * SR)
+    t = np.arange(n) / SR
+    f = 440 * 2 ** ((nota - 69) / 12)
+    ton = (np.sin(2 * np.pi * f * t) + 0.6 * np.sin(2 * np.pi * f * 1.5 * t)
+           + 0.3 * np.sin(2 * np.pi * f * 2 * t)) * np.exp(-t * 3)
+    dokunus = _lp(rng.standard_normal(n), 600 + 2400 * parlak) * np.exp(-t * 25)
+    m = ton * 0.3 + _norm(dokunus) * 0.6
+    m = _yanki(m, sure, 1.6, rng, 1200 + 3000 * parlak)
+    m = _lp(m, 900 + 2500 * parlak)
+    m = m[::-1].copy()
+    m *= np.linspace(0, 1, n) ** 1.6
+    k = int(0.02 * SR)
+    m[-k:] *= np.linspace(1, 0, k)
+    sol = m
+    sag = np.roll(m, int(0.013 * SR))
+    return _norm(np.stack([sol, sag], axis=1), 0.8)
+
+
+def alcak_vurus(tohum=10, derin=1.0):
+    """Siyaha geçişte duyulmaktan çok hissedilen yumuşak alt vuruş."""
+    rng = np.random.default_rng(tohum)
+    n = int(1.6 * SR)
+    t = np.arange(n) / SR
+    f = 42 + 20 * np.exp(-t * 10)
+    m = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t * 3.2) * derin
+    m += _lp(rng.standard_normal(n), 300) * np.exp(-t * 30) * 0.3
+    m = _yanki(m, 1.2, 0.3, rng, 800)
+    return _norm(_stereo(m), 0.9)

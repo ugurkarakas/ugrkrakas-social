@@ -158,5 +158,151 @@
     "bolge": "Laponya, Finlandiya",
     "metin": "Kuzey Kutup Dairesi'nin üzerinde; husky kızakları, karlı ormanlar ve kuzey ışıkları.",
     "foto": "laponya-husky-1.jpg"
+  },
+  "belgesel": {
+    "konum": "LAPONYA",
+    "renk": "film",
+    "ortam": "ruzgar",
+    "ortam_ses": 0.2,
+    "gecis_sesi": "ters_yanki",
+    "muzik": {
+      "dosya": "muzik/cold-cinematic-lexin.mp3",
+      "baslangic": 5.5,
+      "ses": 0.75,
+      "giris": 3.5
+    },
+    "kapanis": "Bazı geceler hiç bitmesin istersin.",
+    "kapanis_alt": "Kaydet. Kış planına ekle.",
+    "sahneler": [
+      {
+        "siyah": true,
+        "sure": 4.2,
+        "yazi": "Kuzey Kutup Dairesi'nin hemen üstünde, gece başka türlü çöker.",
+        "yazi_bas": 0.4,
+        "sfx": [
+          {
+            "ad": "drone",
+            "t": 0,
+            "kazanc": 0.5
+          }
+        ]
+      },
+      {
+        "video": "video/lap-v-aurora.mp4",
+        "baslangic": 0.5,
+        "hiz": 0.8,
+        "odak_x": 0.5,
+        "sure": 4.6,
+        "gecis": "darbe",
+        "sessizlik": true,
+        "riser": true,
+        "bolum": "Bölüm I",
+        "baslik": "Laponya"
+      },
+      {
+        "video": "video/laponya/12748829_1280_720_60fps.mp4",
+        "baslangic": 4,
+        "hiz": 0.7,
+        "sure": 4.2,
+        "gecis": "erime",
+        "sayac": {
+          "deger": 66,
+          "birim": "derece kuzey",
+          "ust": "Enlem",
+          "bas": 0.3
+        },
+        "alt": "Dünyanın tepesine bu kadar yakın.",
+        "alt_bas": 1.9
+      },
+      {
+        "video": "video/laponya/12748811_1280_720_60fps.mp4",
+        "baslangic": 2,
+        "hiz": 0.75,
+        "odak_x": 0.45,
+        "sure": 4.0,
+        "gecis": "erime",
+        "bant": [
+          "Rovaniemi, Finlandiya",
+          "Kutup Dairesi çizgisi burada"
+        ],
+        "bant_bas": 0.4
+      },
+      {
+        "video": "video/laponya/16774877_720_1280_30fps.mp4",
+        "baslangic": 2,
+        "hiz": 0.8,
+        "sure": 4.4,
+        "gecis": "erime",
+        "alt": "Aralıkta gün ışığı yalnızca birkaç saat sürer.",
+        "yazdir": true,
+        "alt_bas": 0.4
+      },
+      {
+        "siyah": true,
+        "sure": 3.0,
+        "gecis": "siyah",
+        "yazi": "Asıl gösteri, karanlıkta başlar.",
+        "yazi_bas": 0.4,
+        "yazi_hiz": 16
+      },
+      {
+        "video": "video/lap-v-aurora.mp4",
+        "baslangic": 7,
+        "hiz": 0.8,
+        "odak_x": 0.4,
+        "sure": 4.6,
+        "gecis": "darbe",
+        "sessizlik": true,
+        "bolum": "Bölüm II",
+        "baslik": "Kuzey Işıkları"
+      },
+      {
+        "foto": "laponya-aurora-3.jpg",
+        "yakinlas": 0.1,
+        "sure": 4.6,
+        "gecis": "erime",
+        "alt": "Ağustos sonundan nisana kadar, açık gecelerde gökyüzü yeşile boyanır.",
+        "yazdir": true,
+        "alt_bas": 0.4
+      },
+      {
+        "foto": "laponya-aurora-1.jpg",
+        "yakinlas": 0.08,
+        "sure": 4.4,
+        "gecis": "erime",
+        "alt": "Aralık çoğu zaman bulutlu. Rehberli bir aurora avı şansını artırır.",
+        "alt_bas": 0.5
+      },
+      {
+        "video": "video/laponya/13193286_720_1280_30fps.mp4",
+        "baslangic": 6,
+        "hiz": 0.8,
+        "sure": 4.0,
+        "gecis": "siyah",
+        "bant": [
+          "Husky kızağı",
+          "Karlı ormanın içinden"
+        ],
+        "bant_bas": 0.4
+      },
+      {
+        "video": "video/laponya/17284705_720_1280_30fps.mp4",
+        "baslangic": 3,
+        "hiz": 0.8,
+        "sure": 2.6,
+        "gecis": "kesme",
+        "yakinlas": 0.04
+      },
+      {
+        "video": "video/laponya/14851444_720_1280_30fps.mp4",
+        "baslangic": 1,
+        "hiz": 0.8,
+        "sure": 4.2,
+        "gecis": "erime",
+        "alt": "Burada sessizlik bile bir ses gibi.",
+        "yazdir": true,
+        "alt_bas": 0.5
+      }
+    ]
   }
 }

@@ -25,7 +25,7 @@ Takvime yeni satır eklemek için zamanlanmış görevi değiştirmek gerekmez; 
 | `reels/` | Reels videoları `<slug>.mp4` | 1080x1920, 3-90 sn |
 | `story/` | Günün gönderisini duyuran story | 1080x1920 |
 | `anket/` | Anket story'leri (sticker elle eklenir) | 1080x1920 |
-| `araclar/` | Görsel (`uret.py`) ve Reels (`reels.py`) üreticileri | - |
+| `araclar/` | Görsel (`uret.py`), Reels (`reels.py`) ve belgesel Reels (`belgesel.py`) üreticileri | - |
 | `fonts/` | Inter (SIL Open Font License) | - |
 
 ## İçerik türleri (`tur`)
@@ -76,3 +76,9 @@ Günde 3 hikaye:
 - 13:00 öğlen: kaydırmalı gönderi (carousel) + bilgi hikayesi `story/<slug>-ogle.jpg` (akşam içeriğinin "Biliyor muydun?" kartı).
 - 20:00 akşam: reels + duyuru hikayesi `story/<slug>-story.jpg`.
 - Anket görseli `anket/<slug>-anket.jpg` isteğe bağlı olarak elle, anket çıkartmasıyla paylaşılır.
+
+## Belgesel Reels (`araclar/belgesel.py`)
+
+İçerik JSON'unda `belgesel` bloğu varsa video `python3 araclar/belgesel.py icerik/<slug>.json` ile üretilir (aynı `reels/<slug>.mp4` dosyasına yazar; bu içeriklerde `reels.py` çalıştırılmaz).
+Yazıyla anlatım: siyah ekranda soğuk açılış, serif bölüm başlıkları, alt bant (konum), sayaçlı rakamlar, daktilo altyazılar.
+Ses tasarımı (`araclar/sesefekt.py`, hepsi sentez, telifsiz): darbe, riser, ters yankı geçişleri, sayaç tıkları, daktilo, rüzgar yatağı; darbeden önce müzik kısılır. Ses -14 LUFS'a normalize edilir.
