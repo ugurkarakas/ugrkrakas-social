@@ -11,6 +11,8 @@ icerik/<slug>.json içinde:
     "konum": "BAMYAN, AFGANİSTAN",          sol üst küçük konum (boş bırakılabilir)
     "renk": "film",                          reels.py renk derecelendirmesi
     "muzik": {"dosya": "muzik/x.mp3", "baslangic": 0, "ses": 0.8},   ya da null
+             ya da sentez: {"sentez": "parlak", "bpm": 84, "kok": 50, "ses": 0.8}  (araclar/belgesel_muzik.py)
+    "ton": "parlak",                         efektleri umutlu/büyülü tona çevirir (varsayılan: "karanlik")
     "ortam": "ruzgar",                       ortam yatağı: "ruzgar" | null
     "kapanis": "Heykeller gitti. Hikayesi kaldı.",
     "kapanis_alt": "Kaydet. Bu hikayeyi bilen az.",
@@ -23,9 +25,10 @@ Sahne alanları:
   sure                              saniye
   baslangic, hiz (0.7 = yavaş), odak_x   video için;  odak [x, y] fotoğraf için
   yakinlas                          yavaş itme miktarı (varsayılan 0.06; 0 = sabit)
-  gecis                             bu sahneye giriş: "kesme" | "erime" | "siyah" | "darbe"
+  gecis                             bu sahneye giriş: "kesme" | "erime" | "siyah" | "darbe" | "parlama"
+                                    (parlama: yumuşak alt vuruş + büyülü pırıltı; olumlu, umutlu anlar için)
   sessizlik: true                   girişten hemen önce müzik kısılır (darbe öncesi boşluk)
-  riser: true                       girişe 2 sn kala yükselen gerilim
+  riser: true                       girişe 2 sn kala yükselen gerilim ("ton": "parlak" ise ters pırıltı)
   yazi                              (siyah sahnede) ortada serif italik cümle
   bolum / baslik                    "BÖLÜM I" + büyük serif başlık
   bant: ["Bamyan, Afganistan", "2.500 m"]   sol altta belgesel alt bandı
@@ -51,6 +54,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import reels  # noqa: E402
 import sesefekt as sx  # noqa: E402
 import uret  # noqa: E402
+import belgesel_muzik  # noqa: E402
 
 KOK = uret.KOK
 W, H = 1080, 1920
@@ -310,6 +314,8 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
          "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(sessiz)],
         stdin=subprocess.PIPE)
 
+    parlak = b.get("ton") == "parlak"
+    kok_nota = (b.get("muzik") or {}).get("kok", 50) if parlak else 45
     olaylar = []      # (zaman, efekt, kazanc)
     sessizlikler = []  # müzik kısma anları
     sahneler = b["sahneler"]
@@ -329,17 +335,23 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
             if gs == "whoosh":
                 olaylar.append((zaman - 0.45, sx.whoosh(0.9, i, 0.6), 0.35))
             else:
-                olaylar.append((zaman + 0.05 - 1.2, sx.ters_yanki(1.2, i, 45 + (i % 3) * 2, 0.3), 0.16))
+                olaylar.append((zaman + 0.05 - 1.2, sx.ters_yanki(1.2, i, kok_nota + 7 * (i % 2), 0.3), 0.16))
         if gecis == "siyah" and i and gs:
             if gs == "whoosh":
                 olaylar.append((zaman - 0.5, sx.whoosh(1.0, i, 0.8), 0.45))
             else:
-                olaylar.append((zaman - 1.6, sx.ters_yanki(1.7, i, 40, 0.45), 0.24))
+                olaylar.append((zaman - 1.6, sx.ters_yanki(1.7, i, kok_nota - 12, 0.45), 0.24))
                 olaylar.append((zaman, sx.alcak_vurus(i), 0.3))
         if gecis == "darbe":
             olaylar.append((zaman, sx.darbe(3.2, i), 1.0))
+        if gecis == "parlama":
+            olaylar.append((zaman, sx.alcak_vurus(i, 0.8), 0.45))
+            olaylar.append((zaman, sx.parilti(i, kok_nota + 24), 0.32))
         if s.get("riser"):
-            olaylar.append((zaman - 2.2, sx.riser(2.2, i), 0.55))
+            if parlak:
+                olaylar.append((zaman - 2.0, sx.ters_parilti(2.0, i, kok_nota + 24), 0.3))
+            else:
+                olaylar.append((zaman - 2.2, sx.riser(2.2, i), 0.55))
         if s.get("sessizlik"):
             sessizlikler.append(zaman)
         for e in s.get("sfx", []):
@@ -370,7 +382,10 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
         sayac_onb, son_deger = {}, -1
         if sayac:
             sb = sayac.get("bas", 0.3)
-            olaylar.append((zaman + sb + 1.3, sx.darbe(2.4, 90 + i, 0.6), 0.45))
+            if parlak:
+                olaylar.append((zaman + sb + 1.3, sx.alcak_vurus(90 + i, 0.6), 0.3))
+            else:
+                olaylar.append((zaman + sb + 1.3, sx.darbe(2.4, 90 + i, 0.6), 0.45))
 
         for f in range(n):
             t = f / FPS
@@ -412,7 +427,7 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
                 img = Image.blend(onceki, img, yumusak(t / 0.6))
             if gecis == "siyah" and t < 0.5:
                 img = Image.blend(Image.new("RGB", (W, H)), img, yumusak(t / 0.5))
-            if gecis == "darbe" and f < 4:
+            if gecis in ("darbe", "parlama") and f < 4:
                 img = Image.blend(img, Image.new("RGB", (W, H), (255, 255, 255)), 0.28 * (1 - f / 4))
             if sonraki == "siyah" and (n - f) <= 12:
                 img = Image.blend(Image.new("RGB", (W, H)), img, yumusak((n - f - 1) / 12))
@@ -424,7 +439,10 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
     # kapanış kartı
     kap = kapanis_karesi(b)
     kap_sure = 3.2
-    olaylar.append((zaman + 0.1, sx.darbe(3.0, 99, 0.7), 0.5))
+    if parlak:
+        olaylar.append((zaman + 0.1, sx.parilti(99, kok_nota + 24), 0.25))
+    else:
+        olaylar.append((zaman + 0.1, sx.darbe(3.0, 99, 0.7), 0.5))
     for f in range(int(kap_sure * FPS)):
         img = Image.new("RGBA", (W, H), (0, 0, 0, 255))
         yapistir(img, (kap, 0, 0), yumusak(f / 18))
@@ -441,7 +459,15 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
 
     muzik_iz = np.zeros((N, 2))
     m = b.get("muzik")
-    if m and m.get("dosya"):
+    if m and m.get("sentez"):
+        bolumler, tt = [], 0.0
+        for s_ in sahneler:
+            if s_.get("bolum"):
+                bolumler.append(tt)
+            tt += s_["sure"]
+        a = belgesel_muzik.uret(zaman, bolumler, m.get("bpm", 84), m.get("kok", 50), m.get("tohum", 7))
+        muzik_iz[: len(a)] = a * m.get("ses", 0.8)
+    elif m and m.get("dosya"):
         ham = subprocess.run(
             ["ffmpeg", "-loglevel", "error", "-stream_loop", "-1", "-ss", str(m.get("baslangic", 0)),
              "-i", str(KOK / "kaynak" / m["dosya"]), "-t", str(zaman + 1), "-f", "f32le", "-ac", "2",

@@ -163,13 +163,13 @@
     "konum": "LAPONYA",
     "renk": "film",
     "ortam": "ruzgar",
-    "ortam_ses": 0.2,
+    "ortam_ses": 0.1,
     "gecis_sesi": "ters_yanki",
     "muzik": {
-      "dosya": "muzik/cold-cinematic-lexin.mp3",
-      "baslangic": 5.5,
-      "ses": 0.75,
-      "giris": 3.5
+      "sentez": "parlak",
+      "bpm": 84,
+      "kok": 50,
+      "ses": 0.8
     },
     "kapanis": "Bazı geceler hiç bitmesin istersin.",
     "kapanis_alt": "Kaydet. Kış planına ekle.",
@@ -178,14 +178,7 @@
         "siyah": true,
         "sure": 4.2,
         "yazi": "Kuzey Kutup Dairesi'nin hemen üstünde, gece başka türlü çöker.",
-        "yazi_bas": 0.4,
-        "sfx": [
-          {
-            "ad": "drone",
-            "t": 0,
-            "kazanc": 0.5
-          }
-        ]
+        "yazi_bas": 0.4
       },
       {
         "video": "video/lap-v-aurora.mp4",
@@ -193,8 +186,7 @@
         "hiz": 0.8,
         "odak_x": 0.5,
         "sure": 4.6,
-        "gecis": "darbe",
-        "sessizlik": true,
+        "gecis": "parlama",
         "riser": true,
         "bolum": "Bölüm I",
         "baslik": "Laponya"
@@ -251,8 +243,7 @@
         "hiz": 0.8,
         "odak_x": 0.4,
         "sure": 4.6,
-        "gecis": "darbe",
-        "sessizlik": true,
+        "gecis": "parlama",
         "bolum": "Bölüm II",
         "baslik": "Kuzey Işıkları"
       },
@@ -303,6 +294,7 @@
         "yazdir": true,
         "alt_bas": 0.5
       }
-    ]
+    ],
+    "ton": "parlak"
   }
 }

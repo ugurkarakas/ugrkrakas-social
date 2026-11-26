@@ -224,3 +224,29 @@ def alcak_vurus(tohum=10, derin=1.0):
     m += _lp(rng.standard_normal(n), 300) * np.exp(-t * 30) * 0.3
     m = _yanki(m, 1.2, 0.3, rng, 800)
     return _norm(_stereo(m), 0.9)
+
+
+def parilti(tohum=11, kok=74, sure=3.5):
+    """Büyülü pırıltı: majör akorun hızlı yukarı arpejlenen çan sesleri + uzun parlak yankı."""
+    rng = np.random.default_rng(tohum)
+    n = int(sure * SR)
+    m = np.zeros(n)
+    for k, a in enumerate((0, 4, 7, 12, 16, 19, 24)):
+        f = 440 * 2 ** ((kok + a - 69) / 12)
+        b = int(k * 0.045 * SR)
+        t = np.arange(n - b) / SR
+        ton = (np.sin(2 * np.pi * f * t) + 0.3 * np.sin(2 * np.pi * f * 2.76 * t) * np.exp(-t * 6))
+        m[b:] += ton * np.exp(-t * 2.2) * (0.9 - k * 0.07)
+    m += _hp(rng.standard_normal(n), 7000) * np.exp(-np.arange(n) / SR * 3) * 0.08
+    m = _yanki(m, 2.5, 0.8, rng, 9000)
+    sag = np.roll(m, int(0.009 * SR))
+    return _norm(np.stack([m, sag], axis=1), 0.7)
+
+
+def ters_parilti(sure=2.0, tohum=12, kok=74):
+    """Pırıltının yankısı ters: kesmeye doğru büyülü bir kabarma (riser yerine)."""
+    p = parilti(tohum, kok, sure + 0.5)[::-1].copy()[-int(sure * SR):]
+    p *= (np.linspace(0, 1, len(p)) ** 1.8)[:, None]
+    k = int(0.015 * SR)
+    p[-k:] *= np.linspace(1, 0, k)[:, None]
+    return _norm(p, 0.7)
