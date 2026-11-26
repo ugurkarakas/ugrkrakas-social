@@ -12,6 +12,7 @@ icerik/<slug>.json içinde:
     "renk": "film",                          reels.py renk derecelendirmesi
     "muzik": {"dosya": "muzik/x.mp3", "baslangic": 0, "ses": 0.8},   ya da null
              ya da sentez: {"sentez": "parlak", "bpm": 84, "kok": 50, "ses": 0.8}  (araclar/belgesel_muzik.py)
+    "efektler": "sade",                      yalnızca müzik + daktilo sesi (diğer efektler ve ortam kapalı)
     "ton": "parlak",                         efektleri umutlu/büyülü tona çevirir (varsayılan: "karanlik")
     "ortam": "ruzgar",                       ortam yatağı: "ruzgar" | null
     "kapanis": "Heykeller gitti. Hikayesi kaldı.",
@@ -317,6 +318,8 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
     parlak = b.get("ton") == "parlak"
     kok_nota = (b.get("muzik") or {}).get("kok", 50) if parlak else 45
     olaylar = []      # (zaman, efekt, kazanc)
+    daktilo_olay = []  # yazı efektleri ayrı tutulur ("efektler": "sade" iken yalnızca bunlar çalar)
+    sade = b.get("efektler") == "sade"
     sessizlikler = []  # müzik kısma anları
     sahneler = b["sahneler"]
     zaman = 0.0
@@ -369,13 +372,13 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
         yazi_bas = s.get("yazi_bas", 0.5)
         if yazi:
             for t in yazi.harf_zamanlari():
-                olaylar.append((zaman + yazi_bas + t, sx.daktilo(int(t * 1000) + i), 0.22))
+                daktilo_olay.append((zaman + yazi_bas + t, sx.daktilo(int(t * 1000) + i), 0.22))
         alt, alt_bas = None, s.get("alt_bas", 0.9 if (baslik or s.get("sayac")) else 0.35)
         if s.get("alt"):
             if s.get("yazdir"):
                 alt = Daktilo(s["alt"], alt_sprite, 26)
                 for t in alt.harf_zamanlari():
-                    olaylar.append((zaman + alt_bas + t, sx.daktilo(int(t * 1000) + 7 * i), 0.16))
+                    daktilo_olay.append((zaman + alt_bas + t, sx.daktilo(int(t * 1000) + 7 * i), 0.16))
             else:
                 alt = alt_sprite(s["alt"])
         sayac = s.get("sayac")
@@ -454,7 +457,7 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
     # ---------- ses miksajı ----------
     N = int(zaman * SR) + SR
     sfx_iz = np.zeros((N, 2))
-    for t, ses, k in olaylar:
+    for t, ses, k in (daktilo_olay if sade else olaylar + daktilo_olay):
         sx.ekle(sfx_iz, ses, t, k)
 
     muzik_iz = np.zeros((N, 2))
@@ -490,7 +493,7 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
     muzik_iz *= zarf[:, None]
 
     ortam_iz = np.zeros((N, 2))
-    if b.get("ortam") == "ruzgar":
+    if b.get("ortam") == "ruzgar" and not sade:
         ortam_iz = sx.ruzgar(N / SR, 11)[:N] * b.get("ortam_ses", 0.16)
         ortam_iz[son:] *= np.linspace(1, 0, N - son)[:, None]
 
