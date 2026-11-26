@@ -1,0 +1,165 @@
+{
+  "slug": "angkor-wat-belgesel",
+  "tur": "reels",
+  "seri": "Belgesel",
+  "baslik": "Dünyanın en büyük dini yapısı bir ormanın içinde",
+  "konum": "Siem Reap, Kamboçya",
+  "caption": "Dünyanın en büyük dini yapısı Kamboçya'da, bir ormanın ortasında: Angkor Wat.\n\n• 12. yüzyılda Khmer kralı II. Suryavarman, Hindu tanrısı Vişnu için yaptırdı. Zamanla Budist tapınağına dönüştü ve hiçbir zaman tamamen terk edilmedi.\n• Guinness'e göre 162,6 hektarlık alanıyla dünyanın en büyük dini yapısı. Çevresindeki hendek 190 metre genişliğinde, merkez kule 65 metre.\n• Taşlar yaklaşık 40 km ötedeki Kulen Dağı'ndan getirildi.\n• Ana kule ilkbahar ekinoksunda doğan güneşle aynı hizada. Kamboçya bayrağında da Angkor Wat var.\n• 1992'den beri UNESCO Dünya Mirası.\n\nİpucu: Gün doğumu için tapınağın önündeki havuzların kenarında erkenden yerini al.\nKamboçya Türk vatandaşlarından vize istiyor; başvuru yolunu resmi kaynaktan kontrol et.\nBilgiler Kasım 2026 itibarıyla.",
+  "soru": "Gün doğumunu burada izlemek listende mi?",
+  "ilk_yorum": "#angkorwat #kamboçya #siemreap #belgesel #unesco #günoğumu #asya #seyahat",
+  "fotograf_kredisi": "Video: Pexels (LayG Traveller, KIMCHHEN LACH, K, Sophanich Sam, Reak Sa)",
+  "belgesel": {
+    "konum": "ANGKOR WAT",
+    "renk": "film",
+    "efektler": "sade",
+    "ton": "parlak",
+    "muzik": {
+      "sentez": "yumusak",
+      "bpm": 76,
+      "kok": 50,
+      "ses": 0.7
+    },
+    "kapanis": "Bazı yerler fotoğrafa sığmaz.",
+    "kapanis_alt": "Kaydet. Gün doğumunu orada izle.",
+    "sahneler": [
+      {
+        "siyah": true,
+        "sure": 4.4,
+        "yazi": "Dünyanın en büyük dini yapısı, bir ormanın içinde saklı.",
+        "yazi_bas": 0.4
+      },
+      {
+        "video": "video/angkor/19245100-uhd_2560_1440_30fps.mp4",
+        "baslangic": 0.5,
+        "hiz": 0.75,
+        "odak_x": 0.68,
+        "sure": 4.6,
+        "gecis": "parlama",
+        "bolum": "Bölüm I",
+        "baslik": "Angkor Wat"
+      },
+      {
+        "video": "video/angkor/14033170_2560_1440_24fps.mp4",
+        "baslangic": 3,
+        "hiz": 0.8,
+        "sure": 4.6,
+        "gecis": "erime",
+        "sayac": {
+          "deger": 162,
+          "birim": "hektar",
+          "ust": "Kapladığı alan",
+          "bas": 0.3
+        },
+        "alt": "Guinness'e göre dünyanın en büyük dini yapısı.",
+        "alt_bas": 1.9
+      },
+      {
+        "video": "video/angkor/14036149_2560_1440_24fps.mp4",
+        "baslangic": 2,
+        "hiz": 0.8,
+        "sure": 4.2,
+        "gecis": "erime",
+        "alt": "Çevresini 190 metre genişliğinde bir hendek sarıyor.",
+        "yazdir": true,
+        "alt_bas": 0.4
+      },
+      {
+        "video": "video/angkor/13172375_2560_1440_25fps.mp4",
+        "baslangic": 1,
+        "hiz": 0.75,
+        "odak_x": 0.6,
+        "sure": 4.0,
+        "gecis": "siyah",
+        "bant": [
+          "Siem Reap, Kamboçya",
+          "12. yüzyıl"
+        ],
+        "bant_bas": 0.4
+      },
+      {
+        "video": "video/angkor/19245111-uhd_2560_1440_30fps.mp4",
+        "baslangic": 1,
+        "hiz": 0.75,
+        "odak_x": 0.5,
+        "sure": 4.4,
+        "gecis": "erime",
+        "alt": "Khmer kralı II. Suryavarman, tanrı Vişnu için yaptırdı.",
+        "yazdir": true,
+        "alt_bas": 0.4
+      },
+      {
+        "video": "video/angkor/12636375_1440_2560_60fps.mp4",
+        "baslangic": 1,
+        "hiz": 0.7,
+        "sure": 4.2,
+        "gecis": "erime",
+        "sayac": {
+          "deger": 65,
+          "birim": "metre",
+          "ust": "Merkez kule",
+          "bas": 0.3
+        }
+      },
+      {
+        "video": "video/angkor/19245107-uhd_2560_1440_30fps.mp4",
+        "baslangic": 1,
+        "hiz": 0.75,
+        "odak_x": 0.55,
+        "sure": 4.2,
+        "gecis": "erime",
+        "alt": "Taşları 40 km ötedeki Kulen Dağı'ndan getirildi.",
+        "alt_bas": 0.5
+      },
+      {
+        "siyah": true,
+        "sure": 2.8,
+        "gecis": "siyah",
+        "yazi": "Ve her sabah aynı gösteri.",
+        "yazi_bas": 0.4,
+        "yazi_hiz": 16
+      },
+      {
+        "video": "video/angkor/13164416_2560_1440_25fps.mp4",
+        "baslangic": 0.3,
+        "hiz": 0.8,
+        "odak_x": 0.5,
+        "sure": 4.4,
+        "gecis": "parlama",
+        "bolum": "Bölüm II",
+        "baslik": "Şafak"
+      },
+      {
+        "video": "video/angkor/13164781_2560_1440_25fps.mp4",
+        "baslangic": 0.3,
+        "hiz": 0.8,
+        "odak_x": 0.5,
+        "sure": 4.4,
+        "gecis": "erime",
+        "alt": "İlkbahar ekinoksunda güneş, ana kulenin tam hizasından doğar.",
+        "yazdir": true,
+        "alt_bas": 0.4
+      },
+      {
+        "video": "video/angkor/19265495-uhd_2560_1440_60fps.mp4",
+        "baslangic": 0.5,
+        "hiz": 0.75,
+        "odak_x": 0.3,
+        "sure": 4.6,
+        "gecis": "erime",
+        "alt": "Önce Hindu, sonra Budist tapınağı oldu. Hiçbir zaman tamamen terk edilmedi.",
+        "alt_bas": 0.5
+      },
+      {
+        "video": "video/angkor/13620225_1920_1080_25fps.mp4",
+        "baslangic": 2,
+        "hiz": 0.8,
+        "odak_x": 0.5,
+        "sure": 4.2,
+        "gecis": "erime",
+        "alt": "Kamboçya bayrağında bile o var.",
+        "yazdir": true,
+        "alt_bas": 0.5
+      }
+    ]
+  }
+}

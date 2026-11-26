@@ -176,8 +176,15 @@ def baslik_sprite(baslik, bolum=None):
         orta = W / 2
         c.line((orta - gen / 2 - 90, y - 72, orta - gen / 2 - 26, y - 72), fill=BEYAZ + (200,), width=2)
         c.line((orta + gen / 2 + 26, y - 72, orta + gen / 2 + 90, y - 72), fill=BEYAZ + (200,), width=2)
-    boyut = 168 if len(baslik) <= 7 else (130 if len(baslik) <= 11 else 100)
-    aralikli(c, (0, y), buyuk(baslik), reels.serif(boyut, "Medium"), BEYAZ + (250,), int(boyut * 0.12))
+    boyut = 168
+    metin = buyuk(baslik)
+    while boyut > 60:  # ekrana (kenar boşluklarıyla) sığana kadar küçült
+        f = reels.serif(boyut, "Medium")
+        gen = sum(c.textlength(ch, font=f) for ch in metin) + int(boyut * 0.12) * (len(metin) - 1)
+        if gen <= GENIS:
+            break
+        boyut -= 6
+    aralikli(c, (0, y), metin, reels.serif(boyut, "Medium"), BEYAZ + (250,), int(boyut * 0.12))
     return _sprite(k, 0.8, 22)
 
 
