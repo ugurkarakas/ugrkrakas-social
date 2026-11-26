@@ -166,10 +166,10 @@
     "ortam_ses": 0.1,
     "gecis_sesi": "ters_yanki",
     "muzik": {
-      "sentez": "parlak",
-      "bpm": 84,
+      "sentez": "yumusak",
+      "bpm": 76,
       "kok": 50,
-      "ses": 0.8
+      "ses": 0.7
     },
     "kapanis": "Bazı geceler hiç bitmesin istersin.",
     "kapanis_alt": "Kaydet. Kış planına ekle.",

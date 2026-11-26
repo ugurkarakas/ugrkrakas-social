@@ -11,7 +11,7 @@ icerik/<slug>.json içinde:
     "konum": "BAMYAN, AFGANİSTAN",          sol üst küçük konum (boş bırakılabilir)
     "renk": "film",                          reels.py renk derecelendirmesi
     "muzik": {"dosya": "muzik/x.mp3", "baslangic": 0, "ses": 0.8},   ya da null
-             ya da sentez: {"sentez": "parlak", "bpm": 84, "kok": 50, "ses": 0.8}  (araclar/belgesel_muzik.py)
+             ya da sentez: {"sentez": "yumusak" | "parlak", "bpm": 84, "kok": 50, "ses": 0.8}  (araclar/belgesel_muzik.py)
     "efektler": "sade",                      yalnızca müzik + daktilo sesi (diğer efektler ve ortam kapalı)
     "ton": "parlak",                         efektleri umutlu/büyülü tona çevirir (varsayılan: "karanlik")
     "ortam": "ruzgar",                       ortam yatağı: "ruzgar" | null
@@ -468,7 +468,8 @@ def uret_belgesel(json_yolu, cikis=None, taslak=False):
             if s_.get("bolum"):
                 bolumler.append(tt)
             tt += s_["sure"]
-        a = belgesel_muzik.uret(zaman, bolumler, m.get("bpm", 84), m.get("kok", 50), m.get("tohum", 7))
+        uretici = belgesel_muzik.yumusak if m["sentez"] == "yumusak" else belgesel_muzik.uret
+        a = uretici(zaman, bolumler, m.get("bpm", 84), m.get("kok", 50), m.get("tohum", 7))
         muzik_iz[: len(a)] = a * m.get("ses", 0.8)
     elif m and m.get("dosya"):
         ham = subprocess.run(

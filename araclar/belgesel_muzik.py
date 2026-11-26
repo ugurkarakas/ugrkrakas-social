@@ -132,3 +132,86 @@ def uret(saniye, bolumler=(), bpm=84, kok=50, tohum=7):
     st[:a] *= np.linspace(0, 1, a)[:, None]
     st = np.tanh(st / (np.max(np.abs(st)) or 1) * 1.2)
     return st / np.max(np.abs(st)) * 0.9
+
+
+# ---------- "yumusak": kulak yormayan, sıcak piyano + ped (perküsyon ve çan yok) ----------
+
+def piyano(nota, sure=2.5, guc=0.2):
+    n = int(sure * SR)
+    t = np.arange(n) / SR
+    f = frek(nota)
+    x = (np.sin(2 * np.pi * f * t) + 0.28 * np.sin(2 * np.pi * 2 * f * t) * np.exp(-t * 2.5)
+         + 0.08 * np.sin(2 * np.pi * 3 * f * t) * np.exp(-t * 4))
+    z = np.minimum(1, t / 0.006) * np.exp(-t * (0.9 + nota / 120))
+    r = int(0.08 * SR)
+    z[-r:] *= np.linspace(1, 0, r)
+    return filtre(x * z, 2400) * guc
+
+
+def sicak_ped(notalar, sure, guc=0.06, atak=1.2):
+    n = int(sure * SR)
+    t = np.arange(n) / SR
+    x = np.zeros(n)
+    for nt in notalar:
+        f = frek(nt)
+        for d in (-0.002, 0.002):
+            x += np.sin(2 * np.pi * f * (1 + d) * t) + 0.12 * np.sin(2 * np.pi * 2 * f * (1 + d) * t)
+    x = filtre(x / (2 * len(notalar)), 1500)
+    z = np.minimum(1, t / atak) ** 2
+    r = int(min(1.0, sure / 3) * SR)
+    z[-r:] *= np.linspace(1, 0, r)
+    return x * z * guc
+
+
+def yumusak(saniye, bolumler=(), bpm=76, kok=50, tohum=7):
+    rng = np.random.default_rng(tohum)
+    v = 60 / bpm
+    olcu = 4 * v
+    n = int((saniye + 5) * SR)
+    ped, pi, bas = np.zeros(n), np.zeros(n), np.zeros(n)
+    b1 = bolumler[0] if len(bolumler) > 0 else olcu * 2
+    b2 = bolumler[1] if len(bolumler) > 1 else saniye * 0.55
+    son = saniye - 3.2
+    o = 0
+    while o * olcu < saniye:
+        t0 = o * olcu
+        ak, ar = AKORLAR[o % 4]
+        r = kok + ak
+        if r > kok + 6:
+            r -= 12
+        akor = [r + a for a in ar]
+        if t0 >= son:
+            akor = [kok + a for a in (0, 4, 7)]
+            koy(ped, sicak_ped([akor[0], akor[1] + 12, akor[2] + 12], 5.0, 0.07), t0)
+            koy(bas, sicak_ped([akor[0] - 12], 5.0, 0.10, 0.3), t0)
+            for k, nt in enumerate([akor[0] + 12, akor[1] + 12, akor[2] + 12, akor[0] + 24]):
+                koy(pi, piyano(nt, 4.0, 0.16), t0 + k * v / 2)
+            break
+        evre = 0 if t0 < b1 - 0.01 else (1 if t0 < b2 - 0.01 else 2)
+        koy(ped, sicak_ped([akor[0], akor[1] + 12, akor[2] + 12] + ([akor[0] + 24] if evre == 2 else []),
+                           olcu + 1.0, 0.055 + 0.01 * evre), t0)
+        if evre == 0:
+            for k, nt in enumerate([akor[0] + 12, akor[2] + 12]):
+                koy(pi, piyano(nt, 3.0, 0.13), t0 + k * 2 * v)
+        else:
+            desen = [akor[0], akor[2], akor[1] + 12, akor[2]] if evre == 1 else \
+                    [akor[0], akor[2], akor[1] + 12, akor[2] + 12, akor[0] + 24, akor[2] + 12, akor[1] + 12, akor[2]]
+            adim = olcu / len(desen)
+            for k, nt in enumerate(desen):
+                kuv = 0.16 if k == 0 else 0.11
+                koy(pi, piyano(nt, 2.4, kuv), t0 + k * adim + rng.uniform(0, 0.01))
+            if evre == 2 and o % 2 == 1:  # ara sıra üstte tek melodi notası
+                koy(pi, piyano(akor[1] + 24, 3.0, 0.08), t0 + 2 * v)
+            koy(bas, sicak_ped([akor[0] - 12], olcu + 0.4, 0.11, 0.15), t0)
+        o += 1
+    ir = yanki_ir(3.0, rng)
+    ped = yanki(ped, ir, 0.4)
+    pi = yanki(pi, ir, 0.45)
+    sol = ped + pi * 1.0 + bas
+    sag = ped + pi * 0.85 + bas
+    sag = 0.85 * sag + 0.15 * np.roll(sag, int(0.015 * SR))
+    st = np.stack([sol, sag], axis=1)[: int(saniye * SR)]
+    a = int(1.2 * SR)
+    st[:a] *= np.linspace(0, 1, a)[:, None]
+    st = filtre(st.T, 5000).T
+    return st / (np.max(np.abs(st)) or 1) * 0.85
