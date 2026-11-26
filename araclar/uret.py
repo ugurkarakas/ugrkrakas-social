@@ -292,7 +292,7 @@ def ogle_story(veri):
     golge = Image.new("RGBA", STORY, (0, 0, 0, 0))
     golge.putalpha(yazi.getchannel("A").filter(ImageFilter.GaussianBlur(18)).point(lambda a: int(a * 0.75)))
     k = Image.alpha_composite(Image.alpha_composite(k, golge), yazi)
-    alt = "Bu akşam: " + veri["baslik"]
+    alt = o.get("duyuru", "Bu akşam: " + veri["baslik"])
     af = font(ARA, 34)
     ah = blok_yuksekligi(alt, af, genislik - 80, 1.2)
     kutu_y = h - 420
