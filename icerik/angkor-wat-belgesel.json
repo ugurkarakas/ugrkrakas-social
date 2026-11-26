@@ -161,5 +161,30 @@
         "alt_bas": 0.5
       }
     ]
+  },
+  "foto": "angkor-kule.jpg",
+  "alt_baslik": "Ormanın içindeki taş şehir.",
+  "story_ust": "Bu akşam",
+  "ogle": {
+    "ust": "Biliyor muydun?",
+    "metin": "Angkor Wat, Kamboçya bayrağında yer alıyor.",
+    "foto": "angkor-gundogumu.jpg",
+    "odak": [
+      0.68,
+      0.5
+    ]
+  },
+  "sabah": {
+    "ust": "Rota önerisi",
+    "yer": "Angkor Wat",
+    "bolge": "Siem Reap, Kamboçya",
+    "metin": "Guinness'e göre dünyanın en büyük dini yapısı, ormanın ortasında.",
+    "foto": "angkor-havadan.jpg"
+  },
+  "anket": {
+    "soru": "Angkor Wat'ı nasıl görmek isterdin?",
+    "secenek_1": "Gün doğumunda",
+    "secenek_2": "Havadan",
+    "foto": "angkor-rahipler.jpg"
   }
 }
