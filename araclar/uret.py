@@ -265,9 +265,10 @@ def story(veri):
     harfli(k, (kenar, 250), veri.get("story_ust", "Yeni gönderi"), font(ARA, 28), BEYAZ,
            seffaflik=225, hiza="orta", genislik=genislik)
     bf = font(BASLIK, 96)
-    bh = blok_yuksekligi(veri["baslik"], bf, genislik, 1.08)
+    baslik = veri.get("story_baslik", veri["baslik"])
+    bh = blok_yuksekligi(baslik, bf, genislik, 1.08)
     y = h - 520 - bh
-    y = yaz(k, (kenar, y), veri["baslik"], bf, BEYAZ, genislik, 1.08, hiza="orta") + 48
+    y = yaz(k, (kenar, y), baslik, bf, BEYAZ, genislik, 1.08, hiza="orta") + 48
     if veri.get("konum"):
         harfli(k, (kenar, y), veri["konum"], font(ARA, 28), BEYAZ, seffaflik=215, hiza="orta", genislik=genislik)
     return birlestir(img, k)
