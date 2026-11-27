@@ -13,7 +13,7 @@
     "giris_ust": "Gitmeden önce kaydet",
     "giris_baslik": "Paris'te\n5 tatlıcı",
     "giris_alt": "İmza tatlısı ve adresi. Tek haritada.",
-    "giris_foto": "paris-eyfel.jpg",
+    "giris_foto": "paris-tatli-kapak-grolet.jpg",
     "baslangic": {
       "merkez": [
         2.35,
@@ -106,7 +106,6 @@
           0.0,
           3.9
         ],
-        null,
         [
           4.35,
           11.25
@@ -135,13 +134,13 @@
     },
     "sureler": [
       4.4,
-      1.35,
       7.77,
       5.36,
       5.31,
       6.19,
       5.72,
       4.21
-    ]
+    ],
+    "giris_yazi": "ust"
   }
 }

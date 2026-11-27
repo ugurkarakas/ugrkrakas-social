@@ -73,7 +73,10 @@ const add=(o)=>{if(SURE) o.d=SURE[si++]; o.t=t0;SEG.push(o);t0+=o.d;return o};
 const G=add({tip:'giris',d:4.4});
 const katSira=[]; for(const s of D) if(!katSira.includes(s.kat)) katSira.push(s.kat);
 D.forEach((s,i)=>{s.i=i});
-for(const k of katSira){ add({tip:'kat',kat:k,d:1.7});
+// kategori ekranı (tam ekran foto + "Gezi · 6 yer"): tek kategoride gösterilmez, kapaktan doğrudan haritaya geçilir.
+// harita.kategori_ekrani true/false ile zorlanabilir.
+const KAT_EKRAN = H.kategori_ekrani ?? (katSira.length>1);
+for(const k of katSira){ if(KAT_EKRAN) add({tip:'kat',kat:k,d:1.7});
   for(const s of D.filter(s=>s.kat===k)) add({tip:'durak',s,d:3.6}); }
 add({tip:'son',d:4.2});
 const TOPLAM=t0;
@@ -119,7 +122,8 @@ const kartlar=D.map(s=>ekle(`<div class="kart">
  <div class="ad">${s.ad}</div><div class="metin">${s.metin}</div></div>`));
 const cipHtml=katSira.map(k=>`<div class="cip"><i style="background:${K[k].renk}"></i>${K[k].ad}</div>`).join('');
 const girisFoto=ekle(`<div class="tam"><img src="../../kaynak/${H.giris_foto}"><div class="kar"></div></div>`);
-const girisYazi=ekle(`<div class="baslik" style="bottom:470px"><div class="k">${H.giris_ust}</div><div class="b">${H.giris_baslik}</div><div class="a">${H.giris_alt}</div><div class="cipler">${cipHtml}</div></div>`);
+// giris_yazi: "ust" -> başlık fotoğrafın üstündeki boşluğa (yüzlerin üstüne binmesin)
+const girisYazi=ekle(`<div class="baslik" style="${H.giris_yazi==='ust'?'top:250px':'bottom:470px'}"><div class="k">${H.giris_ust}</div><div class="b">${H.giris_baslik}</div><div class="a">${H.giris_alt}</div><div class="cipler">${cipHtml}</div></div>`);
 const bolumler={}; for(const k of katSira){const n=D.filter(s=>s.kat===k).length;
   bolumler[k]={f:ekle(`<div class="tam"><img src="../../kaynak/${K[k].foto}"><div class="kar"></div></div>`),
    y:ekle(`<div class="baslik" style="bottom:520px"><div class="d" style="background:${K[k].renk}"></div><div class="b">${K[k].ad}</div><div class="a">${n} yer</div></div>`)};}
@@ -147,9 +151,11 @@ function arayuz(t,map){
   // duraklar
   D.forEach((s,i)=>{const f=ustFotolar[i], k=kartlar[i];
     if(g.tip==='durak'&&g.s===s){
-      const of=pencere(u,.35,g.d,.55,.35); f.style.opacity=of; foto=Math.max(foto,of);
+      // kategori ekranı yoksa önce haritada pin düşer, fotoğraf ve kart ardından gelir
+      const fb=KAT_EKRAN?.35:1.25, kb=KAT_EKRAN?.65:1.45;
+      const of=pencere(u,fb,g.d,.55,.35); f.style.opacity=of; foto=Math.max(foto,of);
       f.querySelector('img').style.transform=`scale(${lerp(1.1,1.0,cl(u/g.d))})`;
-      const a=eOut(cl((u-.65)/.45)), b=cl((u-(g.d-.3))/.3);
+      const a=eOut(cl((u-kb)/.45)), b=cl((u-(g.d-.3))/.3);
       gorun(k,a*(1-b),lerp(60,0,a)-b*24,lerp(.97,1,a));}
     else {f.style.opacity=0;k.style.opacity=0;}});
   ustA.style.opacity=foto; ustK.style.opacity=1-foto;

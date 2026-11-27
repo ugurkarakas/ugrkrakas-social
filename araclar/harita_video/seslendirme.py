@@ -24,9 +24,11 @@ for s in h["duraklar"]:
     if s["kat"] not in kat_sira: kat_sira.append(s["kat"])
 
 # bölüm listesi ve her bölümde konuşmanın başlayacağı an (bölüm içi)
+kat_ekrani = h.get("kategori_ekrani", len(kat_sira) > 1)  # sablon.html ile aynı kural
 plan = [("giris", 0.2)]
 for k in kat_sira:
-    plan.append(("kat", 0.15))
+    if kat_ekrani:
+        plan.append(("kat", 0.15))
     plan += [("durak", 0.75)] * sum(1 for s in h["duraklar"] if s["kat"] == k)
 plan.append(("son", 1.35))
 assert len(plan) == len(satir), f"{len(plan)} bölüm ama {len(satir)} satır"
