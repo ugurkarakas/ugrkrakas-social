@@ -26,12 +26,17 @@ Alanlar:
   alt            ana cümlenin altında beliren detay cümlesi
 
   odak          fotoğrafın dikey kırpımda nereden ortalanacağı, ör. [0.4, 0.5]
-  kart          arka planda video/foto dönerken altta beliren buzlu cam bilgi kartı
-                (otel, restoran, yemek, müze... her şehir için aynı şablon):
-                {"tur": "Otel önerisi", "isim": "Hotel Adı", "konum": "Eixample, Barselona",
-                 "puan": 4.6, "fiyat": "€145", "fiyat_alt": "gecelik", "not": "Teraslı oda iste"}
-                tur, puan, fiyat, fiyat_alt, not isteğe bağlı; isim zorunlu.
-                Kartlı sahnede "metin" varsa ekranın üstünde başlık olarak görünür.
+  kart          arka planda video dönerken beliren beyaz bilgi kartı (otel, restoran, yemek,
+                gezi noktası... her şehir için aynı şablon). Üstte küçük fotoğraf, altında
+                isim + fiyat, konum + puan:
+                {"isim": "Hotel Adı", "fiyat": "€145", "fiyat_alt": "/gece",
+                 "konum": "Eixample, Barselona", "puan": 4.6, "yorum": 615,
+                 "gorsel": "barselona-otel.jpg", "detaylar": ["Kahvaltı dahil", "Teras"]}
+                isim zorunlu, diğerleri isteğe bağlı. gorsel kaynak/ altındaki foto; ya da
+                {"video": "video/...mp4", "an": 3.2} ile videodan bir kare.
+                "yer": "alt" (varsayılan) | "ust". Kartlı sahnede "metin" varsa üstte başlık olur.
+  lokasyon      Instagram konum çıkartması tarzında beyaz hap: renkli iğne + renkli BÜYÜK HARF metin,
+                ör. "lokasyon": "Sagrada Família". "lokasyon_y": 0..1 dikey konum (varsayılan 0.5)
 
 Müzik: araclar/muzik.py ile kodla üretilen telifsiz ritim eklenir.
   "muzik": {"tarz": "yaz" | "aksam" | "enerji", "tohum": 7}   kapatmak için "muzik": null
@@ -202,11 +207,15 @@ def altyazi_kutusu(metin, fnt, y, katman):
     return y
 
 
-# ---------- bilgi kartı (otel / restoran / yemek, şehirden bağımsız şablon) ----------
+# ---------- bilgi kartı ve Instagram konum çıkartması (şehirden bağımsız şablon) ----------
 
-KART_KENAR = 64
+KART_GEN = 900
+KART_PAD = 30
 KART_ALT = 400          # Instagram'ın alt arayüzüne (caption, butonlar) girmesin
-KART_IC = 52
+KART_UST = 300
+SIYAHIMSI = (24, 24, 28)
+GRI = (128, 128, 134)
+IG_RENK = [(131, 58, 180), (193, 53, 132), (225, 48, 108), (253, 29, 29), (247, 119, 55)]
 
 
 def _yildiz(c, cx, cy, r, renk):
@@ -219,106 +228,179 @@ def _yildiz(c, cx, cy, r, renk):
     c.polygon(pts, fill=renk)
 
 
-def _pin(c, x, y, boy, renk):
+def _pin(c, x, y, boy, renk, delik=(0, 0, 0, 0)):
     r = boy * 0.36
     cx, cy = x + r, y + r
-    c.polygon([(cx - r * 0.82, cy + r * 0.45), (cx + r * 0.82, cy + r * 0.45), (cx, y + boy)], fill=renk)
+    c.polygon([(cx - r * 0.84, cy + r * 0.5), (cx + r * 0.84, cy + r * 0.5), (cx, y + boy)], fill=renk)
     c.ellipse((cx - r, cy - r, cx + r, cy + r), fill=renk)
-    c.ellipse((cx - r * 0.4, cy - r * 0.4, cx + r * 0.4, cy + r * 0.4), fill=(0, 0, 0, 0))
+    c.ellipse((cx - r * 0.42, cy - r * 0.42, cx + r * 0.42, cy + r * 0.42), fill=delik)
+
+
+def _gradyan(w, h):
+    """Instagram renk geçişi (mor -> pembe -> turuncu), soldan sağa hafif çapraz."""
+    g = Image.new("RGB", (w, h))
+    px = g.load()
+    n = len(IG_RENK) - 1
+    for x in range(w):
+        for y in range(h):
+            t = min(0.999, max(0.0, (x / max(1, w - 1)) * 0.85 + (1 - y / max(1, h - 1)) * 0.15))
+            i = int(t * n)
+            u = t * n - i
+            a, b = IG_RENK[i], IG_RENK[i + 1]
+            px[x, y] = tuple(int(a[k] + (b[k] - a[k]) * u) for k in range(3))
+    return g
+
+
+def _yuvarlak(img, r):
+    m = Image.new("L", img.size, 0)
+    ImageDraw.Draw(m).rounded_rectangle((0, 0, img.size[0] - 1, img.size[1] - 1), radius=r, fill=255)
+    out = img.convert("RGBA")
+    out.putalpha(m)
+    return out
+
+
+def _gorsel(g, w, h):
+    if isinstance(g, dict) and g.get("video"):
+        veri = subprocess.run(
+            ["ffmpeg", "-loglevel", "error", "-ss", str(g.get("an", 1)), "-i", str(KOK / "kaynak" / g["video"]),
+             "-frames:v", "1", "-f", "image2pipe", "-vcodec", "png", "-"], capture_output=True, check=True).stdout
+        import io
+        img = Image.open(io.BytesIO(veri)).convert("RGB")
+        odak = tuple(g.get("odak", (0.5, 0.5)))
+    else:
+        dosya, odak = (g, (0.5, 0.5)) if isinstance(g, str) else (g["foto"], tuple(g.get("odak", (0.5, 0.5))))
+        img = ImageOps.exif_transpose(Image.open(KOK / "kaynak" / dosya)).convert("RGB")
+    return ImageOps.fit(img, (w, h), Image.LANCZOS, centering=odak)
+
+
+def _golge_ekle(kart, r, yaricap=28, guc=90, dy=14):
+    w, h = kart.size
+    m = yaricap * 2
+    tuval = Image.new("RGBA", (w + 2 * m, h + 2 * m), (0, 0, 0, 0))
+    g = Image.new("L", tuval.size, 0)
+    ImageDraw.Draw(g).rounded_rectangle((m, m + dy, m + w, m + h + dy), radius=r, fill=guc)
+    g = g.filter(ImageFilter.GaussianBlur(yaricap))
+    tuval.putalpha(g)
+    tuval.alpha_composite(kart, (m, m))
+    return tuval, m
 
 
 def kart_hazirla(kart):
-    """Kartın (içerik katmanı, şekil maskesi, kutu) üçlüsünü bir kez çizer; her karede sadece bulanıklık değişir."""
-    kw = W - 2 * KART_KENAR
-    ic = kw - 2 * KART_IC
-    gri = (215, 215, 220)
-    tur_f = uret.font(uret.ARA, 28)
-    isim_f = uret.font(uret.BASLIK, 66)
-    konum_f = uret.font(uret.KUCUK, 36)
-    puan_f = uret.font(uret.ARA, 34)
-    fiyat_f = uret.font(uret.BASLIK, 72)
-    falt_f = uret.font(uret.KUCUK, 32)
-    not_f = uret.font(uret.GOVDE, 34)
+    """Beyaz bilgi kartını bir kez çizer: (gölgeli kart görüntüsü, ekrandaki sol üst köşesi)."""
+    kw, pad = KART_GEN, KART_PAD
+    ic = kw - 2 * pad
+    isim_f = uret.font(uret.BASLIK, 50)
+    fiyat_f = uret.font(uret.BASLIK, 50)
+    falt_f = uret.font(uret.KUCUK, 28)
+    kucuk_f = uret.font(uret.KUCUK, 30)
 
-    # yükseklik hesabı
-    isim_h = uret.blok_yuksekligi(kart["isim"], isim_f, ic, 1.08)
-    not_h = uret.blok_yuksekligi(kart.get("not", ""), not_f, ic, 1.3) if kart.get("not") else 0
-    y = KART_IC
-    if kart.get("tur") or kart.get("puan"):
-        y += 58
-    y += isim_h + 10
-    if kart.get("konum"):
-        y += 56
+    olcum = ImageDraw.Draw(Image.new("RGB", (1, 1)))
+    fiyat_w = 0
     if kart.get("fiyat"):
-        y += 40 + 2 + 36 + 80
-    if not_h:
-        y += (24 if kart.get("fiyat") else 36) + not_h
-    kh = y + KART_IC - 8
+        fiyat_w = olcum.textlength(kart["fiyat"], font=fiyat_f) + (
+            olcum.textlength(kart.get("fiyat_alt", ""), font=falt_f) + 6 if kart.get("fiyat_alt") else 0)
+    isim_satir = uret.satirlar(kart["isim"], isim_f, ic - fiyat_w - (30 if fiyat_w else 0))
+    gh = 400 if kart.get("gorsel") else 0
+    h = pad + (gh + 30 if gh else 6) + len(isim_satir) * 60 + 12
+    if kart.get("konum") or kart.get("puan"):
+        h += 46
+    if kart.get("detaylar"):
+        h += 24 + 42
+    h += pad - 4
 
-    x0 = KART_KENAR
-    y0 = H - KART_ALT - kh
-    kutu = (x0, y0, x0 + kw, y0 + kh)
-
-    maske = Image.new("L", (W, H), 0)
-    ImageDraw.Draw(maske).rounded_rectangle(kutu, radius=44, fill=255)
-
-    k = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    k = Image.new("RGBA", (kw, h), (255, 255, 255, 255))
     c = ImageDraw.Draw(k)
-    c.rounded_rectangle(kutu, radius=44, fill=(12, 12, 16, 110), outline=(255, 255, 255, 60), width=2)
-    x, y = x0 + KART_IC, y0 + KART_IC
-
-    if kart.get("tur") or kart.get("puan"):
-        if kart.get("tur"):
-            uret.harfli(k, (x, y), kart["tur"], tur_f, uret.BEYAZ, seffaflik=200)
-        if kart.get("puan"):
-            pm = f"{kart['puan']:.1f}".replace(".", ",") if isinstance(kart["puan"], (int, float)) else str(kart["puan"])
-            tw = c.textlength(pm, font=puan_f)
-            px = x0 + kw - KART_IC - tw
-            c.text((px, y - 6), pm, font=puan_f, fill=uret.BEYAZ + (255,))
-            _yildiz(c, px - 30, y + 14, 17, (255, 204, 77, 255))
-        y += 58
-
-    y = uret.yaz(k, (x, y), kart["isim"], isim_f, uret.BEYAZ, ic, 1.08) + 10
-
-    if kart.get("konum"):
-        _pin(c, x, y + 4, 36, gri + (255,))
-        c.text((x + 40, y), kart["konum"], font=konum_f, fill=gri + (255,))
-        y += 56
-
+    y = pad
+    if gh:
+        k.alpha_composite(_yuvarlak(_gorsel(kart["gorsel"], ic, gh), 22), (pad, y))
+        y += gh + 30
+    else:
+        y += 6
+    # isim (sol) + fiyat (sağ, ilk satır hizasında)
     if kart.get("fiyat"):
-        y += 20
-        c.line((x, y, x + ic, y), fill=(255, 255, 255, 55), width=2)
-        y += 2 + 36
-        c.text((x, y - 8), kart["fiyat"], font=fiyat_f, fill=uret.BEYAZ + (255,))
+        x = kw - pad - fiyat_w
+        c.text((x, y), kart["fiyat"], font=fiyat_f, fill=SIYAHIMSI)
         if kart.get("fiyat_alt"):
-            fw = c.textlength(kart["fiyat"], font=fiyat_f)
-            c.text((x + fw + 18, y + 30), kart["fiyat_alt"], font=falt_f, fill=gri + (255,))
-        y += 80
+            c.text((x + olcum.textlength(kart["fiyat"], font=fiyat_f) + 6, y + 20), kart["fiyat_alt"],
+                   font=falt_f, fill=GRI)
+    for sat in isim_satir:
+        c.text((pad, y), sat, font=isim_f, fill=SIYAHIMSI)
+        y += 60
+    y += 12
+    if kart.get("konum") or kart.get("puan"):
+        if kart.get("konum"):
+            _pin(c, pad, y + 3, 30, GRI, (255, 255, 255))
+            c.text((pad + 34, y), kart["konum"], font=kucuk_f, fill=GRI)
+        if kart.get("puan"):
+            p_ = kart["puan"]
+            pm = f"{p_:.1f}".replace(".", ",") if isinstance(p_, (int, float)) else str(p_)
+            if kart.get("yorum"):
+                yr = kart["yorum"]
+                yr = f"{yr:,}".replace(",", ".") if isinstance(yr, int) else str(yr)
+                pm += f" ({yr} yorum)"
+            tw = c.textlength(pm, font=kucuk_f)
+            px = kw - pad - tw
+            c.text((px, y), pm, font=kucuk_f, fill=GRI)
+            _yildiz(c, px - 22, y + 18, 15, (255, 196, 0))
+        y += 46
+    if kart.get("detaylar"):
+        y += 12
+        c.line((pad, y, kw - pad, y), fill=(232, 232, 236), width=2)
+        y += 20
+        d = kart["detaylar"]
+        c.text((pad, y), d[0], font=kucuk_f, fill=GRI)
+        if len(d) > 1:
+            c.text((kw - pad - c.textlength(d[1], font=kucuk_f), y), d[1], font=kucuk_f, fill=GRI)
 
-    if not_h:
-        y += 24 if kart.get("fiyat") else 36
-        uret.yaz(k, (x, y), kart["not"], not_f, gri, ic, 1.3)
+    k = _yuvarlak(k, 36)
+    golgeli_k, m = _golge_ekle(k, 36)
+    x0 = (W - kw) // 2 - m
+    y0 = (KART_UST if kart.get("yer") == "ust" else H - KART_ALT - h) - m
+    return golgeli_k, (x0, y0)
 
-    return k, maske, kutu
+
+def lokasyon_hazirla(metin, y_oran=0.5):
+    """Instagram konum çıkartması: beyaz hap, renk geçişli iğne ve BÜYÜK HARF metin."""
+    f = uret.font(uret.BASLIK, 50)
+    metin = metin.replace("i", "İ").upper()
+    olcum = ImageDraw.Draw(Image.new("RGB", (1, 1)))
+    tw = olcum.textlength(metin, font=f)
+    ikon, ara, px, hh = 44, 16, 34, 92
+    w = int(px + ikon + ara + tw + px)
+    # renkli kısım: iğne + metin maskesi, üstüne gradyan
+    mk = Image.new("L", (w, hh), 0)
+    mc = ImageDraw.Draw(mk)
+    _pin(mc, px, (hh - ikon) / 2 + 1, ikon, 255, 0)
+    mc.text((px + ikon + ara, hh / 2), metin, font=f, fill=255, anchor="lm")
+    hap = Image.new("RGBA", (w, hh), (255, 255, 255, 255))
+    hap.paste(_gradyan(w, hh), (0, 0), mk)
+    hap = _yuvarlak(hap, 22)
+    golgeli_h, m = _golge_ekle(hap, 22, yaricap=22, guc=70, dy=8)
+    return golgeli_h, ((W - w) // 2 - m, int(H * y_oran - hh / 2) - m)
 
 
-def kart_uygula(img, hazir, a):
-    """a: 0..1 giriş animasyonu. Kart alttan kayarak ve belirerek gelir, arkası buzlu cam gibi bulanık."""
-    if a <= 0:
+def _yay(t):
+    """Hafif taşmalı (yaylanan) giriş eğrisi."""
+    t = max(0.0, min(1.0, t))
+    import math
+    return 1 - math.exp(-6 * t) * math.cos(9 * t) if t < 1 else 1.0
+
+
+def ui_uygula(img, hazir, t):
+    """Kart/çıkartma ekrana küçükten büyüyerek, hafif yaylanarak ve belirerek gelir. t: 0..1+."""
+    if t <= 0:
         return img
-    k, maske, kutu = hazir
-    kay = int(70 * (1 - a))
-    x0, y0, x1, y1 = kutu
-    bolge = (x0, max(0, y0 - 40), x1, min(H, y1 + 40))
-    bulanik = img.crop(bolge).filter(ImageFilter.GaussianBlur(28))
-    tam = img.copy()
-    tam.paste(bulanik, (bolge[0], bolge[1] - kay))
-    m = maske.transform(maske.size, Image.AFFINE, (1, 0, 0, 0, 1, kay))
-    if a < 1:
-        m = m.point(lambda v: int(v * a))
-    img = Image.composite(tam, img, m)
-    kk = k.transform(k.size, Image.AFFINE, (1, 0, 0, 0, 1, kay))
-    img.alpha_composite(alfali(kk, a))
+    parca, (x0, y0) = hazir
+    olcek = 0.82 + 0.18 * _yay(t)
+    alfa = yumusak(t * 2.2)
+    w, h = parca.size
+    if abs(olcek - 1) > 0.002:
+        nw, nh = max(1, int(w * olcek)), max(1, int(h * olcek))
+        p2 = parca.resize((nw, nh), Image.BILINEAR)
+        x, y = x0 + (w - nw) // 2, y0 + (h - nh) // 2
+    else:
+        p2, x, y = parca, x0, y0
+    img.alpha_composite(alfali(p2, alfa), (x, y))
     return img
 
 
@@ -512,6 +594,9 @@ def uret_reels(json_yolu):
         ana, alt = sahne_katmanlari(s, idx == 0)
         ana = golgeli(ana)
         kart = kart_hazirla(s["kart"]) if s.get("kart") else None
+        lok = None
+        if s.get("lokasyon"):
+            lok = lokasyon_hazirla(s["lokasyon"], s.get("lokasyon_y", 0.5))
         for f in range(n):
             img = karart(kaynak.kare(f / max(1, n - 1))).convert("RGBA")
             if idx == 0:
@@ -519,8 +604,10 @@ def uret_reels(json_yolu):
             else:
                 a1 = yumusak((f - 4) / 9)
                 a2 = yumusak((f - 22) / 9)  # detay cümlesi ~0.7 sn sonra gelir
+            if lok:
+                img = ui_uygula(img, lok, (f - (3 if idx == 0 else 8)) / 22)
             if kart:
-                img = kart_uygula(img, kart, yumusak((f - (4 if idx == 0 else 10)) / 12))
+                img = ui_uygula(img, kart, (f - (6 if idx == 0 else 14)) / 24)
             if a1 > 0:
                 img.alpha_composite(alfali(ana, a1))
             if a2 > 0:
