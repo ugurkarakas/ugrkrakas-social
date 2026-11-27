@@ -9,7 +9,7 @@
   "caption": "Rezervasyonun olsa bile Kapadokya'da balon uçmayabilir. Gitmeden bilmen gereken 3 şey:\n\n1. Uçuşlar gün doğumunda yapılıyor. Otelden alınma, hazırlık, yaklaşık 1 saat uçuş ve dönüşle birlikte toplam 3 saat kadar ayır.\n2. Kararı hava veriyor: Uçuşlar Sivil Havacılık Genel Müdürlüğü'nün izniyle yapılıyor. Sarı bayrakta beklenir, kırmızı bayrakta o günün tüm uçuşları iptal edilir.\n3. Kışın yedek gün bırak: Kar, rüzgar ve sis nedeniyle uçuşların günlerce yapılamadığı dönemler oluyor. Mümkünse balonu ilk sabaha koy, iptal olursa ertesi güne kaydır.\n\nBalon uçmasa bile, gün doğumunu bir terastan izlemek de ayrı bir deneyim.",
   "soru": "Balona bindin mi, yoksa listende mi?",
   "ilk_yorum": "#kapadokya #balon #göreme #nevşehir #türkiye #günbatımı #seyahat",
-  "fotograf_kredisi": "Fotoğraflar: Unsplash (v2osk, Luis Barreto D, Alex Azabache, Igor Sporynin)",
+  "fotograf_kredisi": "Videolar: Pexels · Müzik: lnplusmusic (Pixabay)",
   "anket": {
     "soru": "Kapadokya'da hangisi?",
     "secenek_1": "Balonla uç",
@@ -18,18 +18,27 @@
   },
   "reels": {
     "muzik": {
-      "tarz": "kapadokya",
-      "tohum": 7
+      "dosya": "muzik/lnplusmusic-istanbul-turkish.mp3",
+      "bpm": 103.36,
+      "baslangic": 10.5
     },
     "kapanis": "Kaydet, Kapadokya'ya giden birine gönder.",
     "kapanis_alt": "Daha fazla rota için takip et.",
     "sahneler": [
       {
         "fotolar": [
-          "kapadokya-balon-4.jpg",
-          "kapadokya-balon-1.jpg",
-          "kapadokya-balon-3.jpg",
-          "kapadokya-balon-2.jpg"
+          {
+            "video": "video/cappadocia/14781115_720_1280_25fps.mp4",
+            "baslangic": 3,
+            "vurus": 5,
+            "hiz": 1.0
+          },
+          {
+            "video": "video/cappadocia/13538022_720_1280_60fps.mp4",
+            "baslangic": 4,
+            "vurus": 5,
+            "hiz": 0.8
+          }
         ],
         "etiket": "Kapadokya",
         "metin": "Rezervasyonun olsa bile balon uçmayabilir",
@@ -37,8 +46,18 @@
       },
       {
         "fotolar": [
-          "kapadokya-balon-2.jpg",
-          "kapadokya-balon-3.jpg"
+          {
+            "video": "video/cappadocia/14503813_720_1280_25fps.mp4",
+            "baslangic": 6,
+            "vurus": 5,
+            "hiz": 1.0
+          },
+          {
+            "video": "video/cappadocia/13591324_720_1280_30fps.mp4",
+            "baslangic": 3,
+            "vurus": 5,
+            "hiz": 0.8
+          }
         ],
         "etiket": "1",
         "metin": "Uçuş gün doğumunda",
@@ -46,8 +65,18 @@
       },
       {
         "fotolar": [
-          "kapadokya-balon-1.jpg",
-          "kapadokya-balon-4.jpg"
+          {
+            "video": "video/cappadocia/12945792_720_1280_30fps.mp4",
+            "baslangic": 1,
+            "vurus": 5,
+            "hiz": 1.0
+          },
+          {
+            "video": "video/cappadocia/13480157_720_1280_30fps.mp4",
+            "baslangic": 10,
+            "vurus": 5,
+            "hiz": 1.0
+          }
         ],
         "etiket": "2",
         "metin": "Kararı hava veriyor",
@@ -55,21 +84,32 @@
       },
       {
         "fotolar": [
-          "kapadokya-balon-3.jpg",
           {
-            "foto": "kapadokya-balon-2.jpg",
-            "odak": [
-              0.7,
-              0.5
-            ]
+            "video": "video/cappadocia/11526970-hd_720_1280_30fps.mp4",
+            "baslangic": 3,
+            "vurus": 4,
+            "hiz": 1.0
+          },
+          {
+            "video": "video/cappadocia/15724189_720_1280_60fps.mp4",
+            "baslangic": 2,
+            "vurus": 4,
+            "hiz": 0.8
+          },
+          {
+            "video": "video/cappadocia/12965230_720_1280_30fps.mp4",
+            "baslangic": 2,
+            "vurus": 4,
+            "hiz": 1.0
           }
         ],
         "etiket": "3",
-        "metin": "Kışın yedek gün bırak",
-        "alt": "Kar, rüzgar ve sis yüzünden uçuşların günlerce yapılamadığı oluyor."
+        "metin": "Uçmazsa gün boşa gitmesin",
+        "alt": "ATV, at turu ya da vadide yürüyüş. Kışın bir yedek gün de bırak."
       }
     ],
-    "renk": "film"
+    "renk": "film",
+    "stil": "sade"
   },
   "ogle": {
     "ust": "Biliyor muydun?",
