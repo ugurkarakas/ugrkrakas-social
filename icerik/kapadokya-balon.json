@@ -2,11 +2,11 @@
   "slug": "kapadokya-balon",
   "tur": "reels",
   "seri": "Pratik bilgi",
-  "baslik": "Rezervasyonun olsa bile balon uçmayabilir",
-  "alt_baslik": "Kapadokya'ya gitmeden bunu bil.",
+  "baslik": "Kapadokya'da balon sabahı",
+  "alt_baslik": "Gitmeden bilmen gereken 3 şey.",
   "konum": "Kapadokya, Türkiye",
   "foto": "kapadokya-balon-4.jpg",
-  "caption": "Rezervasyonun olsa bile Kapadokya'da balon uçmayabilir. Gitmeden bilmen gereken 3 şey:\n\n1. Uçuşlar gün doğumunda yapılıyor. Otelden alınma, hazırlık, yaklaşık 1 saat uçuş ve dönüşle birlikte toplam 3 saat kadar ayır.\n2. Kararı hava veriyor: Uçuşlar Sivil Havacılık Genel Müdürlüğü'nün izniyle yapılıyor. Sarı bayrakta beklenir, kırmızı bayrakta o günün tüm uçuşları iptal edilir.\n3. Kışın yedek gün bırak: Kar, rüzgar ve sis nedeniyle uçuşların günlerce yapılamadığı dönemler oluyor. Mümkünse balonu ilk sabaha koy, iptal olursa ertesi güne kaydır.\n\nBalon uçmasa bile, gün doğumunu bir terastan izlemek de ayrı bir deneyim.",
+  "caption": "Kapadokya'da gökyüzü balonlarla dolduğu o sabah için gitmeden bilmen gereken 3 şey:\n\n1. Uçuşlar gün doğumunda yapılıyor. Otelden alınma, hazırlık, yaklaşık 1 saat uçuş ve dönüşle birlikte toplam 3 saat kadar ayır.\n2. Kararı hava veriyor: Uçuşlar Sivil Havacılık Genel Müdürlüğü'nün izniyle yapılıyor. Sarı bayrakta beklenir, kırmızı bayrakta o günün tüm uçuşları iptal edilir.\n3. Kışın yedek gün bırak: Kar, rüzgar ve sis nedeniyle uçuşların günlerce yapılamadığı dönemler oluyor. Mümkünse balonu ilk sabaha koy, iptal olursa ertesi güne kaydır.\n\nBalon uçmasa bile, gün doğumunu bir terastan izlemek de ayrı bir deneyim.",
   "soru": "Balona bindin mi, yoksa listende mi?",
   "ilk_yorum": "#kapadokya #balon #göreme #nevşehir #türkiye #günbatımı #seyahat",
   "fotograf_kredisi": "Videolar: Pexels · Müzik: lnplusmusic (Pixabay)",
@@ -41,8 +41,8 @@
           }
         ],
         "etiket": "Kapadokya",
-        "metin": "Balon her sabah uçmuyor",
-        "alt": "Gitmeden bunu bil."
+        "metin": "Kapadokya'da balon sabahı",
+        "alt": "Gitmeden bilmen gereken 3 şey."
       },
       {
         "fotolar": [
@@ -104,7 +104,7 @@
           }
         ],
         "etiket": "3",
-        "metin": "Uçmazsa üzülme",
+        "metin": "B planın da güzel",
         "alt": "ATV'ye bin, ata bin, vadide yürü. Kışın bir yedek gün bırak."
       }
     ],
