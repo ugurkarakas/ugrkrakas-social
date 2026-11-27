@@ -1,12 +1,30 @@
 {
   "slug": "paris-tatlicilar-harita",
-  "_not": "TASLAK - takvime eklenmedi. Dükkan/ürün fotoğrafları Uğur'un gönderdikleri (kullanım hakkı/kredi kontrol edilmeli). Cédric ürün fotoğrafı büyük ihtimalle Londra (The Berkeley) şubesi.",
+  "_not": "Dükkan/ürün fotoğrafları internetten (README fotoğraf kuralı: kullanım izni/kredi kontrol edilmeli). Cédric ürün fotoğrafı büyük ihtimalle Londra (The Berkeley) şubesi.",
   "tur": "reels",
   "seri": "Harita rehberi",
   "baslik": "Paris'te 5 tatlıcı",
   "alt_baslik": "İmza tatlısı ve adresi: tek harita.",
   "konum": "Paris, Fransa",
-  "foto": "paris-eyfel.jpg",
+  "foto": "paris-tatli-kapak-grolet.jpg",
+  "caption": "Paris'e gidiyorsan bunu kaydet: 5 tatlıcı, tek harita.\n\n1. Stohrer: 1730'dan beri Rue Montorgueil'de, Paris'in en eski pastanesi. Baba au rhum'u dene.\n2. Angelina: Rue de Rivoli'de, Mont-Blanc'ın adresi. Yanına sıcak çikolata.\n3. Pierre Hermé: Rue Bonaparte, Saint-Germain. Ispahan'ı sor: gül, liçi, ahududu.\n4. Du Pain et des Idées: Kanal Saint-Martin yakınında. Fıstıklı ve çikolatalı escargot.\n5. Cédric Grolet Opéra: Gerçek meyveye benzeyen tatlılar. Erken git, sıra olur.\n\nİpucu: Hepsini bir günde gezme; ikisini sabah, ikisini öğleden sonra yap.",
+  "soru": "Sence ilk durak hangisi olmalı?",
+  "ilk_yorum": "#paris #paristatlı #parispastanesi #pariste #fransa #avrupaseyahati #seyahat #gezi",
+  "fotograf_kredisi": "Fotoğraflar: mekanların ve basının görselleri (Stohrer: Sortir à Paris; Pierre Hermé: Margaux Gayet, Valentin Chemineau) · Ses: Hasan Yasin (ElevenLabs) · Harita: © OpenStreetMap katkıcıları, OpenFreeMap",
+  "story_ust": "Yeni gönderi",
+  "story_baslik": "Paris'te 5 tatlıcı",
+  "ogle": {
+    "ust": "Biliyor muydun?",
+    "metin": "Stohrer 1730'da açıldı; Paris'te hâlâ açık olan en eski pastane.",
+    "foto": "paris-tatli-stohrer-dukkan.jpg"
+  },
+  "sabah": {
+    "ust": "Rota önerisi",
+    "yer": "Rue Montorgueil",
+    "bolge": "Paris, 2. bölge",
+    "metin": "Pastaneler, fırınlar ve kafelerle dolu yaya sokağı. Paris'in en eski pastanesi Stohrer de burada.",
+    "foto": "paris-tatli-stohrer-dukkan.jpg"
+  },
   "harita": {
     "sehir": "Paris",
     "ulke_bayrak": "FR",
