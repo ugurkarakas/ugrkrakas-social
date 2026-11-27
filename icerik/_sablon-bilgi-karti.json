@@ -1,0 +1,24 @@
+{
+  "slug": "_sablon-bilgi-karti",
+  "_not": "ŞABLON - yayınlanmaz. İsim ve fiyatlar örnektir. Başka şehir için video, konum ve kart alanlarını değiştir.",
+  "tur": "reels",
+  "konum": "Paris, Fransa",
+  "reels": {
+    "konum": "Paris, Fransa",
+    "muzik": {"tarz": "aksam", "tohum": 7},
+    "kapanis": "Kaydet, Paris'e gidince aç.",
+    "kapanis_alt": "Her şehir için otel ve lezzet önerileri için takip et.",
+    "sahneler": [
+      {"video": "video/paris/par-v-eyfel.mp4", "baslangic": 1, "sure": 2.6, "hiz": 1.0,
+       "etiket": "Paris", "metin": "Paris'te nerede kalınır, ne yenir?"},
+      {"video": "video/paris/par-v-sacrecoeur.mp4", "baslangic": 1, "sure": 4.6, "hiz": 1.0,
+       "etiket": "01", "metin": "Montmartre'da kal",
+       "kart": {"tur": "Otel önerisi", "isim": "Hôtel Örnek Montmartre", "konum": "Montmartre, 18. bölge",
+                "puan": 4.6, "fiyat": "€145", "fiyat_alt": "gecelik", "not": "Sacré-Cœur manzaralı oda iste."}},
+      {"video": "video/paris/par-v-kafe.mp4", "baslangic": 2, "sure": 4.6, "hiz": 1.0,
+       "etiket": "02", "metin": "Kahvaltı burada",
+       "kart": {"tur": "Nerede yenir", "isim": "Café Örnek", "konum": "Le Marais, 3. bölge",
+                "puan": 4.4, "fiyat": "€12", "fiyat_alt": "croissant + kahve"}}
+    ]
+  }
+}

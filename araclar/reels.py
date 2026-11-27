@@ -26,6 +26,12 @@ Alanlar:
   alt            ana cümlenin altında beliren detay cümlesi
 
   odak          fotoğrafın dikey kırpımda nereden ortalanacağı, ör. [0.4, 0.5]
+  kart          arka planda video/foto dönerken altta beliren buzlu cam bilgi kartı
+                (otel, restoran, yemek, müze... her şehir için aynı şablon):
+                {"tur": "Otel önerisi", "isim": "Hotel Adı", "konum": "Eixample, Barselona",
+                 "puan": 4.6, "fiyat": "€145", "fiyat_alt": "gecelik", "not": "Teraslı oda iste"}
+                tur, puan, fiyat, fiyat_alt, not isteğe bağlı; isim zorunlu.
+                Kartlı sahnede "metin" varsa ekranın üstünde başlık olarak görünür.
 
 Müzik: araclar/muzik.py ile kodla üretilen telifsiz ritim eklenir.
   "muzik": {"tarz": "yaz" | "aksam" | "enerji", "tohum": 7}   kapatmak için "muzik": null
@@ -196,6 +202,126 @@ def altyazi_kutusu(metin, fnt, y, katman):
     return y
 
 
+# ---------- bilgi kartı (otel / restoran / yemek, şehirden bağımsız şablon) ----------
+
+KART_KENAR = 64
+KART_ALT = 400          # Instagram'ın alt arayüzüne (caption, butonlar) girmesin
+KART_IC = 52
+
+
+def _yildiz(c, cx, cy, r, renk):
+    import math
+    pts = []
+    for i in range(10):
+        a = -math.pi / 2 + i * math.pi / 5
+        rr = r if i % 2 == 0 else r * 0.45
+        pts.append((cx + rr * math.cos(a), cy + rr * math.sin(a)))
+    c.polygon(pts, fill=renk)
+
+
+def _pin(c, x, y, boy, renk):
+    r = boy * 0.36
+    cx, cy = x + r, y + r
+    c.polygon([(cx - r * 0.82, cy + r * 0.45), (cx + r * 0.82, cy + r * 0.45), (cx, y + boy)], fill=renk)
+    c.ellipse((cx - r, cy - r, cx + r, cy + r), fill=renk)
+    c.ellipse((cx - r * 0.4, cy - r * 0.4, cx + r * 0.4, cy + r * 0.4), fill=(0, 0, 0, 0))
+
+
+def kart_hazirla(kart):
+    """Kartın (içerik katmanı, şekil maskesi, kutu) üçlüsünü bir kez çizer; her karede sadece bulanıklık değişir."""
+    kw = W - 2 * KART_KENAR
+    ic = kw - 2 * KART_IC
+    gri = (215, 215, 220)
+    tur_f = uret.font(uret.ARA, 28)
+    isim_f = uret.font(uret.BASLIK, 66)
+    konum_f = uret.font(uret.KUCUK, 36)
+    puan_f = uret.font(uret.ARA, 34)
+    fiyat_f = uret.font(uret.BASLIK, 72)
+    falt_f = uret.font(uret.KUCUK, 32)
+    not_f = uret.font(uret.GOVDE, 34)
+
+    # yükseklik hesabı
+    isim_h = uret.blok_yuksekligi(kart["isim"], isim_f, ic, 1.08)
+    not_h = uret.blok_yuksekligi(kart.get("not", ""), not_f, ic, 1.3) if kart.get("not") else 0
+    y = KART_IC
+    if kart.get("tur") or kart.get("puan"):
+        y += 58
+    y += isim_h + 10
+    if kart.get("konum"):
+        y += 56
+    if kart.get("fiyat"):
+        y += 40 + 2 + 36 + 80
+    if not_h:
+        y += (24 if kart.get("fiyat") else 36) + not_h
+    kh = y + KART_IC - 8
+
+    x0 = KART_KENAR
+    y0 = H - KART_ALT - kh
+    kutu = (x0, y0, x0 + kw, y0 + kh)
+
+    maske = Image.new("L", (W, H), 0)
+    ImageDraw.Draw(maske).rounded_rectangle(kutu, radius=44, fill=255)
+
+    k = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    c = ImageDraw.Draw(k)
+    c.rounded_rectangle(kutu, radius=44, fill=(12, 12, 16, 110), outline=(255, 255, 255, 60), width=2)
+    x, y = x0 + KART_IC, y0 + KART_IC
+
+    if kart.get("tur") or kart.get("puan"):
+        if kart.get("tur"):
+            uret.harfli(k, (x, y), kart["tur"], tur_f, uret.BEYAZ, seffaflik=200)
+        if kart.get("puan"):
+            pm = f"{kart['puan']:.1f}".replace(".", ",") if isinstance(kart["puan"], (int, float)) else str(kart["puan"])
+            tw = c.textlength(pm, font=puan_f)
+            px = x0 + kw - KART_IC - tw
+            c.text((px, y - 6), pm, font=puan_f, fill=uret.BEYAZ + (255,))
+            _yildiz(c, px - 30, y + 14, 17, (255, 204, 77, 255))
+        y += 58
+
+    y = uret.yaz(k, (x, y), kart["isim"], isim_f, uret.BEYAZ, ic, 1.08) + 10
+
+    if kart.get("konum"):
+        _pin(c, x, y + 4, 36, gri + (255,))
+        c.text((x + 40, y), kart["konum"], font=konum_f, fill=gri + (255,))
+        y += 56
+
+    if kart.get("fiyat"):
+        y += 20
+        c.line((x, y, x + ic, y), fill=(255, 255, 255, 55), width=2)
+        y += 2 + 36
+        c.text((x, y - 8), kart["fiyat"], font=fiyat_f, fill=uret.BEYAZ + (255,))
+        if kart.get("fiyat_alt"):
+            fw = c.textlength(kart["fiyat"], font=fiyat_f)
+            c.text((x + fw + 18, y + 30), kart["fiyat_alt"], font=falt_f, fill=gri + (255,))
+        y += 80
+
+    if not_h:
+        y += 24 if kart.get("fiyat") else 36
+        uret.yaz(k, (x, y), kart["not"], not_f, gri, ic, 1.3)
+
+    return k, maske, kutu
+
+
+def kart_uygula(img, hazir, a):
+    """a: 0..1 giriş animasyonu. Kart alttan kayarak ve belirerek gelir, arkası buzlu cam gibi bulanık."""
+    if a <= 0:
+        return img
+    k, maske, kutu = hazir
+    kay = int(70 * (1 - a))
+    x0, y0, x1, y1 = kutu
+    bolge = (x0, max(0, y0 - 40), x1, min(H, y1 + 40))
+    bulanik = img.crop(bolge).filter(ImageFilter.GaussianBlur(28))
+    tam = img.copy()
+    tam.paste(bulanik, (bolge[0], bolge[1] - kay))
+    m = maske.transform(maske.size, Image.AFFINE, (1, 0, 0, 0, 1, kay))
+    if a < 1:
+        m = m.point(lambda v: int(v * a))
+    img = Image.composite(tam, img, m)
+    kk = k.transform(k.size, Image.AFFINE, (1, 0, 0, 0, 1, kay))
+    img.alpha_composite(alfali(kk, a))
+    return img
+
+
 def sahne_katmanlari(sahne, ilk):
     """(ana metin katmanı, detay metin katmanı) döndürür."""
     if MEKTUP:
@@ -203,6 +329,16 @@ def sahne_katmanlari(sahne, ilk):
     ana = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     alt = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     etiket_f = uret.font(uret.ARA, 30)
+    if sahne.get("kart"):
+        # kartlı sahne: metin ekranın üstünde kısa başlık, bilgiler kartta
+        if sahne.get("metin"):
+            y = 300
+            if sahne.get("etiket"):
+                uret.harfli(ana, (KENAR, y - 70), sahne["etiket"], etiket_f, uret.BEYAZ,
+                            seffaflik=235, hiza="orta", genislik=GENISLIK)
+            uret.yaz(ana, (KENAR, y), sahne["metin"], uret.font(uret.BASLIK, 84 if ilk else 72),
+                     uret.BEYAZ, GENISLIK, 1.08, hiza="orta")
+        return ana, alt
     if ilk:
         # İlk sahne: büyük, net bir giriş cümlesi (hook) ekranın üst kısmında
         y = 380
@@ -375,6 +511,7 @@ def uret_reels(json_yolu):
             kaynak = FotoKaynak(s["foto"], s.get("odak", (0.5, 0.5)))
         ana, alt = sahne_katmanlari(s, idx == 0)
         ana = golgeli(ana)
+        kart = kart_hazirla(s["kart"]) if s.get("kart") else None
         for f in range(n):
             img = karart(kaynak.kare(f / max(1, n - 1))).convert("RGBA")
             if idx == 0:
@@ -382,6 +519,8 @@ def uret_reels(json_yolu):
             else:
                 a1 = yumusak((f - 4) / 9)
                 a2 = yumusak((f - 22) / 9)  # detay cümlesi ~0.7 sn sonra gelir
+            if kart:
+                img = kart_uygula(img, kart, yumusak((f - (4 if idx == 0 else 10)) / 12))
             if a1 > 0:
                 img.alpha_composite(alfali(ana, a1))
             if a2 > 0:
