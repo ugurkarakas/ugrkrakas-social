@@ -116,7 +116,9 @@ const ekle=(h)=>{const e=el(h);ui.appendChild(e);return e};
 const pinler=D.map(s=>ekle(`<div class="pin"><div class="golge"></div><div class="h" style="background:${K[s.kat].renk}"></div><div class="g">
  <svg viewBox="-2 -2 76 96"><path d="M36 90 C36 90 6 56 6 34 A30 30 0 0 1 66 34 C66 56 36 90 36 90Z" fill="${K[s.kat].renk}" stroke="#fff" stroke-width="5"/></svg>
  <div class="n">${s.i+1}</div></div></div>`));
-const ustFotolar=D.map(s=>ekle(`<div class="ust-foto"><img src="../../kaynak/${s.foto}" style="object-position:${s.odak||'50% 50%'}"><div class="kar"></div></div>`));
+// foto tek dosya ya da liste olabilir (ör. [dükkan, ürün]); listede fotoğraflar durak süresince sırayla geçer
+const fotoList=s=>Array.isArray(s.foto)?s.foto:[s.foto];
+const ustFotolar=D.map(s=>ekle(`<div class="ust-foto">${fotoList(s).map(f=>`<img src="../../kaynak/${f}" style="position:absolute;inset:0;object-position:${s.odak||'50% 50%'}">`).join('')}<div class="kar"></div></div>`));
 const kartlar=D.map(s=>ekle(`<div class="kart">
  <div class="satir"><div class="no" style="background:${K[s.kat].renk}">${s.i+1}</div><div class="katad" style="color:${K[s.kat].renk}">${K[s.kat].ad}</div>${s.etiket?`<div class="etiket">${s.etiket}</div>`:''}</div>
  <div class="ad">${s.ad}</div><div class="metin">${s.metin}</div></div>`));
@@ -154,7 +156,10 @@ function arayuz(t,map){
       // kategori ekranı yoksa önce haritada pin düşer, fotoğraf ve kart ardından gelir
       const fb=KAT_EKRAN?.35:1.25, kb=KAT_EKRAN?.65:1.45;
       const of=pencere(u,fb,g.d,.55,.35); f.style.opacity=of; foto=Math.max(foto,of);
-      f.querySelector('img').style.transform=`scale(${lerp(1.1,1.0,cl(u/g.d))})`;
+      const imgs=[...f.querySelectorAll('img')], n=imgs.length, aralik=(g.d-fb)/n;
+      imgs.forEach((im,j)=>{ // her fotoğraf kendi aralığında hafif yakınlaşır, bir sonrakine yumuşak geçilir
+        const bas=fb+j*aralik; im.style.opacity=j===0?1:eOut(cl((u-bas)/.45));
+        im.style.transform=`scale(${lerp(1.1,1.0,cl((u-bas+.3)/(aralik+.6)))})`;});
       const a=eOut(cl((u-kb)/.45)), b=cl((u-(g.d-.3))/.3);
       gorun(k,a*(1-b),lerp(60,0,a)-b*24,lerp(.97,1,a));}
     else {f.style.opacity=0;k.style.opacity=0;}});

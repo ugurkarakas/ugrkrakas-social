@@ -1,6 +1,6 @@
 {
   "slug": "paris-tatlicilar-harita",
-  "_not": "TASLAK - takvime eklenmedi. Durak fotoğrafları Pexels'ten geçici; mekanların kendi görüntüleri gelince kaynak/paris-tatli-*.jpg dosyalarını değiştir.",
+  "_not": "TASLAK - takvime eklenmedi. Dükkan/ürün fotoğrafları Uğur'un gönderdikleri (kullanım hakkı/kredi kontrol edilmeli). Cédric ürün fotoğrafı büyük ihtimalle Londra (The Berkeley) şubesi.",
   "tur": "reels",
   "seri": "Harita rehberi",
   "baslik": "Paris'te 5 tatlıcı",
@@ -44,7 +44,10 @@
           2.3469,
           48.8651
         ],
-        "foto": "paris-tatli-stohrer.jpg",
+        "foto": [
+          "paris-tatli-stohrer-dukkan.jpg",
+          "paris-tatli-stohrer-urun.jpg"
+        ],
         "metin": "Paris'in en eski pastanesi. Baba au rhum'u dene.",
         "etiket": "1730'dan beri"
       },
@@ -55,7 +58,10 @@
           2.3283,
           48.865
         ],
-        "foto": "paris-tatli-angelina.jpg",
+        "foto": [
+          "paris-tatli-angelina-dukkan.jpg",
+          "paris-tatli-angelina-urun.jpg"
+        ],
         "metin": "Mont-Blanc'ın adresi, yanına sıcak çikolata.",
         "etiket": "Rue de Rivoli"
       },
@@ -66,7 +72,10 @@
           2.3326,
           48.851
         ],
-        "foto": "paris-tatli-herme.jpg",
+        "foto": [
+          "paris-tatli-herme-dukkan.jpg",
+          "paris-tatli-herme-urun.jpg"
+        ],
         "metin": "Ispahan'ı sor: gül, liçi, ahududu.",
         "etiket": "Saint-Germain"
       },
@@ -77,7 +86,10 @@
           2.3631,
           48.8706
         ],
-        "foto": "paris-tatli-dupain.jpg",
+        "foto": [
+          "paris-tatli-dupain-dukkan.jpg",
+          "paris-tatli-dupain-urun.jpg"
+        ],
         "metin": "Fıstıklı ve çikolatalı escargot.",
         "etiket": "Kanal kenarı"
       },
@@ -88,7 +100,10 @@
           2.3335,
           48.8681
         ],
-        "foto": "paris-tatli-grolet.jpg",
+        "foto": [
+          "paris-tatli-grolet-dukkan.jpg",
+          "paris-tatli-grolet-urun.jpg"
+        ],
         "metin": "Gerçek meyveye benzeyen tatlılar.",
         "etiket": "Erken git"
       }
