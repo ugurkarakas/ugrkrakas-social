@@ -22,7 +22,7 @@
       "bpm": 103.36,
       "baslangic": 10.5
     },
-    "kapanis": "Kaydet, Kapadokya'ya giden birine gönder.",
+    "kapanis": "Kaydet, gidecek arkadaşına gönder.",
     "kapanis_alt": "Daha fazla rota için takip et.",
     "sahneler": [
       {
@@ -41,8 +41,8 @@
           }
         ],
         "etiket": "Kapadokya",
-        "metin": "Rezervasyonun olsa bile balon uçmayabilir",
-        "alt": "Kapadokya'ya gitmeden bunu bil."
+        "metin": "Balon her sabah uçmuyor",
+        "alt": "Gitmeden bunu bil."
       },
       {
         "fotolar": [
@@ -60,8 +60,8 @@
           }
         ],
         "etiket": "1",
-        "metin": "Uçuş gün doğumunda",
-        "alt": "Alınma, hazırlık ve 1 saatlik uçuşla toplam 3 saat ayır."
+        "metin": "Alarmı erken kur",
+        "alt": "Uçuş gün doğumunda. Sabahın 3 saatini ayır."
       },
       {
         "fotolar": [
@@ -79,8 +79,8 @@
           }
         ],
         "etiket": "2",
-        "metin": "Kararı hava veriyor",
-        "alt": "Uçuşlara SHGM izin veriyor. Kırmızı bayrak varsa o gün tüm uçuşlar iptal."
+        "metin": "Son sözü hava söyler",
+        "alt": "Rüzgar ya da sis varsa o gün kimse uçmaz."
       },
       {
         "fotolar": [
@@ -104,8 +104,8 @@
           }
         ],
         "etiket": "3",
-        "metin": "Uçmazsa gün boşa gitmesin",
-        "alt": "ATV, at turu ya da vadide yürüyüş. Kışın bir yedek gün de bırak."
+        "metin": "Uçmazsa üzülme",
+        "alt": "ATV'ye bin, ata bin, vadide yürü. Kışın bir yedek gün bırak."
       }
     ],
     "renk": "film",

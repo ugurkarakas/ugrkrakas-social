@@ -475,8 +475,10 @@ def sahne_katmanlari(sahne, ilk):
                      uret.BEYAZ, GENISLIK, 1.08, hiza="orta")
         return ana, alt
     if ilk:
-        # İlk sahne: büyük, net bir giriş cümlesi (hook) ekranın üst kısmında
+        # İlk sahne: büyük, net bir giriş cümlesi (hook) ekranın üst kısmında; sade stilde ekranın ortasında
         y = 380
+        if SADE:
+            y = int(H * 0.46 - uret.blok_yuksekligi(sahne["metin"], uret.font(uret.BASLIK, 108), GENISLIK, 1.08) / 2)
         if sahne.get("etiket"):
             uret.harfli(ana, (KENAR, y - 80), sahne["etiket"], etiket_f, uret.BEYAZ,
                         seffaflik=230, hiza="orta", genislik=GENISLIK)
