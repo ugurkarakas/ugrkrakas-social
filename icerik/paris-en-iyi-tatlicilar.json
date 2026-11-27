@@ -1,0 +1,38 @@
+{
+  "slug": "paris-en-iyi-tatlicilar",
+  "_not": "TASLAK - fiyatlar yaklaşıktır, yayından önce kontrol et. Takvime eklenmedi.",
+  "tur": "reels",
+  "konum": "Paris, Fransa",
+  "reels": {
+    "stil": "sade",
+    "konum": "",
+    "muzik": {"tarz": "aksam", "tohum": 11},
+    "kapanis": "Kaydet, Paris'te tatlı molası için aç.",
+    "kapanis_alt": "Sence listeye hangisi girmeliydi?",
+    "sahneler": [
+      {"video": "video/paris/12620494_720_1280_60fps.mp4", "baslangic": 1, "sure": 3.0, "hiz": 1.0,
+       "metin": "Paris'te en iyi 5 tatlıcı",
+       "lokasyon": "Paris", "lokasyon_y": 0.64},
+      {"video": "video/paris/9784054-hd_720_1366_25fps.mp4", "baslangic": 0.5, "sure": 4.2, "hiz": 1.0,
+       "etiket": "01",
+       "kart": {"isim": "Angelina", "imza": "Mont-Blanc", "fiyat": "~€11",
+                "konum": "226 Rue de Rivoli, 1. bölge"}},
+      {"video": "video/paris/19698996-hd_720_1280_25fps.mp4", "baslangic": 0.5, "sure": 4.2, "hiz": 1.0,
+       "etiket": "02",
+       "kart": {"isim": "Pierre Hermé", "imza": "Ispahan makaron", "fiyat": "~€3",
+                "konum": "72 Rue Bonaparte, 6. bölge"}},
+      {"video": "video/paris/3769033-hd_1280_720_25fps.mp4", "baslangic": 1, "sure": 4.2, "hiz": 1.0,
+       "etiket": "03",
+       "kart": {"isim": "Cédric Grolet Opéra", "imza": "Meyve tatlıları", "fiyat": "~€20",
+                "konum": "35 Avenue de l'Opéra, 2. bölge"}},
+      {"video": "video/paris/12017213_720_1280_60fps.mp4", "baslangic": 1, "sure": 4.2, "hiz": 1.0,
+       "etiket": "04",
+       "kart": {"isim": "Stohrer", "imza": "Baba au rhum", "fiyat": "~€7",
+                "konum": "51 Rue Montorgueil, 2. bölge"}},
+      {"video": "video/paris/8430966-hd_1366_720_25fps.mp4", "baslangic": 1, "sure": 4.2, "hiz": 1.0,
+       "etiket": "05",
+       "kart": {"isim": "Du Pain et des Idées", "imza": "Escargot pistache", "fiyat": "~€6",
+                "konum": "34 Rue Yves Toudic, 10. bölge"}}
+    ]
+  }
+}

@@ -35,8 +35,13 @@ Alanlar:
                 isim zorunlu, diğerleri isteğe bağlı. gorsel kaynak/ altındaki foto; ya da
                 {"video": "video/...mp4", "an": 3.2} ile videodan bir kare.
                 "yer": "alt" (varsayılan) | "ust". Kartlı sahnede "metin" varsa üstte başlık olur.
+                "stil": "sade" ile kart fotoğrafsız, küçük ve sol altta olur; "imza" alanı
+                (ör. "Mont-Blanc") fiyatla aynı satırda yazılır, sahnenin "etiket"i kartın numarası olur.
   lokasyon      Instagram konum çıkartması tarzında beyaz hap: renkli iğne + renkli BÜYÜK HARF metin,
                 ör. "lokasyon": "Sagrada Família". "lokasyon_y": 0..1 dikey konum (varsayılan 0.5)
+
+Stil ("reels.stil"): yok = varsayılan, "mektup" = serif sinematik, "sade" = az yazı, hafif karartma,
+  küçük sakin kartlar ve yumuşak geçişler (göz yormayan liste videoları için).
 
 Müzik: araclar/muzik.py ile kodla üretilen telifsiz ritim eklenir.
   "muzik": {"tarz": "yaz" | "aksam" | "enerji", "tohum": 7}   kapatmak için "muzik": null
@@ -155,12 +160,13 @@ SIYAH = Image.new("RGB", (W, H), (0, 0, 0))
 
 
 MEKTUP = False  # "stil": "mektup" -> yazısız, serif başlıklı sinematik seyahat filmi
+SADE = False    # "stil": "sade" -> az yazı, hafif karartma, küçük sakin kart, yumuşak geçişler
 MASKE_HAFIF = MASKE.point(lambda v: int(v * 0.35))
 
 
 def karart(img):
     """Fotoğraf/videonun alt ve üstünü yazı okunacak kadar koyulaştırır."""
-    return Image.composite(SIYAH, img, MASKE_HAFIF if MEKTUP else MASKE)
+    return Image.composite(SIYAH, img, MASKE_HAFIF if (MEKTUP or SADE) else MASKE)
 
 
 def serif(boyut, agirlik="Medium", italik=False):
@@ -386,11 +392,58 @@ def _yay(t):
     return 1 - math.exp(-6 * t) * math.cos(9 * t) if t < 1 else 1.0
 
 
+def kart_sade_hazirla(kart, sira=""):
+    """Sade kart: fotoğrafsız, içeriği kadar geniş, sol altta. Numara, isim, imza lezzet + fiyat, konum."""
+    pad_x, pad_y = 40, 34
+    no_f = uret.font(uret.ARA, 26)
+    isim_f = uret.font(uret.BASLIK, 48)
+    orta_f = uret.font(uret.KUCUK, 32)
+    kucuk_f = uret.font(uret.KUCUK, 28)
+    koyu, gri = (60, 60, 66), (140, 140, 146)
+    olcum = ImageDraw.Draw(Image.new("RGB", (1, 1)))
+    orta = " · ".join(x for x in (kart.get("imza"), kart.get("fiyat")) if x)
+    max_w = W - 2 * KENAR + 40 - 2 * pad_x
+    isim_s = uret.satirlar(kart["isim"], isim_f, max_w)
+    genis = max([olcum.textlength(x, font=isim_f) for x in isim_s] +
+                [olcum.textlength(orta, font=orta_f) if orta else 0,
+                 olcum.textlength(kart.get("konum", ""), font=kucuk_f) + 34])
+    w = int(genis + 2 * pad_x)
+    h = pad_y + (40 if sira else 0) + len(isim_s) * 58 + (50 if orta else 0) + (46 if kart.get("konum") else 0) + pad_y - 6
+    k = Image.new("RGBA", (w, h), (255, 255, 255, 240))
+    c = ImageDraw.Draw(k)
+    y = pad_y
+    if sira:
+        uret.harfli(k, (pad_x, y), sira, no_f, gri)
+        y += 40
+    for sat in isim_s:
+        c.text((pad_x, y), sat, font=isim_f, fill=SIYAHIMSI)
+        y += 58
+    if orta:
+        y += 4
+        c.text((pad_x, y), orta, font=orta_f, fill=koyu)
+        y += 46
+    if kart.get("konum"):
+        y += 4
+        _pin(c, pad_x, y + 3, 28, gri, (255, 255, 255, 240))
+        c.text((pad_x + 34, y), kart["konum"], font=kucuk_f, fill=gri)
+    k = _yuvarlak(k, 30)
+    golgeli_k, m = _golge_ekle(k, 30, yaricap=24, guc=45, dy=6)
+    return golgeli_k, (KENAR - 20 - m, H - KART_ALT - h - m)
+
+
 def ui_uygula(img, hazir, t):
     """Kart/çıkartma ekrana küçükten büyüyerek, hafif yaylanarak ve belirerek gelir. t: 0..1+."""
     if t <= 0:
         return img
     parca, (x0, y0) = hazir
+    if SADE:
+        # sade: yalnızca yumuşak belirme ve 24 px yukarı kayma
+        if t <= 0:
+            return img
+        e = yumusak(t)
+        parca, (x0, y0) = hazir
+        img.alpha_composite(alfali(parca, e), (x0, y0 + int(24 * (1 - e))))
+        return img
     olcek = 0.82 + 0.18 * _yay(t)
     alfa = yumusak(t * 2.2)
     w, h = parca.size
@@ -517,11 +570,12 @@ def sahneleri_al(veri):
 
 
 def uret_reels(json_yolu):
-    global ISARET, RENK, MEKTUP
+    global ISARET, RENK, MEKTUP, SADE
     veri = json.loads(Path(json_yolu).read_text(encoding="utf-8"))
     ISARET = isaret_katmani(veri.get("reels", {}).get("konum", veri.get("konum", "")))
     RENK = RENKLER[veri.get("reels", {}).get("renk")]
     MEKTUP = veri.get("reels", {}).get("stil") == "mektup"
+    SADE = veri.get("reels", {}).get("stil") == "sade"
     sahneler = sahneleri_al(veri)
     cikis = KOK / "reels" / f"{veri['slug']}.mp4"
     cikis.parent.mkdir(exist_ok=True)
@@ -593,7 +647,9 @@ def uret_reels(json_yolu):
             kaynak = FotoKaynak(s["foto"], s.get("odak", (0.5, 0.5)))
         ana, alt = sahne_katmanlari(s, idx == 0)
         ana = golgeli(ana)
-        kart = kart_hazirla(s["kart"]) if s.get("kart") else None
+        kart = None
+        if s.get("kart"):
+            kart = kart_sade_hazirla(s["kart"], s.get("etiket", "")) if SADE else kart_hazirla(s["kart"])
         lok = None
         if s.get("lokasyon"):
             lok = lokasyon_hazirla(s["lokasyon"], s.get("lokasyon_y", 0.5))
