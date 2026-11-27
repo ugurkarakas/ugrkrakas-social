@@ -1,0 +1,147 @@
+{
+  "slug": "paris-tatlicilar-harita",
+  "_not": "TASLAK - takvime eklenmedi. Durak fotoğrafları Pexels'ten geçici; mekanların kendi görüntüleri gelince kaynak/paris-tatli-*.jpg dosyalarını değiştir.",
+  "tur": "reels",
+  "seri": "Harita rehberi",
+  "baslik": "Paris'te 5 tatlıcı",
+  "alt_baslik": "İmza tatlısı ve adresi: tek harita.",
+  "konum": "Paris, Fransa",
+  "foto": "paris-eyfel.jpg",
+  "harita": {
+    "sehir": "Paris",
+    "ulke_bayrak": "FR",
+    "giris_ust": "Gitmeden önce kaydet",
+    "giris_baslik": "Paris'te\n5 tatlıcı",
+    "giris_alt": "İmza tatlısı ve adresi. Tek haritada.",
+    "giris_foto": "paris-eyfel.jpg",
+    "baslangic": {
+      "merkez": [
+        2.35,
+        48.6
+      ],
+      "zoom": 6.4
+    },
+    "sehir_kamera": {
+      "merkez": [
+        2.343,
+        48.8625
+      ],
+      "zoom": 13.2
+    },
+    "durak_zoom": 15.0,
+    "kategoriler": {
+      "tatli": {
+        "ad": "Tatlı",
+        "renk": "#FF9F0A",
+        "foto": "paris-tatli-kategori.jpg"
+      }
+    },
+    "duraklar": [
+      {
+        "kat": "tatli",
+        "ad": "Stohrer",
+        "konum": [
+          2.3469,
+          48.8651
+        ],
+        "foto": "paris-tatli-stohrer.jpg",
+        "metin": "Paris'in en eski pastanesi. Baba au rhum'u dene.",
+        "etiket": "1730'dan beri"
+      },
+      {
+        "kat": "tatli",
+        "ad": "Angelina",
+        "konum": [
+          2.3283,
+          48.865
+        ],
+        "foto": "paris-tatli-angelina.jpg",
+        "metin": "Mont-Blanc'ın adresi, yanına sıcak çikolata.",
+        "etiket": "Rue de Rivoli"
+      },
+      {
+        "kat": "tatli",
+        "ad": "Pierre Hermé",
+        "konum": [
+          2.3326,
+          48.851
+        ],
+        "foto": "paris-tatli-herme.jpg",
+        "metin": "Ispahan'ı sor: gül, liçi, ahududu.",
+        "etiket": "Saint-Germain"
+      },
+      {
+        "kat": "tatli",
+        "ad": "Du Pain et des Idées",
+        "konum": [
+          2.3631,
+          48.8706
+        ],
+        "foto": "paris-tatli-dupain.jpg",
+        "metin": "Fıstıklı ve çikolatalı escargot.",
+        "etiket": "Kanal kenarı"
+      },
+      {
+        "kat": "tatli",
+        "ad": "Cédric Grolet Opéra",
+        "konum": [
+          2.3335,
+          48.8681
+        ],
+        "foto": "paris-tatli-grolet.jpg",
+        "metin": "Gerçek meyveye benzeyen tatlılar.",
+        "etiket": "Erken git"
+      }
+    ],
+    "kapanis": "Kaydet, gidince aç.",
+    "muzik": {
+      "tarz": "aksam",
+      "tohum": 11
+    },
+    "ses": {
+      "dosya": "ses/paris-tatlicilar-harita-ses.mp3",
+      "ses_adi": "Hasan Yasin (ElevenLabs)",
+      "satirlar": [
+        [
+          0.0,
+          3.9
+        ],
+        null,
+        [
+          4.35,
+          11.25
+        ],
+        [
+          11.74,
+          16.23
+        ],
+        [
+          16.6,
+          21.04
+        ],
+        [
+          21.44,
+          26.76
+        ],
+        [
+          27.1,
+          31.95
+        ],
+        [
+          32.35,
+          34.21
+        ]
+      ]
+    },
+    "sureler": [
+      4.4,
+      1.35,
+      7.77,
+      5.36,
+      5.31,
+      6.19,
+      5.72,
+      4.21
+    ]
+  }
+}

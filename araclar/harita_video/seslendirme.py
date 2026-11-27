@@ -3,6 +3,7 @@
 
 icerik JSON'undaki harita.ses = {"dosya": "ses/x.mp3", "satirlar": [[bas, bit], ...]}
 (satır sırası: giriş, her kategori için [kategori, durakları...], kapanış)
+Seslendirmede okunmayan bir bölüm (ör. kategori adı) için satır yerine null yazılır: o bölüm sessiz kalır.
 
 1. Her satırın süresine göre bölüm sürelerini hesaplar ve harita.sureler'e yazar.
 2. Satırları bu zamanlara yerleştirip tek bir ses izi (wav) üretir.
@@ -33,8 +34,9 @@ assert len(plan) == len(satir), f"{len(plan)} bölüm ama {len(satir)} satır"
 ENAZ = {"giris": 4.4, "kat": 1.35, "durak": 3.3, "son": 4.0}
 SON_BOSLUK = {"giris": 0.1, "kat": 0.1, "durak": 0.12, "son": 1.0}
 sureler, yerler, t = [], [], 0.0
-for (tip, ofs), (a, b) in zip(plan, satir):
-    d = max(ENAZ[tip], ofs + (b - a) + SON_BOSLUK[tip])
+for (tip, ofs), ab in zip(plan, satir):
+    a, b = ab if ab else (0.0, 0.0)
+    d = max(ENAZ[tip], ofs + (b - a) + SON_BOSLUK[tip]) if ab else ENAZ[tip]
     sureler.append(round(d, 3)); yerler.append(round(t + ofs, 3)); t += d
 h["sureler"] = sureler
 yol.write_text(json.dumps(v, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -48,7 +50,9 @@ with tempfile.TemporaryDirectory() as td:
     muz = os.path.join(td, "m.wav")
     subprocess.run([sys.executable, str(KOK / "araclar" / "muzik.py"), muz, str(int(t) + 2), m.get("tarz", "yaz"), str(m.get("tohum", 7))], check=True, capture_output=True)
     girdiler, fc = ["-i", str(kaynak)], []
-    for i, ((a, b), y) in enumerate(zip(satir, yerler)):
+    dolu = [(ab, y) for ab, y in zip(satir, yerler) if ab]
+    satir = [ab for ab, _ in dolu]
+    for i, ((a, b), y) in enumerate(dolu):
         fc.append(f"[0:a]atrim={a:.3f}:{b:.3f},asetpts=PTS-STARTPTS,afade=t=in:d=0.02,afade=t=out:st={max(0, b - a - 0.04):.3f}:d=0.04,adelay={int(y * 1000)}:all=1[s{i}]")
     fc.append("".join(f"[s{i}]" for i in range(len(satir))) + f"amix=inputs={len(satir)}:normalize=0,aresample=48000,pan=stereo|c0=c0|c1=c0,"
               "highpass=f=70,acompressor=threshold=-20dB:ratio=3:attack=5:release=120,loudnorm=I=-16:TP=-1.5:LRA=7[ses]")
